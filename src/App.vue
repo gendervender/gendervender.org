@@ -9,23 +9,36 @@
 </template>
 
 <style lang="scss">
+:root{
+  --primary: #FF4085!important;
+  --secondary: #00CEE5!important;
+  --tertiary: #FFE819!important;
+  --text: #000000!important;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
-
+h1,h2,h3,h4,h5{
+  margin: 0%;
+  letter-spacing: 0.02rem;
+}
+p, a, b, span{
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.02rem;
+}
 #nav {
   padding: 30px;
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--text);
 
     &.router-link-exact-active {
-      color: #42b983;
+        color: var(--primary);
     }
   }
 }
