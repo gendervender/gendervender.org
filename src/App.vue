@@ -7,7 +7,6 @@
     <router-view/>
   </div>
 </template>
-
 <style lang="scss">
 :root{
   --primary: #FF4085!important;
