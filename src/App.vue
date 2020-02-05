@@ -2,14 +2,19 @@
   <div id="app">
     <Navigation/>
     <router-view/>
+    <Footer/>
   </div>
 </template>
+
 <script>
   import Navigation from '@/components/Navigation.vue';
+  import Footer     from '@/components/Footer.vue';
+
   export default {
     name: 'App',
     components: {
-      Navigation
+      Navigation,
+      Footer
     }
   }
 </script>
@@ -44,14 +49,18 @@ h1,h2,h3,h4,h5{
     font-weight: inherit;
     color: inherit;
     font-size: inherit;
+    margin: 0;
+    padding: 0;
   }
 }
-p, a, b, span{
+p, a, b, span, button{
+  line-height: 1.8;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.01rem;
 }
 a{
+  cursor: pointer;
   text-decoration: none;
   &:visited{
     color: inherit;
@@ -84,8 +93,18 @@ a{
     }
   }
 }
+button{
+    width: auto;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background: none;
+    font-weight: 600;
+    letter-spacing: 0.08rem;
+}
 .underline{
   font-weight: 600;
+  padding: 0;
   position: relative;
   &:after{
     content: '';
@@ -107,8 +126,10 @@ a{
   box-sizing: border-box;
 }
 .container{
+  box-sizing: border-box;
   margin: 0% 4vw;
   position: relative;
+  width: auto;
 }
 .background{
   position: absolute;

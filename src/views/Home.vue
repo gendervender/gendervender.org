@@ -38,7 +38,7 @@ export default {
        this.assignContent(content.data);
     },
     assignContent(data){
-       console.log(data)
+      //  console.log(data)
        this.landingFields = {
          mainTitle: data.main_title,
          subtitle: data.subtitle,

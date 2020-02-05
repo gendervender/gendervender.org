@@ -44,11 +44,9 @@
           this.$router.push('/#'+ id);
         }else{
           let selector = document.querySelector('#'+ id);
-          if (selector && id !== 'landing') {
-            let top = selector.offsetTop
+          if (selector) {
+            let top =  id !== 'landing' ? selector.offsetTop : 0;
             window.scrollTo({top, behavior: 'smooth' })
-          }else{
-            window.scrollTo({top: 0, behavior: 'smooth' })
           }
         }
       }
@@ -75,7 +73,6 @@
     flex: 1;
   }
   a {
-    cursor: pointer;
     font-weight: bold;
     color: var(--text);
     &:hover{
