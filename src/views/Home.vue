@@ -1,43 +1,66 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <Landing msg="Welcome to Your Vue.js App" v-bind:landingFields="landingFields"/>
+    <Landing v-bind:landingFields="landingFields"/>
+    <Statement v-bind:statementFields="statementFields"/>
   </div>
 </template>
-<style lang="scss">
-  img{
-    width: 50px;
+<style lang="scss" scoped>
+  .home{
+    margin-top: 10vh;
   }
 </style>
 
 <script>
-// @ is an alias to /src
-import Landing from '@/components/Landing.vue'
-
+import Landing       from '@/components/Landing.vue';
+import Statement     from '@/components/Statement.vue';
 export default {
   name: 'home',
   components: {
-    Landing
+    Landing,
+    Statement
   },
   data() {
     return{
       landingFields:{
         mainTitle: null,
         subtitle: null,
-        description: null
+        description: null,
+        landing_image: null
+      },
+      statementFields: {
+        mission: null
       }
     }
   },
   methods: {
-    async getContent(){  	
+    async getContent(){ 
        const content = await this.$prismic.client.getSingle('home_page');
-       this.landingFields.mainTitle = content.data.main_title;
-       this.landingFields.subtitle = content.data.subtitle;
-       this.landingFields.description = content.data.description;
+       this.assignContent(content.data);
+    },
+    assignContent(data){
+       console.log(data)
+       this.landingFields = {
+         mainTitle: data.main_title,
+         subtitle: data.subtitle,
+         description: data.description,
+         landing_image: data.landing_image.url
+       };
+       this.statementFields = {
+         mission: data.mission_statement
+       };
     }
   },
   created(){
     this.getContent();
+  },
+  mounted(){
+    if(this.$route.hash){
+      let selector = document.querySelector(this.$route.hash);
+      if (selector) {
+        let top = selector.offsetTop
+        window.scrollTo({top, behavior: 'smooth' })
+      }
+    }
   }
 }
 </script>
