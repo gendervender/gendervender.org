@@ -1,0 +1,174 @@
+.btn-primary:hover {
+    background-color: #ff4085;
+}
+.btn-primary {
+    border-color: #ff4085;
+    background-color: #ff4085;
+    color: white;
+    
+}
+
+
+
+.top-title {
+    background-color: #ff4085;
+    position: relative;
+
+    height: 500px;
+}
+.title-text {
+    width: 100%;
+    text-align: center;
+    color: white;
+
+   margin: auto;
+   margin-top: 10rem;
+    position: absolute;
+    z-index: 5;
+ 
+}
+h1{
+    margin-bottom: 20px;
+}
+
+
+
+#container div {
+    width: 320px;
+    height: 500px;
+    display: inline-block;
+    margin: 20px;
+    margin-bottom: 8rem;
+    text-align: left;
+    overflow: hidden;
+     overflow-y: scroll;
+}
+
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+#container p {
+    font-size: 11px;
+}
+
+#container img {
+    width: 300px;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border-radius: 10px
+}
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #F8F5F6;
+}
+
+#container img:hover {
+    filter: grayscale(100%);
+}
+.arrow {
+    text-align: center;
+    font-size: 50em;
+    transform: rotateZ(90deg)
+}
+
+.top-title img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%) contrast(130%);
+    object-fit: cover;
+}
+
+.top-title-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    top: 0;
+    left: 0;
+    background-color: #FF4085;
+    z-index: 1;
+    opacity: 0.70;
+}
+.footer{
+    background-color: white;
+}
+
+.middle-section{
+    margin-top: 2rem;
+width: 100%;
+text-align: left;
+margin-bottom: 1rem;
+    
+}
+
+#container{
+   width: 100%;
+   text-align: center;
+ 
+}
+
+a:hover{
+    
+    color:#ff4085;
+}
+@media only screen and (max-width: 770px){
+    
+    .top-title {
+    background-color: #ff4085;
+    height: 100%;
+    position: relative;
+    }
+.title-text {
+    width: 100%;
+    text-align: center;
+    color: white;
+   margin: auto;
+margin-top: 7rem;
+   position: absolute;
+    z-index: 5;
+ 
+}
+
+.title-text h1{
+    font-size: 2rem;
+    font-family: Roboto;
+    
+}
+#container{
+   width: 100%;
+   text-align: center;
+   margin-bottom: 5rem;
+}
+    #container div {
+    width: '';
+    height: 500px;
+    display: inline-block;
+    margin: 20px;
+    margin-bottom: 5rem;
+    text-align: left;
+    overflow: visible;
+}
+
+    
+}
+
+.imd1{
+    color: #ff4085;
+    font-weight: bold;
+
+}
+.image_about{
+    width: 50%;
+}
+.middle-section p{
+    margin-bottom: 0px;
+    font-size: 12px;
+    margin-top: -2px;
+}
+.middle-image{
+    text-align: center;
+    padding-top: 20px;
+    
+}

@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Black');
+@import url('https://fonts.googleapis.com/css?family=Nunito|Nunito+Sans');
+
+.btn{
+    text-transform: none;
+}
+
+.how-it-works__item-bg{
+    box-shadow: none;
+    background-color: #2D2D2D;
+    border-radius: 0px;
+}
+.how-it-works__item{
+    padding: 0px;
+}
+.how-it-works__item.col-12{
+
+    padding: 0;
+}
+
+.how-it-works__item.col-md-12{
+    padding: 0;
+}
+
+.how-it-works__item.col-lg-12{
+     padding: 0;
+ }
+
+body{
+    background-color: #2D2D2D;
+    font-family:  'Nunito Sans', sans-serif;
+}
+
+.home__hero-img{
+    width: 600px;
+}
+.page-title-text{
+    font-weight: bold;
+        font-family:  'Nunito Sans', sans-serif;
+
+}
+/* Mission Styles */
+.coloredWords{
+    color:#ff4085;
+}
+
+.missionSection{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 48px;
+    color: #ffffff;
+
+}
+h2{
+    font-family:  'Nunito Sans', sans-serif;
+}
+
+.home__hero{
+    background-color: white;
+}
+
+.features{
+    background-color: white;
+}
+
+.team{
+    background-color: white;
+}
+
+
+.promo{
+    background-image:none;
+
+    background-color: white;
+    
+    padding: 0;
+}
+
+.titleGenderVender{
+    display: flex;
+    justify-content: center;
+    font-family:  'Nunito Sans', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+    color: #2D2D2D;
+}
+
+
+.titleGenderVenderWhite{
+    display: flex;
+    justify-content: center;
+    font-family:  'Nunito Sans', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+    color: white;
+}
+.promo p{
+    color: #2D2D2D;
+
+}
+
+.footer{
+    background-color: white;
+}
+
+
+.team__item-role{
+    color: #ff4085;
+}
+
+.info-text{
+    color: white;
+    
+    
+}
+.donate-nav-btn, .btn-learn{
+    background-color:#ff4085;
+    border: none;
+}
+
+.donate-nav-btn:hover, .btn-learn:hover{
+    background-color:#3AC3DB;
+}
+
+.btn-link{
+    color:#ff4085;
+}
+
+.btn-link:hover{
+    color: #3AC3DB;
+}
+
+.socialLinks{
+    color:#ff4085;
+}
+
+.socialLinks:hover{
+    color: #3AC3DB;
+}
+
+.stories{
+    background-color: white;
+}
+
+.lead-form{
+
+    background-color: white;
+ 
+        padding: 160px 0 0 0;
+    min-height: 100vh;
+}
+
+.lead-form h2{
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    letter-spacing: 0.04em;
+    font-weight: 900;
+    z-index: 2;
+}
+
+.btn-contact {
+    background-color:#FF4085;
+}
+
+.btn-contact:hover{
+    background-color: #02CEE5;
+}
+
+.btn-contact:focus{
+    background-color: #02CEE5;
+    border: none;
+}
+
+.btn-secondary.btn-contact{
+    color: white;
+    border: none;
+    background: #FF4085;
+    display: flex;
+    justify-content: right;
+}
+
+#title-contact{
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto-Black';
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+}
+
+#back-line-contact{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 400px;
+    height: 25px;
+    margin: auto;
+    margin-top: 55px;
+    z-index: 1;
+    background: #FF4085;
+    font-family: 'Roboto';
+
+}
+
+
+
+.top-title img {
+    width: 100%;
+    height: 100%;
+
+    filter: grayscale(100%) contrast(130%);
+}
+
+.top-title-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    top: 0;
+    left: 0;
+    background-color: #FF4085;
+    z-index: 1;
+    opacity: 0.80;
+}
+
+.top-title {
+    background-color: #ff4085;
+    position: relative;
+    height: 500px;
+}
+.title-text {
+    text-align: center;
+    color: white;
+    margin-top: 175px;
+    position: absolute;
+
+    z-index: 5;
+}
+
+.team-title{
+    padding-top: 4rem;
+}
+.nav-link a:hover{
+    
+    color:#ff4085;
+}
+
+/* Main Styles middle section */
+.middle-text{
+    
+    width: 100%;
+}
+
+.zeroone, .zerotwo, .zerothree{
+    
+    display: inline-block;
+    color: #ff4085;
+    font-size: 5rem;
+    font-family: 'Roboto';
+    font-weight: bold;
+    background-color:  #2D2D2D;
+    letter-spacing: 5px;
+    width: 8rem;
+    margin: 5rem;
+}
+
+.internalLink{
+    color: #ff4085;
+    text-decoration: underline;
+}
+
+.internalLink a:hover{
+    color: #ff4085;
+    
+}
+a:hover{
+  color: #ff4085;  
+}
+.internalLink a:visited{
+    color: #ff4085;
+}
+.promo{
+    color: #ff4085;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.underLine{
+    margin: auto;
+    margin-top: -2rem;
+    width: 65%;
+    background-color: #ff4085;
+    height: 1rem;
+}
+
+.historyTitle{
+    color: white;
+}
+
+.info-text-dark{
+    color: #2D2D2D;
+}
+
+.footer a{
+    color: #ff4085;
+}
+
+.home__hero-bg{
+    width: 700px;
+    bottom: -150px;
+    left:-50px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .missionSection{
+        font-size: 24px;
+    }
+    
+    .how-it-works__item{
+        padding: 0;
+    }
+    
+    .how-it-works{
+        padding-top:0;
+    }
+    
+    .home__hero{
+        padding-bottom: 20px;
+    }
+    
+    .btn-learn{
+        margin-bottom: 15px;
+    }
+}
+
+.missionSection-sub{
+    color: white;
+}
+
+.page-title-text{
+    color:#ff4085;
+}
+
+.gv-works{
+    padding-top: 0;
+}
+
+.mapImage{
+    background-image: url("/img/map.png");
+    background-size: cover;
+      background-position: center;
+  background-repeat: no-repeat;
+    width: 100%;
+    height:500px;
+}
+
+.donate-subtitle{
+    
+ color: white;   
+ padding: 20px;
+ font-family: 'Nunito Sans', sans-serif;
+ text-align: center;
+}
+
+.team-member-col{
+    overflow: hidden;
+}
+
+.team-title{
+    margin-top: 1rem;
+}
+
+.card{
+    border-bottom: none !important;
+    
+}
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Gender Vender</title>
+    <meta name="description" content=""/>
+    <meta content="" name="description"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="width=device-width" name="viewport"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <link rel="apple-touch-icon" href="icon.png"/>
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />                  
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="styles/css/style.css"/>
+    
+    <link rel="stylesheet" href="styles/css/partner-styles.css">
+<link rel="stylesheet" href="styles/css/finalstyles.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="js/contact-form.js"></script>
+    
+    <script type="text/javascript">
+$(document).ready(function(){
+    /* Get iframe src attribute value i.e. YouTube video url
+    and store it in a variable */
+    var url = $("#hyperFizzicsYoutube").attr('src');
+    
+    /* Assign empty url value to the iframe src attribute when
+    modal hide, which stop the video playing */
+    $("#hyperFizzicsModal").on('hide.bs.modal', function(){
+        $("#hyperFizzicsYoutube").attr('src', '');
+    });
+    
+    /* Assign the initially stored url back to the iframe src
+    attribute when modal is displayed again */
+    $("#hyperFizzicsModal").on('show.bs.modal', function(){
+        $("#hyperFizzicsYoutube").attr('src', url);
+    });
+});
+</script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    /* Get iframe src attribute value i.e. YouTube video url
+    and store it in a variable */
+    var url = $("#indiVideo").attr('src');
+    
+    /* Assign empty url value to the iframe src attribute when
+    modal hide, which stop the video playing */
+    $("#indiModal").on('hide.bs.modal', function(){
+        $("#indiVideo").attr('src', '');
+    });
+    
+    /* Assign the initially stored url back to the iframe src
+    attribute when modal is displayed again */
+    $("#indiModal").on('show.bs.modal', function(){
+        $("#indiVideo").attr('src', url);
+    });
+});
+</script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    /* Get iframe src attribute value i.e. YouTube video url
+    and store it in a variable */
+    var url = $("#bathingVideo").attr('src');
+    
+    /* Assign empty url value to the iframe src attribute when
+    modal hide, which stop the video playing */
+    $("#bathingModal").on('hide.bs.modal', function(){
+        $("#bathingVideo").attr('src', '');
+    });
+    
+    /* Assign the initially stored url back to the iframe src
+    attribute when modal is displayed again */
+    $("#bathingModal").on('show.bs.modal', function(){
+        $("#bathingVideo").attr('src', url);
+    });
+});
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140712096-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-140712096-1');
+</script>
+
+</head>
+
+<body>
+<main class="main">
+    <nav class="navbar fixed-top navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index">
+                <img src="img/website-logo.png" alt="logo"/>
+            </a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="ti-menu"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link active" href="#home">home</a></li>
+                    <li><a class="nav-link" href="#about">about</a></li>
+                    <li><a class="nav-link" href="#stories">stories</a></li>
+                    <li><a class="nav-link" href="team">our team</a></li>
+                    <li><a class="nav-link" href="contact">contact</a></li>
+                </ul>
+                <a href="donate">
+                    <button class="btn btn-primary btn-sm donate-nav-btn">Donate</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home__hero" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-7  home__hero-image-section">
+                    <img
+                            class="home__hero-img wow fadeInLeft"
+                            src="img/MachineUpdated.png"
+                            width="400"
+                    />
+                    <img
+                            class="home__hero-bg wow fadeInRight"
+                            src="img/artboardbg.png"
+                            width="800"
+                    />
+                </div>
+                <div
+                        class="col-12 col-md-5  home__hero-text-section  align-self-end wow fadeInUp"
+                        data-wow-delay="0.2s"
+                >
+               
+                    <h2 class="page-title-text">Gender Vender                        
+</h2>
+<h3>                            Shattering Gender
+Inequality Norms</h3>
+                    <p class="mt-4 mb-4">
+                        A vending machine dedicated to educating others and uplifting women.
+
+                    </p>
+                   <a href="#stories"><button class="btn btn-secondary btn-lg btn-learn">I visited the machine</button></a> <a href="#missionStatement"><button class="btn btn-secondary btn-lg btn-learn">Learn more</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="missionStatement">
+        <div class="container">
+            <div class="row">
+                <!-- SINGLE ITEM -->
+                <div
+                        data-wow-delay="0.6s"
+                        class="wow fadeInRight how-it-works__item col-12 col-md-12 col-lg-12 mb-3"
+                >
+                    <div
+                            class="how-it-works__item-bg d-flex flex-column align-items-center text-center"
+                    >
+
+
+                        <!--  <h1 class="mt-4 mb-4 text-light">Our Mission</h1> -->
+                        <h5 class="missionSection-sub"> Through a survey we conducted, <span
+                                class='coloredWords'>95.5% of individuals</span> believe gender inequality exists. </h5>
+                        <h2 class="missionSection"> Our mission is to raise awareness on supporting local businesses run by women in the greater Seattle area, sparking dialogue on gender inequality, and enabling change.
+                        </h2>
+                    </div>
+                </div>
+                <!-- / SINGLE ITEM -->
+            </div>
+        </div>
+
+    </section>
+
+    <section class="promo" id="about">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 ">
+                    <div class="jumbotron gv-works">
+
+                        <h3 class="mb-5 wow fadeInUp titleGenderVender" data-wow-delay="0.3s">
+                            How Gender Vender Works
+
+                        </h3>
+                        <div class="underLine"></div>
+                        <p class="lead mb-5 wow fadeInDown" data-wow-delay="0.5s">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="zeroone">
+                                    01
+                                </div>
+                                <p>Locate our pop-up vending machine on June 4th from 6pm to 9pm at the University of Washington Bothell Activities and Recreation Center 2nd Floor. We will have a limited stock of partnered items from three local-women run businesses.</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="zerotwo">
+                                    02
+                                </div>
+                                
+                                <p>All funds collected from the machine will be donated to the Refugee Women's Alliance, Women's Funding Alliance, and Seattle Now. If you'd like to donate online you can do so <a class="internalLink" href="donate.html">here</a>.</p>
+                            </div>
+                            <div class="col-lg-4">
+
+                                <div class="zerothree">
+                                    03
+                                </div>
+                                <p>We invite everyone to explore our website. We include a <a class="internalLink" href="#stories" >video series</a> with our partnered businesses and an <a class="internalLink" href="#plans" >interactive timeline</a> on historic women moments in history.</p>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+    </section>
+
+ <div class="mapImage">
+
+    
+    
+</div>
+  <section id="faq" class="faq">
+            <div class="partners">
+<section class="partners container pt-3">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <h3 class="mb-5 wow fadeInUp titleGenderVenderWhite">Our partnered businesses and women organizations are:</h3>
+                                    <div class="underLine"></div>
+
+        </div>
+
+    </div>
+</section>
+<br>
+<br>
+<section class=" partners carousel slide" data-ride="carousel" id="postsCarousel">
+    <div class="container">
+        <div class="row">
+            <!--
+            <div class="col-12 text-md-right lead">
+                <a class="btn btn-secondary-outline prev" href="#postsCarousel" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+                <a class="btn btn-secondary-outline next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
+            </div>
+            -->
+            <a class="carousel-control-prev" href="#postsCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#postsCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+        </div>
+    </div>
+    <div class="container pt-0 mt-2">
+        <div class="carousel-inner">
+  
+            <div class="carousel-item active">
+                <div class="card-deck">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                       <a href="https://www.hyperfizzics.com/" target="_blank"> <img class="img-fluid" src="img/hyper.jpeg" alt="Carousel 1"></a>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                       <a href="https://indichocolate.com/?" target="_blank"> <img class="img-fluid" src="img/indichoc.jpg" alt="Carousel 2"></a>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <a href="https://www.bathingbeauteas.com/" target="_blank"><img class="img-fluid" src="img/bath.png" alt="Carousel 3"></a>
+                    </div>
+               
+                </div>
+            </div>
+            </div>
+                        <div class="carousel-item">
+                <div class="card-deck">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <a href="https://wfalliance.org" target="_blank">
+                        <img class="img-fluid" src="img/womensalliance.png" alt="Carousel 4">
+                        </a>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <a href="http://nowseattle.org/" target="_blank">
+
+                        <img class="img-fluid" src="img/nowLogo.gif" alt="Carousel 5">
+                        </a>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                     <a href="https://www.rewa.org/" target="_blank">
+
+                        <img class="img-fluid" src="img/rewa.png" alt="Carousel 6">
+                        </a>
+                    </div>
+               
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+  </section>
+  
+    
+    <section class="pricing section stories" id="stories">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-5  wow fadeIn" data-wow-delay="0.3s">
+                    <h3 class="mb-5 wow fadeInUp titleGenderVender" data-wow-delay="0.3s">
+                           Discover A Business Story
+
+                        </h3>
+                        <div class="underLine"></div>
+                    
+                    </div>
+<div class="col-6 offset-3">
+                    <p class="text-center info-text info-text-dark">You can explore our video series where we ask our incredible partnered women business owners their founder's story, what challenges they overcame to start their business, and what words of wisdom they can share with others.
+
+</p>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class=" col-sm-12 col-lg-12">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+                                 data-interval="false">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <!--   <div class="container"> -->
+                                        <div class="row">
+                                            <!-- Card One -->
+                                            <div class="col-sm-4 col-lg-4">
+                                                <div class="card shadow-none">
+                                                    <a href="#popup1" class="card-link" class="cardHover">
+                                                        <img src="img/hyperFizzics_found.JPG" class="card-img-top">
+                                                    </a>
+                                                    <div class="discoverCardText">
+                                                        <h5 class="card-title">Hyperfizzics</h5>
+                                                        <h5 class="card-text">Shethy & Richard Smith</h5>
+                                          <button class="btn btn-primary btn-sm donate-nav-btn" data-toggle="modal" data-target="#hyperFizzicsModal">Watch Now</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Card Two -->
+                                            <div class="col-sm-4 col-lg-4">
+                                                <div class="card" class="centerCard">
+                                                    <a href="#popup2" class="card-link" class="cardHover">
+                                                        <img src="img/indiChoc.JPG" class="card-img-top">
+                                                    </a>
+                                                    <div class="discoverCardText">
+                                                        <h5 class="card-title">indi chocolate</h5>
+                                                        <h5 class="card-text">Erin Andrews</h5>
+                                                     <button class="btn btn-primary btn-sm donate-nav-btn" data-toggle="modal" data-target="#indiModal">Watch Now</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Card Three -->
+                                            <div class="col-sm-4 col-lg-4">
+                                                <div class="card" class="rightCard">
+                                                    <a href="#popup3" class="card-link" class="cardHover">
+                                                        <img src="img/bathing.JPG" class="card-img-top">
+                                                    </a>
+                                                    <div class="discoverCardText">
+                                                        <h5 class="card-title">Bathing Beauteas</h5>
+                                                        <h5 class="card-text">Joyce Tang & Stephanie Mai</h5>
+                                                        <button class="btn btn-primary btn-sm donate-nav-btn" data-toggle="modal" data-target="#bathingModal">Watch Now</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    
+                                        
+                                         
+                                           
+                                       
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- Modals -->
+   
+    
+<div class="modal fade" id="hyperFizzicsModal" tabindex="-1" role="dialog" aria-labelledby="hyperFizzicsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hyperFizzicsModalLabel">HyperFizzics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="video-responsive">
+<iframe id="hyperFizzicsYoutube" width="460" height="315" src="https://www.youtube.com/embed/Sy5iwRt39ro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     </div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm donate-nav-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="indiModal" tabindex="-1" role="dialog" aria-labelledby="indiModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="indiModalLabel">indi chocolate</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="video-responsive">
+       <iframe id="indiVideo" width="460" height="315" src="https://www.youtube.com/embed/XR2N-DgwaEg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm donate-nav-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+   <div class="modal fade" id="bathingModal" tabindex="-1" role="dialog" aria-labelledby="bathingModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="indiModalLabel">Bathing Beauteas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="video-responsive">
+       <iframe id="bathingVideo" width="460" height="315" src="https://www.youtube.com/embed/bMF6ZzymUqQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm donate-nav-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+<!-- End Modals -->
+    <section class="pricing section" id="plans">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-5  wow fadeIn" data-wow-delay="0.3s">
+                  <h3 class="mb-5 wow fadeInUp titleGenderVenderWhite" data-wow-delay="0.3s">
+                                    Women History In The Making
+                        </h3>
+                        <div class="underLine underline-History"></div>
+
+
+                </div>
+
+
+                <section id="timeLine">
+<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1VuMMfy_axZxZpEyHPDrFPiZPaQdUo3NgwX-tYLONfJ8&font=Default&lang=en&initial_zoom=2&height=600' width='100%' height='600' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+                </section>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <img src="img/website-logo.png" width="200" alt="landingo sign"/>
+                    </div>
+                    <div class="col-12">
+                        <ul class="footer__social d-flex justify-content-center">
+                            <li>
+                                <a href="https://www.facebook.com/thegendervender/" target="_blank"><span class="ti-facebook"></span></a>
+                            </li>
+
+                            <li>
+                                <a href="https://www.instagram.com/gendervender/"  target="_blank"><span class="ti-instagram"></span></a>
+                            </li>
+                            
+                            <li>
+                                <a href="https://www.youtube.com/channel/UCZ9cJe8pXFpgdbUcGzJ9YCg"  target="_blank"><span class="ti-youtube"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </footer>
+    </section>
+</main>
+
+
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+></script>
+<script src="js/wow.js"></script>
+<script src="js/main.js"></script>
+
+
+
+</body>
+</html>
