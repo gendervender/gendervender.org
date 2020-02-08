@@ -19,12 +19,6 @@
   }
 </script>
 <style lang="scss">
-:root{
-  --primary: #FF4085!important;
-  --secondary: #00CEE5!important;
-  --tertiary: #FFE819!important;
-  --text: #000000!important;
-}
 *{
   transition: all 0.16s;
   &:before, &:after{
@@ -80,12 +74,12 @@ a{
   &:before{
     height: 0%;
     z-index: -1;
-    background-color: var(--primary);
+    background-color: $primary;
   }
   &:after{
     height: 100%;
     z-index: -2;
-    background-color: var(--text);
+    background-color: $text;
   }
   &:hover{
     &:before{
@@ -108,7 +102,7 @@ button{
   position: relative;
   &:after{
     content: '';
-    background: var(--text);
+    background: $text;
     position: absolute;
     bottom: 2px;
     left: 0;
@@ -116,9 +110,9 @@ button{
     width: 100%;
   }
   &:hover{
-    color: var(--primary);
+    color: $primary;
     &:after{
-      background: var(--primary);
+      background: $primary;
     }
   }
 }
@@ -150,7 +144,7 @@ button{
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: var(--primary);
+  background-color: $primary;
   opacity: 0.8;
 }
 

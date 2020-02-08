@@ -74,9 +74,9 @@
   }
   a {
     font-weight: bold;
-    color: var(--text);
+    color: $text;
     &:hover{
-      color: var(--primary);
+      color: $primary;
     }
   }
   #nav-left{

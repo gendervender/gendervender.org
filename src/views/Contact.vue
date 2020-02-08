@@ -24,7 +24,7 @@
                 <button class="button" v-on:click="handleForm">
                     Submit
                 </button>
-                <p class="form-message">{{formMessage}}</p>
+                <p class="form-message" :class="{'form-message-error': !formStatus.sent}">{{formStatus.message}}</p>
             </form>
         </div>
   </div>
@@ -39,7 +39,10 @@ export default {
             contact_title: null,
             contact_description: null
         },
-        formMessage: ""
+        formStatus: {
+            message: "",
+            sent: false
+        }
     }
   },
   methods: {
@@ -58,16 +61,25 @@ export default {
         e.preventDefault();
         const form = document.contact_form;
         const validated = this.formValidation(form);
-        this.formMessage = validated.message;
+        this.formStatus = {
+            message: validated.message,
+            sent: validated.status
+        };
         if(validated){
             var url = "../mail.php";
             var request = new XMLHttpRequest();
             request.open('POST', url, true);
             request.onload = function() {
-               this.formMessage = "Thank you for reaching out, your message has been sent!"
+                this.formStatus = {
+                    message: "Thank you for reaching out, your message has been sent!",
+                    sent: true
+                }
             };
             request.onerror = function() {
-               this.formMessage = "There was an error sending this message, please try again later."
+                this.formStatus = {
+                    message: "There was an error sending this message, please try again later.",
+                    sent: false
+                }
             };
             request.send(new FormData(form));
             e.preventDefault();
@@ -106,6 +118,10 @@ export default {
             .form-message{
                 width: 100%;
                 text-align: left;
+                color: $secondary;
+            }
+            .form-message-error{
+                color: $primary;
             }
             input, textarea{
                 outline: none;
@@ -113,10 +129,10 @@ export default {
                 padding: 16px;
                 font-size: 1rem;
                 box-sizing: border-box;
-                background-color: rgba(#00CEE5, 0.12);
+                background-color: rgba($secondary, 0.12);
                 border: 2px solid transparent;
                 &:focus{
-                    border-color: var(--secondary);
+                    border-color: $secondary;
                 }
             }
             textarea{

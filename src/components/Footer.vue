@@ -76,7 +76,7 @@ export default {
             height: 100%;
         }
         .overlay{
-          background-color: var(--text);
+          background-color: $text;
         }
         .text{
             color: white;
@@ -102,9 +102,9 @@ export default {
                     background-color: white;
                 }
                 &:hover{
-                    color: var(--primary);
+                    color: $primary;
                     &:after{
-                        background-color: var(--primary);
+                        background-color: $primary;
                     }
                 }
             }
