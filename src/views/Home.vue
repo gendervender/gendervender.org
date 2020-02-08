@@ -14,6 +14,10 @@
       We'll be launching our website early March 2020. For now, please see where our vending machine will be at next, 
       <a href="https://www.pacificsciencecenter.org/events/womxn-of-color-in-stem-2020-03-31/" target="_blank">here</a>.
       </p>
+        <p>
+      Visit our 2019 capstone project website 
+      <a href="https://gendervender2019.netlify.com/" target="_blank">here</a>.
+      </p>
       <p>
       Visit us on social media: <br/>
       <a href="https://www.facebook.com/thegendervender/" target="_blank">Facebook</a>
