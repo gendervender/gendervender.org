@@ -6,7 +6,7 @@
 </template>
 <style lang="scss" scoped>
   .home{
-    margin-top: 10vh;
+
   }
 </style>
 

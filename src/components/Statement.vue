@@ -2,8 +2,7 @@
   <div id="statement" class="center">
     <prismic-rich-text class="text" v-if="statementFields.mission" :field="statementFields.mission"/>
     <div>
-      <router-link class="underline" to="/donate">Watch Stories &rarr;</router-link>
-      <router-link class="underline" to="/donate">Donate &rarr;</router-link>
+      <router-link class="underline" to="/">Learn more</router-link>
     </div>
   </div>
 </template>

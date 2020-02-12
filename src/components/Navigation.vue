@@ -1,18 +1,18 @@
 <template>
-    <div id="nav">
+    <div id="nav" :class="this.navClass">
         <div id="nav-left"> 
         <img src="../assets/logo.png"/>
-        <router-link to="/" v-on:click.native="handleScroll" data-id="landing">Gender Vender</router-link>
+        <router-link to="/" v-on:click.native="handleClick" data-id="landing">Gender Vender</router-link>
         </div>
         <div id="nav-right">
         <a 
           v-for="item in navItems"
-          v-on:click="handleScroll"
+          v-on:click="handleClick"
           :data-id="item.ref"
         >
           {{item.name}}
         </a>
-        <router-link class="button" to="/donate">Donate</router-link>
+        <router-link class="button" :class="this.buttonClass" to="/donate">Donate</router-link>
         </div>
     </div>
 </template>
@@ -21,6 +21,9 @@
     name: 'Navigation',
     data() {
       return{
+        windowHeight: 0,
+        navClass: "dark-nav",
+        buttonClass: "button-light",
         navItems: [
           {
             ref: "statement",
@@ -39,6 +42,15 @@
     },
     methods: {
       handleScroll(e){
+        if(window.scrollY <= this.windowHeight && this.navClass == "light-nav"){
+          this.navClass = "dark-nav";
+          this.buttonClass = "button-light";
+        }else if(window.scrollY > this.windowHeight && this.navClass == "dark-nav"){
+          this.navClass = "light-nav";
+          this.buttonClass = "button-dark";
+        }
+      },
+      handleClick(e){
         let id = e.target.dataset.id;
         if(this.$route.name !== 'home'){
           this.$router.push('/#'+ id);
@@ -50,20 +62,26 @@
           }
         }
       }
+    },
+    created () {
+      this.windowHeight = window.innerHeight;
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.handleScroll);
     }
   }
 </script>
 <style lang="scss" scoped>
 #nav {
   z-index: 10;
-  background-color: white;
   top: 0;
   position: fixed;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: row;
-  height: 10vh;
+  height: 12vh;
   padding: 0px 4vw;
   box-sizing: border-box;
   #nav-left, #nav-right{
@@ -74,7 +92,6 @@
   }
   a {
     font-weight: bold;
-    color: $text;
     &:hover{
       color: $primary;
     }
@@ -90,6 +107,18 @@
     a {
       margin-left: 32px;
     }
+  }
+}
+.light-nav{
+  background-color: white;
+  a{
+    color: $text;
+  }
+}
+.dark-nav{
+  background-color: transparent;
+  a{
+    color: white;
   }
 }
 </style>

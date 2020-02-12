@@ -61,31 +61,28 @@ a{
   }
 }
 .button{
-  color: white!important;
-  padding: 4px 12px;
+  padding: 4px 20px;
   position: relative;
-  &:before, &:after{
-    content: '';
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-  }
-  &:before{
-    height: 0%;
-    z-index: -1;
-    background-color: $primary;
-  }
-  &:after{
-    height: 100%;
-    z-index: -2;
-    background-color: $text;
-  }
+  border-width: 2px;
+  border-style: solid;
+  background-color: transparent;
+  border-radius: 5px;
   &:hover{
-    &:before{
-      height: 100%;
-    }
+    border-color: $primary;
+    color: white!important;
+    background-color: $primary;
+    -webkit-box-shadow: 0px 4px 12px 0px rgba($primary,0.6);
+    -moz-box-shadow: 0px 4px 12px 0px rgba($primary,0.6);
+    box-shadow: 0px 4px 12px 0px rgba($primary,0.6);
   }
+}
+.button-light{
+  color: white;
+  border-color: white;
+}
+.button-dark{
+  color: $text;
+  border-color: $text;
 }
 button{
     width: auto;
@@ -144,8 +141,8 @@ button{
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: $primary;
-  opacity: 0.8;
+  background-color: $text;
+  opacity: 0.6;
 }
 
 </style>
