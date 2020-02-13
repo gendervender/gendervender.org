@@ -60,6 +60,9 @@ a{
     color: inherit;
   }
 }
+section{
+  margin-top: 12vh;
+}
 .button{
   padding: 4px 20px;
   position: relative;
@@ -71,9 +74,9 @@ a{
     border-color: $primary;
     color: white!important;
     background-color: $primary;
-    -webkit-box-shadow: 0px 4px 12px 0px rgba($primary,0.6);
-    -moz-box-shadow: 0px 4px 12px 0px rgba($primary,0.6);
-    box-shadow: 0px 4px 12px 0px rgba($primary,0.6);
+    -webkit-box-shadow: 0px 4px 12px 0px rgba($primary,0.4);
+    -moz-box-shadow: 0px 4px 12px 0px rgba($primary,0.4);
+    box-shadow: 0px 4px 12px 0px rgba($primary,0.4);
   }
 }
 .button-light{

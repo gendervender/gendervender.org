@@ -19,10 +19,19 @@
 <script>
   export default {
     name: 'Navigation',
+    watch:{
+      '$route' (to, from){
+        if(this.$route.name == 'home'){
+          this.setNavStyles("light");
+        }else{
+          this.setNavStyles("dark");
+        }
+      }
+    },
     data() {
       return{
         windowHeight: 0,
-        navClass: "dark-nav",
+        navClass: "nav-light",
         buttonClass: "button-light",
         navItems: [
           {
@@ -42,12 +51,12 @@
     },
     methods: {
       handleScroll(e){
-        if(window.scrollY <= this.windowHeight && this.navClass == "light-nav"){
-          this.navClass = "dark-nav";
-          this.buttonClass = "button-light";
-        }else if(window.scrollY > this.windowHeight && this.navClass == "dark-nav"){
-          this.navClass = "light-nav";
-          this.buttonClass = "button-dark";
+        if(this.$route.name == 'home'){
+          if(window.scrollY <= this.windowHeight && this.navClass == "nav-dark"){
+            this.setNavStyles("light");
+          }else if(window.scrollY > this.windowHeight && this.navClass == "nav-light"){
+            this.setNavStyles("dark");
+          }
         }
       },
       handleClick(e){
@@ -60,6 +69,15 @@
             let top =  id !== 'landing' ? selector.offsetTop : 0;
             window.scrollTo({top, behavior: 'smooth' })
           }
+        }
+      },
+      setNavStyles(type){
+        if(type == "light"){
+          this.navClass = "nav-light";
+          this.buttonClass = "button-light";
+        }else if(type == "dark"){
+          this.navClass = "nav-dark";
+          this.buttonClass = "button-dark";
         }
       }
     },
@@ -109,13 +127,15 @@
     }
   }
 }
-.light-nav{
+.nav-dark{
+  //nav styles with dark text
   background-color: white;
   a{
     color: $text;
   }
 }
-.dark-nav{
+.nav-light{
+  //nav styles with white text on dark background
   background-color: transparent;
   a{
     color: white;

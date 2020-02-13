@@ -4,8 +4,8 @@ import router from './router'
 import PrismicVue from 'prismic-vue'
 import linkResolver from './prismic/link-resolver'
 
-Vue.config.productionTip = false
-	
+Vue.config.productionTip = false;
+
 Vue.use(PrismicVue, {
   endpoint: window.prismic.endpoint,
   apiOptions: { accessToken: process.env.VUE_APP_PRISMIC_TOKEN },
