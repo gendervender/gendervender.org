@@ -1,26 +1,40 @@
 <template>
   <div class="home">
-    <Landing v-bind:landingFields="landingFields"/>
-    <Statement v-bind:statementFields="statementFields"/>
+    <Landing :landingFields="landingFields"/>
+    <Statement :statementFields="statementFields"/>
+    <PageDivider :imageUrl="homeFields.dividerOne"/>
+    <How :howFields="howFields" />
+    <PageDivider :imageUrl="homeFields.dividerTwo"/>
   </div>
 </template>
 <style lang="scss" scoped>
-  .home{
-
-  }
 </style>
 
 <script>
 import Landing       from '@/components/Landing.vue';
 import Statement     from '@/components/Statement.vue';
+import PageDivider   from '@/components/PageDivider.vue';
+import How           from '@/components/How.vue';
+
 export default {
   name: 'home',
   components: {
     Landing,
-    Statement
+    Statement,
+    How,
+    PageDivider
   },
   data() {
     return{
+      homeFields:{
+        dividerOne: "",
+        dividerTwo: ""
+      },
+      howFields: {
+        title: null,
+        description: null,
+        blocks: []
+      },
       landingFields:{
         mainTitle: null,
         subtitle: null,
@@ -38,7 +52,10 @@ export default {
        this.assignContent(content.data);
     },
     assignContent(data){
-      //  console.log(data)
+       this.homeFields = {
+         dividerOne: data.page_divider_one.url,
+         dividerTwo: data.page_divider_two.url
+       }
        this.landingFields = {
          mainTitle: data.main_title,
          subtitle: data.subtitle,
@@ -48,6 +65,11 @@ export default {
        this.statementFields = {
          mission: data.mission_statement
        };
+       this.howFields = {
+        title: data.about_title,
+        description: data.about_description,
+        blocks: data.about_block
+       }
     }
   },
   created(){

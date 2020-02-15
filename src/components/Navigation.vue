@@ -2,12 +2,12 @@
     <div id="nav" :class="this.navClass">
         <div id="nav-left"> 
         <img src="../assets/logo.png"/>
-        <router-link to="/" v-on:click.native="handleClick" data-id="landing">Gender Vender</router-link>
+        <router-link to="/" @click.native="handleClick" data-id="landing">Gender Vender</router-link>
         </div>
         <div id="nav-right">
         <a 
           v-for="item in navItems"
-          v-on:click="handleClick"
+          @click="handleClick"
           :data-id="item.ref"
         >
           {{item.name}}
@@ -19,6 +19,11 @@
 <script>
   export default {
     name: 'Navigation',
+    props: {
+      handleClick: {
+        type: Function
+      }
+    },
     watch:{
       '$route' (to, from){
         if(this.$route.name == 'home'){
@@ -39,12 +44,16 @@
             name: "About"
           },
           {
+            ref: "how",
+            name: "How it Works"
+          },
+          {
             ref: "statement",
             name: "Stories"
           },
           {
             ref: "statement",
-            name: "Location"
+            name: "Team"
           }
         ]
       }
@@ -52,22 +61,10 @@
     methods: {
       handleScroll(e){
         if(this.$route.name == 'home'){
-          if(window.scrollY <= this.windowHeight && this.navClass == "nav-dark"){
+          if(window.scrollY <= (this.windowHeight + 20) && this.navClass == "nav-dark"){
             this.setNavStyles("light");
-          }else if(window.scrollY > this.windowHeight && this.navClass == "nav-light"){
+          }else if(window.scrollY > (this.windowHeight - 20) && this.navClass == "nav-light"){
             this.setNavStyles("dark");
-          }
-        }
-      },
-      handleClick(e){
-        let id = e.target.dataset.id;
-        if(this.$route.name !== 'home'){
-          this.$router.push('/#'+ id);
-        }else{
-          let selector = document.querySelector('#'+ id);
-          if (selector) {
-            let top =  id !== 'landing' ? selector.offsetTop : 0;
-            window.scrollTo({top, behavior: 'smooth' })
           }
         }
       },
@@ -100,7 +97,7 @@
   align-items: center;
   flex-direction: row;
   height: 12vh;
-  padding: 0px 4vw;
+  padding: 0px 6vw;
   box-sizing: border-box;
   #nav-left, #nav-right{
     display: flex;
@@ -130,6 +127,9 @@
 .nav-dark{
   //nav styles with dark text
   background-color: white;
+  -webkit-box-shadow: 0px 4px 20px 0px rgba($text,0.05);
+  -moz-box-shadow: 0px 4px 20px 0px rgba($text,0.05);
+  box-shadow: 0px 4px 20px 0px rgba($text,0.05);
   a{
     color: $text;
   }

@@ -29,8 +29,12 @@ export default {
     }
   }
   .text{
+    text-align: center;
     font-weight: 500;
     font-size: 1.8rem;
     padding: 0 26vw;
+  }
+  .underline{
+    font-size: 1.2rem;
   }
 </style>

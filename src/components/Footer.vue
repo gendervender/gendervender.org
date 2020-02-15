@@ -1,7 +1,6 @@
 <template>
   <div id="footer">
-    <div class="background" v-bind:style="{ 'background-image': `url(${fields.footer_image})` }"/>
-    <div class="overlay"/>
+    <div class="background" :style="{ 'background-image': `url(${fields.footer_image})` }"/>
     <div class="container">
         <div class="footer-block">
             <prismic-rich-text class="text title" v-if="fields.contact_title" :field="fields.contact_title"/>
@@ -75,12 +74,6 @@ export default {
             flex-direction: column;
             height: 100%;
         }
-        .overlay{
-          background-color: $text;
-        }
-        .text{
-            color: white;
-        }
         span{
             position: absolute;
             bottom: 4vh;
@@ -99,13 +92,6 @@ export default {
                 margin-top: 4px;
                 &:after{
                     bottom: 0.6rem;
-                    background-color: white;
-                }
-                &:hover{
-                    color: $primary;
-                    &:after{
-                        background-color: $primary;
-                    }
                 }
             }
         }

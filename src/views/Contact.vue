@@ -1,6 +1,6 @@
 <template>
   <section id="contact">
-        <div class="banner" v-bind:style="{ 'background-image': `url(${fields.contact_image})` }"/>
+        <div class="banner" :style="{ 'background-image': `url(${fields.contact_image})` }"/>
         <prismic-rich-text class="text title" v-if="fields.contact_title" :field="fields.contact_title"/>
         <prismic-rich-text class="text body" v-if="fields.contact_description" :field="fields.contact_description"/>
         <div class="center container">
@@ -47,6 +47,7 @@ export default {
     #contact{
         min-height: 100vh;
         padding-bottom: 20vh;
+        text-align: center;
         form{
             width: 50%;
             display: flex;
@@ -108,7 +109,7 @@ export default {
         }
         .banner{
             width: 100%;
-            height: 44vh;
+            height: 50vh;
             background-size: cover;
             background-position: center;
             margin-bottom: 20vh;
