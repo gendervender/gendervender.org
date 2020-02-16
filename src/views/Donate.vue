@@ -1,5 +1,5 @@
 <template>
-  <div id="donate">
+  <section id="donate" class="center">
     <h1>This is the donate page</h1>
-  </div>
+  </section>
 </template>

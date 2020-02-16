@@ -1,11 +1,11 @@
 <template>
   <div class="center" id="landing">
-    <div class="background" :style="{ 'background-image': `url(${landingFields.landing_image})` }"/>
+    <div class="background" :style="{ 'background-image': `url(${fields.landing_image})` }"/>
     <div class="overlay"/>
-    <prismic-rich-text class="text mainTitle" v-if="landingFields.mainTitle" :field="landingFields.mainTitle"/>
-    <prismic-rich-text class="description" v-if="landingFields.description" :field="landingFields.description"/>
+    <prismic-rich-text class="text mainTitle" v-if="fields.mainTitle" :field="fields.mainTitle"/>
+    <prismic-rich-text class="description" v-if="fields.description" :field="fields.description"/>
     <div class="row">
-      <a data-id="" class="button button-inversed" style="margin-right: 20px">View Stories</a>
+      <a @click="handleClick" data-id="stories" class="button button-inversed" style="margin-right: 20px">View Stories</a>
       <router-link class="button button-light" to="/donate">Donate</router-link>
     </div>
   </div>
@@ -15,7 +15,8 @@
 export default {
   name: 'Landing',
   props: {
-    landingFields: Object
+    fields: Object,
+    handleClick: Function
   }
 }
 </script>

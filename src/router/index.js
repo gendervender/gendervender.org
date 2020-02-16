@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Stories from '../views/Stories.vue'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,17 @@ const routes = [
     path: '/donate',
     name: 'donate',
     component: () => import('../views/Donate.vue')
+  },
+  {
+    path: '/stories/:id',
+    name: "stories",
+    component: Stories,
+    props: true
+  },
+  {
+    path: '*',
+    name: "error",
+    component: () => import('../views/Error.vue')
   }
 ]
 

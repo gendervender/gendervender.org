@@ -171,6 +171,7 @@ export default {
             padding: 16px;
             font-size: 1rem;
             box-sizing: border-box;
+            border-radius: 5px;
             background-color: rgba($secondary, 0.12);
             border: 2px solid transparent;
             &:focus{

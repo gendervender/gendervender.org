@@ -20,9 +20,7 @@
   export default {
     name: 'Navigation',
     props: {
-      handleClick: {
-        type: Function
-      }
+      handleClick: Function
     },
     watch:{
       '$route' (to, from){
@@ -48,7 +46,7 @@
             name: "How it Works"
           },
           {
-            ref: "statement",
+            ref: "stories",
             name: "Stories"
           },
           {
@@ -84,6 +82,11 @@
     },
     destroyed () {
       window.removeEventListener('scroll', this.handleScroll);
+    },
+    mounted(){
+      if(this.$route.name !== 'home'){
+        this.setNavStyles('dark');
+      }
     }
   }
 </script>
@@ -107,13 +110,14 @@
   }
   a {
     font-weight: bold;
+    font-size: 0.96rem;
     &:hover{
       color: $primary;
     }
   }
   #nav-left{
     img{
-      width: 20px;
+      width: 24px;
       margin-right: 8px;
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navigation :handleClick="this.handleClick"/>
-    <router-view/>
+    <router-view v-if="stories !== null" :stories="stories" :handleClick="this.handleClick"/>
     <Footer/>
   </div>
 </template>
@@ -15,6 +15,11 @@
       Navigation,
       Footer
     },
+    data() {
+      return{
+        stories: null
+      }
+    },
     methods: {
       handleClick(e){
         let id = e.target.dataset.id;
@@ -27,7 +32,23 @@
             window.scrollTo({top, behavior: 'smooth' })
           }
         }
+      },
+      getContent(){ 
+        this.$prismic.client.query(
+          this.$prismic.Predicates.at('document.type', 'stories')
+        ).then((res) => {
+          let parsed = res.results.map(doc => {
+            return {
+              ...doc.data,
+              uid: doc.uid
+            }
+          });
+          this.stories = parsed;
+        });
       }
+    },
+    created(){
+      this.getContent();
     }
   }
 </script>
@@ -60,6 +81,7 @@ h1,h2,h3,h4,h5{
   *{
     color: inherit;
     font-size: inherit;
+    font-weight: inherit;
   }
   box-sizing: border-box;
   a{
@@ -73,7 +95,7 @@ h1,h2,h3,h4,h5{
   }
 }
 p, a, b, span, button{
-  line-height: 1.8;
+  line-height: 1.6;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.01rem;
@@ -93,14 +115,19 @@ section{
   display: flex;
   flex-direction: row;
 }
+.card{
+  border-radius: 5px;
+  overflow: hidden;
+}
 .button{
-  padding: 4px 20px;
+  padding: 4px 24px;
   position: relative;
   border-width: 2px;
   border-style: solid;
   background-color: transparent;
   border-radius: 360px;
   font-weight: bold;
+  line-height: 1.8;
   &:hover{
     border-color: $primary;
     color: white!important;
@@ -144,53 +171,28 @@ button{
   text-decoration: none;
   cursor: pointer;
   position: relative;
+  line-height: 1;
   &:visited{
     color: $primary;
   }
-  &:after{
+  &:before, &:after{
     content: '';
     position: absolute;
-    width: 100%;
     background: $primary;
-    bottom: 0.2rem;
+    bottom: 0;
     left: 0;
     height: 1px;
-    opacity: 0.8;
+    width: 100%;
+  }
+  &:before{
+    z-index: 1;
   }
   &:hover{
-    animation: link 0.6s ease-in infinite;
-    &:after{
-      animation: underline 0.6s ease-in infinite;
-    }
-  }
-}
-@keyframes link{
-    0%{
-      color: $primary;
-    }
-    25%{
-      color: $secondary;
-    }
-    50%{
-      color: $tertiary;
-    }
-    100%{
-      color: $primary;
-    }
-  }
-@keyframes underline{
-    0%{
-      background: $primary;
-    }
-    25%{
+    color: $secondary;
+    &:before{
       background: $secondary;
     }
-    50%{
-      background: $tertiary;
-    }
-    100%{
-      background: $primary;
-    }
+  }
 }
 .container{
   box-sizing: border-box;

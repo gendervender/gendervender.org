@@ -64,6 +64,7 @@ export default {
 <style scoped lang="scss">
     #footer{
         position: relative;
+        border-top: 1px solid rgba($text, 0.1);
         width: 100%;
         height: 80vh;
         .container{
@@ -81,7 +82,7 @@ export default {
         }
         .footer-block{
             .title{
-              font-size: 1.2rem;
+              font-size: 1.1rem;
               font-weight: 500;
             }
             flex-direction: column;
@@ -89,10 +90,7 @@ export default {
             a{
                 font-size: 1.6rem;
                 align-self: flex-start;
-                margin-top: 4px;
-                &:after{
-                    bottom: 0.6rem;
-                }
+                margin-top: 16px;
             }
         }
     }

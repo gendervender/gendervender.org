@@ -1,13 +1,26 @@
 <template>
   <div class="home">
-    <Landing :landingFields="landingFields"/>
-    <Statement :statementFields="statementFields"/>
+    <Landing :fields="landingFields" :handleClick="handleClick"/>
+    <Statement :fields="statementFields"/>
     <PageDivider :imageUrl="homeFields.dividerOne"/>
-    <How :howFields="howFields" />
+    <How :fields="howFields" />
+    <Stories :fields="storiesFields" :stories="stories"/>
+    <Partners :fields="partnersFields"/>
     <PageDivider :imageUrl="homeFields.dividerTwo"/>
   </div>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
+.home-block{
+  background-color: rgba($text, 0.05);
+  padding: 12vh 0;
+  .title{
+      font-size: 1rem;
+      margin-bottom: 12px;
+  }
+  .desc{
+      margin-bottom: 80px;
+  }
+}
 </style>
 
 <script>
@@ -15,6 +28,8 @@ import Landing       from '@/components/Landing.vue';
 import Statement     from '@/components/Statement.vue';
 import PageDivider   from '@/components/PageDivider.vue';
 import How           from '@/components/How.vue';
+import Stories       from '@/components/Stories.vue';
+import Partners      from '@/components/Partners.vue';
 
 export default {
   name: 'home',
@@ -22,7 +37,13 @@ export default {
     Landing,
     Statement,
     How,
-    PageDivider
+    PageDivider,
+    Stories,
+    Partners
+  },
+  props: {
+    handleClick: Function,
+    stories: Array
   },
   data() {
     return{
@@ -43,6 +64,15 @@ export default {
       },
       statementFields: {
         mission: null
+      },
+      storiesFields: {
+        title: null,
+        description: null
+      },
+      partnersFields: {
+        title: null,
+        description: null,
+        directory: null
       }
     }
   },
@@ -69,6 +99,15 @@ export default {
         title: data.about_title,
         description: data.about_description,
         blocks: data.about_block
+       };
+       this.storiesFields = {
+         title: data.stories_title,
+         description: data.stories_description
+       };
+       this.partnersFields = {
+         title: data.partners_title,
+         description: data.partners_description,
+         directory: data.partners_directory
        }
     }
   },

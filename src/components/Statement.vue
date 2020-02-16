@@ -1,6 +1,6 @@
 <template>
   <div id="statement" class="center">
-    <prismic-rich-text class="text" v-if="statementFields.mission" :field="statementFields.mission"/>
+    <prismic-rich-text class="text" v-if="fields.mission" :field="fields.mission"/>
     <div>
       <router-link class="underline" to="/">Learn more</router-link>
     </div>
@@ -11,7 +11,7 @@
 export default {
   name: 'Statement',
   props: {
-    statementFields: Object
+    fields: Object
   }
 }
 </script>

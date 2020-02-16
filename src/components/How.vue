@@ -1,11 +1,11 @@
 <template>
-  <div id="how">
-    <div class="container center">
-        <prismic-rich-text class="title" v-if="howFields.title" :field="howFields.title"/>
-        <prismic-rich-text class="text desc" v-if="howFields.description" :field="howFields.description"/>
+  <div id="how" class="home-block">
+    <div class="container">
+        <prismic-rich-text class="title" v-if="fields.title" :field="fields.title"/>
+        <prismic-rich-text class="text desc" v-if="fields.description" :field="fields.description"/>
         <div
-            v-for="(block, index) in howFields.blocks"
-            class="how-block"
+            v-for="(block, index) in fields.blocks"
+            class="how-block card"
         >
             <div class="left">
                 <prismic-rich-text class="block-title" v-if="block.block_title" :field="block.block_title"/>
@@ -23,39 +23,31 @@
 export default {
   name: 'Landing',
   props: {
-    howFields: Object
+    fields: Object
   }
 }
 </script>
 
 <style scoped lang="scss">
     #how{
-        background-color: rgba($text, 0.05);
-        padding: 20vh 0;
+        padding-top: 20vh;
     }
     .container{
         flex-direction: column;
     }
-    .title{
-        font-size: 1.2rem;
-        margin-bottom: 12px;
-    }
-    .desc{
-        margin-bottom: 100px;
-    }
     .how-block{
         background: white;
-        height: 90vh;
+        height: 80vh;
         width: 100%;
         margin-bottom: 100px;
         display: flex;
         flex-direction: row;
         .left,.right{
-            flex: 1;
             position: relative;
         }
         .left{
             padding: 6%;
+            flex: 1;
             box-sizing: border-box;
             .block-title{
                 font-size: 0.8rem;
@@ -65,6 +57,9 @@ export default {
             .block-desc{
                font-size: 0.92rem;
             }
+        }
+        .right{
+            flex: 1.2;
         }
         .background{
             z-index: 0;
