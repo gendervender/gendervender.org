@@ -15,8 +15,8 @@
                     <h1>view story</h1>
                 </div>
                 <div class="bottom">
-                    <h1>{{item.name}}</h1>
-                    <h2>{{item.business_name}}</h2>
+                    <h5>{{item.name}}</h5>
+                    <h6>{{item.business_name}}</h6>
                     <p>{{item.short_description}}</p>
                 </div>
             </router-link>
@@ -88,12 +88,8 @@ export default {
             background: white;
             padding: 24px;
             box-sizing: border-box;
-            h1{
-                font-size: 1.15rem;
-            }
-            h2{
-                font-size: 0.9rem;
-                margin-top: 8px;
+            h6{
+                margin: 8px 0;
                 font-weight: 400;
             }
             p{

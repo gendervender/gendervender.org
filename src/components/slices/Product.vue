@@ -1,11 +1,11 @@
 <template>
-    <div class="stories-block">
+    <div class="product-wrapper">
     <div class="product">
         <div class="product-left">
             <img :src="product_image.url" :alt='product_name + " image"'/>
         </div>
         <div class="product-right">
-            <prismic-rich-text class="title" v-if="product_name" :field="product_name"/>
+            <prismic-rich-text v-if="product_name" :field="product_name"/>
             <prismic-rich-text class="text" v-if="product_description" :field="product_description"/>
             <a
                 v-if="product_link && product_link_name"
@@ -20,28 +20,32 @@
     </div>
 </template>
 <style lang="scss" scoped>
+    .product-wrapper{
+        background-color: white;
+        padding: 12vh 0;
+    }
     .product{
         display: flex;
-        .product-left, .product-right{
-            flex: 1
-        }
+        width: 60%;
+        margin: auto;
         .product-left{
             img{
                 width: 100%;
             }
+            flex: 1;
         }
         .product-right{
+            flex: 1.2;
             box-sizing: border-box;
-            padding: 0 40px;
-            .title{
-                font-size: 0.9rem;
-                margin-bottom: 12px;
-            }
+            padding: 0 52px;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
             .text{
-                font-size: 0.96rem;
+                margin-top: 0.4rem;
             }
             .button{
-                margin-top: 12px;
                 display: inline-block;
             }
         }

@@ -131,9 +131,6 @@
 .nav-dark{
   //nav styles with dark text
   background-color: white;
-  -webkit-box-shadow: 0px 4px 20px 0px rgba($text,0.05);
-  -moz-box-shadow: 0px 4px 20px 0px rgba($text,0.05);
-  box-shadow: 0px 4px 20px 0px rgba($text,0.05);
   a{
     color: $text;
   }

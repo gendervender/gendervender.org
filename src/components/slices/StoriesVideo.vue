@@ -1,13 +1,12 @@
 <template>
-    <div class="stories-block video">
-    <iframe :src="link.url" frameborder="0" allowfullscreen></iframe>
+    <div class="video">
+        <iframe :src="link.url" frameborder="0" allowfullscreen></iframe>
     </div>
 </template>
 <style lang="scss" scoped>
 .video{
 	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 25px;
+	padding-bottom: 37.5%; /* 16:9 */
 	height: 0;
     width: 100%;
     iframe{

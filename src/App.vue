@@ -61,6 +61,7 @@
 }
 body{
   margin: 0%;
+  background-color: rgba($text, 0.05);
 }
 ::selection {
   background: $tertiary;
@@ -77,18 +78,24 @@ h1,h2,h3,h4,h5{
   margin: 0%;
   letter-spacing: 0.015rem;
 }
+h1{font-size: 3rem};
+h2{font-size: 2rem};
+h3{font-size: 1.5rem};
+h4{font-size: 1.25rem};
+h5{font-size: 1.15rem};
+h6{font-size: 1rem};
+
 .text{
   *{
     color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
+    // font-size: inherit;
   }
   box-sizing: border-box;
   a{
     @extend .underline;
   }
   p{
-    margin: 0 0 0.6rem 0;
+    margin: 0 0 2rem 0;
   }
   ul{
     list-style: none;
@@ -96,9 +103,12 @@ h1,h2,h3,h4,h5{
 }
 p, a, b, span, button{
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: 0.94rem;
   font-weight: 400;
   letter-spacing: 0.01rem;
+}
+b, strong{
+  font-weight: bold;
 }
 a{
   cursor: pointer;

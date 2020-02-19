@@ -1,6 +1,8 @@
 <template>
   <div class="center" id="landing">
-    <div class="background" :style="{ 'background-image': `url(${fields.landing_image})` }"/>
+    <div class="background">
+      <video v-if="fields.landing_video" autoPlay muted loop playsInline :src="fields.landing_video"/>
+    </div>
     <div class="overlay"/>
     <prismic-rich-text class="text mainTitle" v-if="fields.mainTitle" :field="fields.mainTitle"/>
     <prismic-rich-text class="description" v-if="fields.description" :field="fields.description"/>
@@ -45,7 +47,12 @@ export default {
   }
   .description{
     margin-bottom: 0.8rem;
-    font-size: 1rem;
     width: 28vw;
+  }
+  video{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
   }
 </style>

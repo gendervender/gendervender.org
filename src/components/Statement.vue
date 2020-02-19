@@ -1,6 +1,6 @@
 <template>
   <div id="statement" class="center">
-    <prismic-rich-text class="text" v-if="fields.mission" :field="fields.mission"/>
+    <prismic-rich-text class="title" v-if="fields.mission" :field="fields.mission"/>
     <div>
       <router-link class="underline" to="/">Learn more</router-link>
     </div>
@@ -27,12 +27,11 @@ export default {
         margin: 20px;
       }
     }
-  }
-  .text{
+    
+  } 
+  .title{
     text-align: center;
-    font-weight: 500;
-    font-size: 1.8rem;
-    padding: 0 26vw;
+    padding: 0 24vw;
   }
   .underline{
     font-size: 1.2rem;

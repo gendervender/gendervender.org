@@ -5,7 +5,6 @@
 </template>
 <style lang="scss" scoped>
     .stories-image{
-        margin: 16px 0;
        img{ 
            width: 100%
        }

@@ -1,7 +1,5 @@
 <template>
-    <div class="stories-block">
-        <q>{{quote}}</q>
-    </div>
+    <q>{{quote}}</q>
 </template>
 <style lang="scss" scoped>
     q{

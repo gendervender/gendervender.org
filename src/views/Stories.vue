@@ -1,13 +1,13 @@
 <template>
-    <section>
-        <div class="center container" id="stories">
-            <div class="banner">
-                <div class="background" :style="{'background-image': `url(${data.main_image.url})`}"/>
-            </div>
-            <div class="content">
+    <section id="stories-view">
+        <div class="banner">
+            <div class="background" :style="{'background-image': `url(${data.main_image.url})`}"/>
+        </div>
+        <div class="content center">
+            <div class="stories-block container">
                 <h1>{{data.name}}</h1>
-                <h2>{{data.business_name}}</h2>
-                <h2>{{data.location}}</h2>
+                <h4>{{data.business_name}}</h4>
+                <h4>{{data.location}}</h4>
                 <div class="links">
                     <a
                         class="underline"
@@ -18,47 +18,49 @@
                         {{link.link_name}}
                     </a>
                 </div>
-                <component
-                    v-for="slice in data.body"
-                    v-if="slicesData[slice.slice_type]"
-                    :is="slicesData[slice.slice_type]"
-                    v-bind="slice.primary"
-                />
             </div>
+            <component
+                v-for="slice in data.body"
+                v-if="slicesData[slice.slice_type]"
+                :is="slicesData[slice.slice_type]"
+                v-bind="slice.primary"
+                class="stories-block"
+                :class="slice.slice_type !== 'product' && 'container'"
+            />
         </div>
     </section>
 </template>
 <style lang="scss" scoped>
-    #stories{
+    .banner{
+        width: 100%;
+        height: 88vh;
+        position: relative;
+        display: block;
+    }
+    .links{
+        margin: 24px 0;
+        .underline{
+            margin-right: 12px;
+        }
+    }
+    .content{
         flex-direction: column;
-        .banner{
-            width: 100%;
-            height: 70vh;
-            position: relative;
+        margin: 12vh 0 24vh 0;
+        .container{
+        width: 60%;
         }
-        .links{
-            margin: 24px 0;
-            .underline{
-                margin-right: 12px;
-            }
+        h1{
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
-        .content{
-            margin: 12vh 0 24vh 0;
-            width: 64%;
-            h1{
-                font-size: 2rem;
-                margin-bottom: 1rem;
-            }
-            h2{
-                font-size: 1.2rem;
-                margin-bottom: 0.6rem;
-                font-weight: 400;
-            }
+        h4{
+            margin-bottom: 0.6rem;
+            font-weight: 400;
         }
-        .stories-block{
-            margin: 44px 0;
-            display: inline-block;
-        }
+    }
+    .stories-block{
+        margin: 32px 0;
+        display: inline-block;
     }
 </style>
 <script>
@@ -97,9 +99,8 @@ export default {
             let found = this.stories.find(s => s.uid == this.$route.params.id);
             if(found){
                 this.data = found;
-                console.log(found)
             }else{
-                this.$router.push('/404')
+                this.$router.push('/404');
             }
         }
     },

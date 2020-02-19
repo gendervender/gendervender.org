@@ -40,9 +40,9 @@ const router = new VueRouter({
   routes,
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
-      return {
-        selector: to.hash
-      }
+      let selector = document.querySelector(to.hash);
+      let top = selector.offsetTop
+      return {x: 0, y: top}
     }
     if (savedPosition) {
       return savedPosition

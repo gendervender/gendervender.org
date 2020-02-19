@@ -11,14 +11,12 @@
 </template>
 <style lang="scss">
 .home-block{
-  background-color: rgba($text, 0.05);
   padding: 12vh 0;
   .title{
-      font-size: 1rem;
       margin-bottom: 12px;
   }
   .desc{
-      margin-bottom: 80px;
+      margin-bottom: 3rem;
   }
 }
 </style>
@@ -58,9 +56,9 @@ export default {
       },
       landingFields:{
         mainTitle: null,
-        subtitle: null,
         description: null,
-        landing_image: null
+        landing_image: null,
+        landing_video: null
       },
       statementFields: {
         mission: null
@@ -88,9 +86,9 @@ export default {
        }
        this.landingFields = {
          mainTitle: data.main_title,
-         subtitle: data.subtitle,
          description: data.description,
-         landing_image: data.landing_image.url
+         landing_image: data.landing_image.url,
+         landing_video: data.landing_video.url
        };
        this.statementFields = {
          mission: data.mission_statement
@@ -113,15 +111,6 @@ export default {
   },
   created(){
     this.getContent();
-  },
-  mounted(){
-    if(this.$route.hash){
-      let selector = document.querySelector(this.$route.hash);
-      if (selector) {
-        let top = selector.offsetTop
-        window.scrollTo({top, behavior: 'smooth' })
-      }
-    }
   }
 }
 </script>
