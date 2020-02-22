@@ -35,7 +35,8 @@
       },
       getContent(){ 
         this.$prismic.client.query(
-          this.$prismic.Predicates.at('document.type', 'stories')
+          this.$prismic.Predicates.at('document.type', 'stories'),
+          { orderings: '[my.stories.partnership_status]' }
         ).then((res) => {
           let parsed = res.results.map(doc => {
             return {
@@ -61,7 +62,7 @@
 }
 body{
   margin: 0%;
-  background-color: rgba($text, 0.05);
+  background-color: rgba($text, 0.03);
 }
 ::selection {
   background: $tertiary;
@@ -74,8 +75,9 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h1,h2,h3,h4,h5{
+h1,h2,h3,h4,h5,h6{
   margin: 0%;
+  line-height: 1.6;
   letter-spacing: 0.015rem;
 }
 h1{font-size: 3rem};
@@ -83,11 +85,12 @@ h2{font-size: 2rem};
 h3{font-size: 1.5rem};
 h4{font-size: 1.25rem};
 h5{font-size: 1.15rem};
-h6{font-size: 1rem};
+h6{font-size: 1.15rem; font-weight: 400};
 
 .text{
   *{
     color: inherit;
+    // font-weight: inherit;
     // font-size: inherit;
   }
   box-sizing: border-box;
@@ -95,7 +98,7 @@ h6{font-size: 1rem};
     @extend .underline;
   }
   p{
-    margin: 0 0 2rem 0;
+    margin: 0 0 1.4rem 0;
   }
   ul{
     list-style: none;
@@ -185,11 +188,11 @@ button{
   &:visited{
     color: $primary;
   }
-  &:before, &:after{
+  &:before{
     content: '';
     position: absolute;
     background: $primary;
-    bottom: 0;
+    bottom: 0.12rem;
     left: 0;
     height: 1px;
     width: 100%;

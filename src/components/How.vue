@@ -9,7 +9,7 @@
         >
             <div class="left">
                 <prismic-rich-text class="block-title" v-if="block.block_title" :field="block.block_title"/>
-                <prismic-rich-text class="block-desc" v-if="block.block_description" :field="block.block_description"/>
+                <prismic-rich-text class="block-desc text" v-if="block.block_description" :field="block.block_description"/>
             </div>
             <div class="right">
                 <div class="background" :style="`background-image: url(${block.block_image.url})`" />
@@ -33,6 +33,9 @@ export default {
     }
     .container{
         flex-direction: column;
+    }
+    .underline{
+        color: red;
     }
     .how-block{
         background: white;

@@ -1,11 +1,9 @@
 <template>
-  <div id="stories" class="home-block">
-    <div class="container">
-        <prismic-rich-text class="title" v-if="fields.title" :field="fields.title"/>
-        <prismic-rich-text class="text desc" v-if="fields.description" :field="fields.description"/>
+    <div class="more-stories container">
+        <h3>View More Stories</h3>
         <div class="stories-grid">
             <router-link
-                v-for="item in stories"
+                v-for="item in data"
                 :to="`/stories/${item.uid}`"
             >
                 <Card 
@@ -18,28 +16,32 @@
             </router-link>
         </div>
     </div>
-  </div>
 </template>
 
-<script>
-import Card from '@/components/Card.vue'
-export default {
-  name: 'Stories',
-  props: {
-    fields: Object,
-    stories: Array
-  },
-  components: {
-      Card
-  }
-}
-</script>
-
-<style scoped lang="scss">
+<style lang="scss" scoped>
+    .more-stories{
+        border-top: 1px rgba($text, 0.1) solid;
+        padding: 10vh 0 20vh 0;
+    }
     .stories-grid{
+        margin-top: 2rem;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         row-gap: 32px;
         column-gap: 24px;
     }
 </style>
+
+<script>
+import Card from '@/components/Card.vue';
+
+export default {
+  name: 'MoreStories',
+  components: {
+    Card
+  },
+  props: {
+      data: Array
+  }
+}
+</script>

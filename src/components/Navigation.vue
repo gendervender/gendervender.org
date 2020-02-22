@@ -5,14 +5,22 @@
         <router-link to="/" @click.native="handleClick" data-id="landing">Gender Vender</router-link>
         </div>
         <div id="nav-right">
-        <a 
-          v-for="item in navItems"
-          @click="handleClick"
-          :data-id="item.ref"
-        >
-          {{item.name}}
-        </a>
-        <router-link class="button" :class="this.buttonClass" to="/donate">Donate</router-link>
+          <template v-for="item in navItems">
+              <a 
+                v-if="item.routerLink == false"
+                @click="handleClick"
+                :data-id="item.ref"
+              >
+                {{item.name}}
+              </a>
+              <router-link
+                v-else
+                :to="item.ref"
+              >
+                {{item.name}}
+              </router-link>
+          </template>
+          <router-link class="button" :class="this.buttonClass" to="/donate">Donate</router-link>
         </div>
     </div>
 </template>
@@ -38,20 +46,24 @@
         buttonClass: "button-light",
         navItems: [
           {
-            ref: "statement",
-            name: "About"
+            ref: "/about",
+            name: "About",
+            routerLink: true
           },
           {
             ref: "how",
-            name: "How it Works"
+            name: "How It Works",
+            routerLink: false
           },
           {
             ref: "stories",
-            name: "Stories"
+            name: "Stories",
+            routerLink: false
           },
           {
-            ref: "statement",
-            name: "Team"
+            ref: "/team",
+            name: "Team",
+            routerLink: true
           }
         ]
       }

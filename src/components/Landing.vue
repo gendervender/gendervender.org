@@ -46,7 +46,7 @@ export default {
     font-size: 0.8rem;
   }
   .description{
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.4rem;
     width: 28vw;
   }
   video{

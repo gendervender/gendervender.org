@@ -4,7 +4,7 @@
             <div class="background" :style="{'background-image': `url(${data.main_image.url})`}"/>
         </div>
         <div class="content center">
-            <div class="stories-block container">
+            <div class="container">
                 <h1>{{data.name}}</h1>
                 <h4>{{data.business_name}}</h4>
                 <h4>{{data.location}}</h4>
@@ -14,9 +14,7 @@
                         v-for="link in data.links"
                         :href="link.link.url"
                         target="_blank"
-                    >
-                        {{link.link_name}}
-                    </a>
+                    >{{link.link_name}}</a>
                 </div>
             </div>
             <component
@@ -28,6 +26,7 @@
                 :class="slice.slice_type !== 'product' && 'container'"
             />
         </div>
+        <MoreStories :data="moreData"/>
     </section>
 </template>
 <style lang="scss" scoped>
@@ -69,6 +68,7 @@ import Quote         from '@/components/slices/Quote';
 import Product       from '@/components/slices/Product';
 import StoriesImage  from '@/components/slices/StoriesImage';
 import StoriesVideo  from '@/components/slices/StoriesVideo';
+import MoreStories   from '@/components/MoreStories';
 
 export default {
     name: "StoriesView",
@@ -80,7 +80,13 @@ export default {
         Quote,
         Product,
         StoriesImage,
-        StoriesVideo
+        StoriesVideo,
+        MoreStories
+    },
+    watch:{
+      '$route' (to, from){
+        this.init();
+      }
     },
     data(){
         return {
@@ -91,14 +97,33 @@ export default {
                 product: "Product",
                 image: "StoriesImage",
                 video: "StoriesVideo"
-            }
+            },
+            moreData: []
         }
     },
     methods: {
         init(){
+            //reset
+            this.moreData = [];
+            this.data = null;
+            //find
+            this.assignContent();
+        },
+        assignContent(){
             let found = this.stories.find(s => s.uid == this.$route.params.id);
             if(found){
                 this.data = found;
+                let index = this.stories.findIndex(s => s.uid == this.$route.params.id);
+                let curIndex = index+1;
+                for (let i=0; i<this.stories.length; i++){
+                    if(curIndex >= this.stories.length){
+                        curIndex = 0;
+                    }
+                    if (curIndex !== index){
+                        this.moreData.push(this.stories[curIndex])
+                    }
+                    curIndex++;
+                }
             }else{
                 this.$router.push('/404');
             }

@@ -28,6 +28,16 @@ const routes = [
     props: true
   },
   {
+    path: '/about',
+    name: 'about',
+    component: () => import('../views/About.vue')
+  },
+  {
+    path: '/team',
+    name: 'team',
+    component: () => import('../views/Team.vue')
+  },
+  {
     path: '*',
     name: "error",
     component: () => import('../views/Error.vue')
