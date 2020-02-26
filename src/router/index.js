@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Stories from '../views/Stories.vue'
 
 Vue.use(VueRouter)
 
@@ -9,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: () => import('../views/Home.vue')
   },
   {
     path: '/contact',
@@ -24,8 +22,7 @@ const routes = [
   {
     path: '/stories/:id',
     name: "stories",
-    component: Stories,
-    props: true
+    component: () => import('../views/Stories.vue')
   },
   {
     path: '/about',

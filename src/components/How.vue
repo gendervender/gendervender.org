@@ -5,13 +5,14 @@
         <prismic-rich-text class="desc" v-if="fields.description" :field="fields.description"/>
         <div
             v-for="(block, index) in fields.blocks"
+            :style=""
             class="how-block card"
         >
-            <div class="left">
+            <div class="how-text">
                 <prismic-rich-text class="block-title" v-if="block.block_title" :field="block.block_title"/>
                 <prismic-rich-text class="block-desc text" v-if="block.block_description" :field="block.block_description"/>
             </div>
-            <div class="right">
+            <div class="how-image">
                 <div class="background" :style="`background-image: url(${block.block_image.url})`" />
             </div>
         </div>
@@ -27,15 +28,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     #how{
         padding-top: 20vh;
     }
     .container{
         flex-direction: column;
-    }
-    .underline{
-        color: red;
     }
     .how-block{
         background: white;
@@ -44,22 +42,49 @@ export default {
         margin-bottom: 3rem;
         display: flex;
         flex-direction: row;
-        .left,.right{
-            position: relative;
+        &:nth-of-type(even){
+         flex-direction: row-reverse;
         }
-        .left{
-            padding: 6%;
-            flex: 1;
+        .how-text,.how-image{
+            position: relative;
+            width: 50%;
+        }
+        &:nth-of-type(3) .block-title{
+            &:after{
+                background: $tertiary;
+            }
+        }
+        &:nth-of-type(4) .block-title{
+            &:after{
+                background: $secondary;
+            }
+        }
+        &:nth-of-type(5) .block-title{
+            &:after{
+                background: $primary;
+            }
+        }
+        .how-text{
+            padding: 5%;
             box-sizing: border-box;
+            p{
+                margin-bottom: 0.9rem;
+            }
             .block-title{
-                margin-bottom: 12px;
+                margin-bottom: 1.4rem;
+                position: relative;
+                display: inline-block;
+                &:after{
+                    content: '';
+                    width: 100%;
+                    height: 0.4rem;
+                    bottom: 0.1rem;
+                    position: absolute;
+                }
             }
             .block-desc{
                font-size: 0.92rem;
             }
-        }
-        .right{
-            flex: 1.2;
         }
         .background{
             z-index: 0;

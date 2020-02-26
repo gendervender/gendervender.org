@@ -28,10 +28,10 @@
         position: relative;
     }
     .text{
-      margin: 1rem 0 6rem 0;
       width: 60%;
+      margin: 0rem 0 6rem 0;
       h6{
-        margin-bottom: 1rem;
+        margin-top: 1.2rem;
       }
     }
     .about-block{

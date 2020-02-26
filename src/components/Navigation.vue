@@ -20,7 +20,7 @@
                 {{item.name}}
               </router-link>
           </template>
-          <router-link class="button" :class="this.buttonClass" to="/donate">Donate</router-link>
+          <router-link class="button button-secondary" :class="this.buttonClass" to="/donate">Donate</router-link>
         </div>
     </div>
 </template>

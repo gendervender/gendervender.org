@@ -7,8 +7,8 @@
     <prismic-rich-text class="text mainTitle" v-if="fields.mainTitle" :field="fields.mainTitle"/>
     <prismic-rich-text class="description" v-if="fields.description" :field="fields.description"/>
     <div class="row">
-      <a @click="handleClick" data-id="stories" class="button button-inversed" style="margin-right: 20px">View Stories</a>
-      <router-link class="button button-light" to="/donate">Donate</router-link>
+      <a @click="handleClick" data-id="stories" class="button" style="margin-right: 20px">View Stories</a>
+      <router-link class="button button-light button-secondary" to="/donate">Donate</router-link>
     </div>
   </div>
 </template>

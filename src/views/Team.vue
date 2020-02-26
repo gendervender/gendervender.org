@@ -11,7 +11,7 @@
               :secondary="member.role"
               :description="member.description"
               :imageURL="member.photo.url"
-              :links="[{name: 'Website', url: member.website.url}, {name: 'Email', url: member.email.url},{name: 'LinkedIn', url: member.linkedin.url}]"
+              :links="[{name: 'linkedin', url: member.linkedin.url},{name: 'email', url: member.email.url},{name: 'link', url: member.website.url}]"
             />
           </div>
           <h5>Past Members</h5>
@@ -23,7 +23,7 @@
               :secondary="member.role"
               :description="member.description"
               :imageURL="member.photo.url"
-              :links="[{name: 'Website', url: member.website.url}, {name: 'Email', url: member.email.url},{name: 'LinkedIn', url: member.linkedin.url}]"
+              :links="[{name: 'linkedin', url: member.linkedin.url},{name: 'email', url: member.email.url},{name: 'link', url: member.website.url}]"
             />
           </div>
       </div>

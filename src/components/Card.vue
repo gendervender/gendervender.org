@@ -1,21 +1,23 @@
 <template>
-     <div class="card" :style="isLink ? 'cursor: pointer; height: 74vh' : 'cursor: default; height: 60vh'">
-        <div class="top center" :style="isLink ? 'height: 50%' : 'height: 60%'">
+     <div class="card" :class="isLink ? 'card-story' : 'card-team'">
+        <div class="top center" :style="isLink ? 'height: 50%' : 'height: 65%'">
             <div v-if="imageURL" class="background" :style="{ 'background-image': `url(${imageURL})` }"/>
                 <div v-if="isLink" class="overlay"/>
                 <h1 v-if="isLink">view story</h1>
             </div>
-            <div class="bottom" :style="isLink ? 'height: 50%' : 'height: 40%'">
+            <div class="bottom" :style="isLink ? 'height: 50%' : 'height: 35%'">
                 <h5 v-if="primary">{{primary}}</h5>
                 <h6 v-if="secondary">{{secondary}}</h6>
                 <p v-if="description">{{description}}</p>
                 <div class="links" v-if="links">
-                    <a class="underline"
+                    <a 
                         v-for="link in links"
                         v-if="link.url"
                         :href="link.url"
                         target="_blank"
-                    >{{link.name}}</a>
+                    >
+                        <img :src="getImgUrl(link.name)" :alt="link.name"/>
+                    </a>
                 </div>
             </div>
         </div>
@@ -31,13 +33,27 @@ export default {
     imageURL: String,
     links: Array,
     isLink: Boolean
+  },
+  methods: {
+    getImgUrl(url) {
+        var images = require.context('../assets/', false, /\.svg$/)
+        return images('./icon-' + url + ".svg")
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-    .card{
+    .card-story{
+        cursor: pointer;
         height: 74vh;
+    }
+    .card-team{
+        cursor: default;
+        height: 64vh;
+    }
+    .card{
+        box-sizing: border-box;
         position: relative;
         color: $text;
         &:hover{
@@ -80,7 +96,7 @@ export default {
             padding: 24px;
             box-sizing: border-box;
             h6{
-                margin: 8px 0;
+                margin: 4px 0;
                 font-weight: 400;
                 font-size: 0.96rem;
             }
@@ -90,9 +106,16 @@ export default {
             }
         }
         .links{
+            margin-top: 8px;
             a{
                 margin-right: 8px;
-                font-size: 0.94rem;
+                img{
+                    width: 20px;
+                    transition: filter 0.16s;
+                }
+                &:hover img{
+                    filter: brightness(80%)
+                }
             }
         }
     }

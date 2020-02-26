@@ -62,7 +62,7 @@
 }
 body{
   margin: 0%;
-  background-color: rgba($text, 0.03);
+  background-color: $site-bg;
 }
 ::selection {
   background: $tertiary;
@@ -133,40 +133,43 @@ section{
   overflow: hidden;
 }
 .button{
-  padding: 4px 24px;
+  padding: 9px 20px 8px 20px;
   position: relative;
-  border-width: 2px;
-  border-style: solid;
   background-color: transparent;
-  border-radius: 360px;
-  font-weight: bold;
-  line-height: 1.8;
+  border-radius: 5px;
+  font-weight: 600;
+  line-height: 1;
+  color: white!important;
+  background: $primary;
   &:hover{
-    border-color: $primary;
-    color: white!important;
-    background-color: $primary;
-    -webkit-box-shadow: 0px 4px 12px 0px rgba($primary,0.25);
-    -moz-box-shadow: 0px 4px 12px 0px rgba($primary,0.25);
-    box-shadow: 0px 4px 12px 0px rgba($primary,0.25);
+    background: $primary-hover;
+    -webkit-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.25);
+    -moz-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.25);
+    box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.25);
   }
 }
-.button-inversed{
-  border-color: transparent;
+.button-secondary{
   color: white;
-  background-color: $primary;
+  border: 1px solid white;
+  background: transparent;
   &:hover{
-    border-color: white;
-    background-color: transparent;
-    box-shadow: none;
+    color: $text!important;
+    background-color: white;
   }
 }
 .button-light{
   color: white!important;
-  border-color: white;
+  &:hover{
+    box-shadow: none;
+  }
 }
 .button-dark{
-  color: $text;
-  border-color: $text;
+  border-color: $primary;
+  color: $primary!important;
+  &:hover{
+    background: $primary;
+    color: white!important;
+  }
 }
 button{
     width: auto;
@@ -193,7 +196,7 @@ button{
     position: absolute;
     background: $primary;
     bottom: 0.12rem;
-    left: 0;
+    right: 0;
     height: 1px;
     width: 100%;
   }
@@ -201,9 +204,9 @@ button{
     z-index: 1;
   }
   &:hover{
-    color: $secondary;
+    color: $primary-hover;
     &:before{
-      background: $secondary;
+      width: 0%;
     }
   }
 }

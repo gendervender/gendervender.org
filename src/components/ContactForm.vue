@@ -41,7 +41,7 @@
       type="submit"
       class="button"
     >
-      Submit
+      Send
     </button>
     <p class="form-message" :class="{'form-message-error': !status.success}">{{status.msg}}</p>
   </form>
@@ -172,7 +172,7 @@ export default {
             font-size: 1rem;
             box-sizing: border-box;
             border-radius: 5px;
-            background-color: rgba($secondary, 0.12);
+            background-color: white;
             border: 2px solid transparent;
             &:focus{
                 border-color: $secondary;

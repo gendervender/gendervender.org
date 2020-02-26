@@ -1,6 +1,6 @@
 <template>
     <div class="more-stories container">
-        <h3>View More Stories</h3>
+        <h3>More Stories</h3>
         <div class="stories-grid">
             <router-link
                 v-for="item in data"
