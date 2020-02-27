@@ -36,4 +36,12 @@ export default {
   .underline{
     font-size: 1.2rem;
   }
+  @include mobile{
+    .title{
+      padding: 0 10vw;
+      h2{
+        font-size: 16px;
+      }
+    }
+  }
 </style>

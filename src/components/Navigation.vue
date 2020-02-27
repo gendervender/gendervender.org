@@ -1,34 +1,49 @@
 <template>
     <div id="nav" :class="this.navClass">
         <div id="nav-left"> 
-        <img src="../assets/logo.png"/>
-        <router-link to="/" @click.native="handleClick" data-id="landing">Gender Vender</router-link>
+          <img src="../assets/logo.png"/>
+          <router-link to="/" @click.native="handleClick" data-id="landing">Gender Vender</router-link>
         </div>
-        <div id="nav-right">
+        <div id="nav-right" v-if="windowWidth >= 1200">
           <template v-for="item in navItems">
               <a 
-                v-if="item.routerLink == false"
+                v-if="item.routerLink == false && !item.mobile"
                 @click="handleClick"
                 :data-id="item.ref"
               >
                 {{item.name}}
               </a>
               <router-link
-                v-else
+                v-else-if="item.routerLink == true && !item.mobile"
                 :to="item.ref"
               >
                 {{item.name}}
               </router-link>
           </template>
-          <router-link class="button button-secondary" :class="this.buttonClass" to="/donate">Donate</router-link>
+          <a class="button button-secondary" 
+            :class="this.buttonClass"
+            target="_blank"
+            :href="donateLink">
+            Donate
+          </a>
+        </div>
+        <div id="nav-right" v-if="windowWidth < 1200">
+          <img :src="getImgUrl(showMenu ? menuIcon.close : menuIcon.open)" @click="toggleMenu"/>
+          <MobileNav :handleClick="handleClick" :navItems="navItems" :showMenu="showMenu" :toggleMenu="toggleMenu" :donateLink="donateLink"/>
         </div>
     </div>
 </template>
 <script>
+  import MobileNav  from '@/components/NavigationMobile';
+
   export default {
     name: 'Navigation',
     props: {
-      handleClick: Function
+      handleClick: Function,
+      donateLink: String,
+    },
+    components: {
+      MobileNav
     },
     watch:{
       '$route' (to, from){
@@ -42,8 +57,14 @@
     data() {
       return{
         windowHeight: 0,
+        windowWidth: 0,
         navClass: "nav-light",
         buttonClass: "button-light",
+        menuIcon: {
+          open: "menu-light",
+          close: "menu-light-close"
+        },
+        showMenu: false,
         navItems: [
           {
             ref: "/about",
@@ -64,11 +85,24 @@
             ref: "/team",
             name: "Team",
             routerLink: true
+          },
+          {
+            ref: "/contact",
+            name: "Contact",
+            routerLink: true,
+            mobile: true
           }
         ]
       }
     },
     methods: {
+      toggleMenu(){
+        this.showMenu = !this.showMenu;
+      },
+      getImgUrl(url) {  
+        var images = require.context('../assets/', false, /\.svg$/)
+        return images('./icon-' + url + ".svg")
+      },
       handleScroll(e){
         if(this.$route.name == 'home'){
           if(window.scrollY <= (this.windowHeight + 20) && this.navClass == "nav-dark"){
@@ -82,18 +116,27 @@
         if(type == "light"){
           this.navClass = "nav-light";
           this.buttonClass = "button-light";
+          this.menuIcon.open = "menu-light";
+          this.menuIcon.close = "menu-close-light";
         }else if(type == "dark"){
           this.navClass = "nav-dark";
           this.buttonClass = "button-dark";
+          this.menuIcon.open = "menu";
+          this.menuIcon.close = "menu-close";
         }
+      },
+      handleResize(e){
+        this.windowHeight = window.innerHeight;
+        this.windowWidth = window.innerWidth;
       }
     },
     created () {
-      this.windowHeight = window.innerHeight;
+      this.handleResize();
       window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('resize', this.handleResize);
     },
     destroyed () {
-      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('scroll', this.handleResize);
     },
     mounted(){
       if(this.$route.name !== 'home'){
@@ -137,6 +180,9 @@
     justify-content: flex-end;
     a {
       margin-left: 32px;
+    }
+    img{
+      width: 28px;
     }
   }
 }

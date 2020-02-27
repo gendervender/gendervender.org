@@ -1,14 +1,23 @@
 <template>
   <div class="center" id="landing">
     <div class="background">
-      <video v-if="fields.landing_video" autoPlay muted loop playsInline :src="fields.landing_video"/>
+      <video 
+        v-if="fields.landing_video"
+        autoPlay muted loop playsInline
+        :src="fields.landing_video"
+        :poster="fields.landing_image"
+      />
     </div>
     <div class="overlay"/>
     <prismic-rich-text class="text mainTitle" v-if="fields.mainTitle" :field="fields.mainTitle"/>
     <prismic-rich-text class="description" v-if="fields.description" :field="fields.description"/>
     <div class="row">
       <a @click="handleClick" data-id="stories" class="button" style="margin-right: 20px">View Stories</a>
-      <router-link class="button button-light button-secondary" to="/donate">Donate</router-link>
+      <a class="button button-secondary" 
+        target="_blank"
+        :href="donateLink">
+        Donate
+      </a>
     </div>
   </div>
 </template>
@@ -18,7 +27,8 @@ export default {
   name: 'Landing',
   props: {
     fields: Object,
-    handleClick: Function
+    handleClick: Function,
+    donateLink: String
   }
 }
 </script>
@@ -54,5 +64,17 @@ export default {
     height: 100%;
     position: absolute;
     object-fit: cover;
+    left: 0;
+    top: 0;
+  }
+  @include mobile{
+    #landing{
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .description{
+      width: 100%;
+    }
   }
 </style>

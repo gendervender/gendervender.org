@@ -37,7 +37,7 @@ export default {
     }
     .how-block{
         background: white;
-        height: 90vh;
+        min-height: 90vh;
         width: 100%;
         margin-bottom: 3rem;
         display: flex;
@@ -88,6 +88,20 @@ export default {
         }
         .background{
             z-index: 0;
+        }
+    }
+    @include mobile{
+        .how-block{
+             .how-text,.how-image{
+                 width: 100%;
+             }
+             .how-text{
+                 padding: 20px;
+             }
+             .how-image{
+                 height: 32vh;
+             }
+            flex-direction: column!important;
         }
     }
 </style>

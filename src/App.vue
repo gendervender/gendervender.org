@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Navigation :handleClick="this.handleClick"/>
-    <router-view v-if="stories !== null" :stories="stories" :handleClick="this.handleClick"/>
+    <Navigation :handleClick="this.handleClick" :donateLink="donateLink"/>
+    <router-view v-if="stories !== null" :stories="stories" :handleClick="this.handleClick" :donateLink="donateLink"/>
     <Footer/>
   </div>
 </template>
@@ -9,6 +9,7 @@
 <script>
   import Navigation from '@/components/Navigation.vue';
   import Footer     from '@/components/Footer.vue';
+
   export default {
     name: 'App',
     components: {
@@ -17,7 +18,8 @@
     },
     data() {
       return{
-        stories: null
+        stories: null,
+        donateLink: ""
       }
     },
     methods: {
@@ -46,10 +48,15 @@
           });
           this.stories = parsed;
         });
+      },
+      async getDonateLink(){
+        const content = await this.$prismic.client.getSingle('donate');
+        this.donateLink = content.data.donate_source.url;
       }
     },
     created(){
       this.getContent();
+      this.getDonateLink();
     }
   }
 </script>
@@ -86,7 +93,6 @@ h3{font-size: 1.5rem};
 h4{font-size: 1.25rem};
 h5{font-size: 1.15rem};
 h6{font-size: 1.15rem; font-weight: 400};
-
 .text{
   *{
     color: inherit;
@@ -139,6 +145,7 @@ section{
   border-radius: 5px;
   font-weight: 600;
   line-height: 1;
+  text-align: center;
   color: white!important;
   background: $primary;
   &:hover{
@@ -241,6 +248,14 @@ button{
   z-index: -1;
   background-color: $text;
   opacity: 0.6;
+}
+@include mobile{
+  h1{font-size: 32px};
+  h2{font-size: 24px};
+  h3{font-size: 20px};
+  h4{font-size: 18px};
+  h5{font-size: 16px};
+  h6{font-size: 16px};
 }
 
 </style>
