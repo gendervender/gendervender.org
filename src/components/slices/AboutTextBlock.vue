@@ -14,6 +14,13 @@
         .text{
             flex: 2
         }
+        @include mobile{
+            flex-direction: column;
+            padding: 0;
+            .header{
+                margin-bottom: 12px;
+            }
+        }
     }
 </style>
 <script>

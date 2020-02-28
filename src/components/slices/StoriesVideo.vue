@@ -16,6 +16,10 @@
         width: 100%;
         height: 100%;
     }
+    @include mobile{
+        width: 100%!important;
+        padding-bottom: 56.25%;
+    }
 }
 </style>
 <script>

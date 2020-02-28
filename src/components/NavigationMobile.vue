@@ -1,5 +1,5 @@
 <template>
-    <div id="mobile-menu" :style="showMenu ? 'opacity: 1; bottom: 0;' : 'opacity: 0; bottom: -50%'">
+    <div id="mobile-menu" :style="showMenu ? 'opacity: 1; bottom: 0; pointer-events: all' : 'opacity: 0; bottom: -50%; pointer-events: none'">
         <div class="container">
             <h3>Menu</h3>
             <div id="mobile-menu-items">
@@ -14,6 +14,7 @@
                     <router-link
                         v-else
                         :to="item.ref"
+                        @click.native="toggleMenu"
                     >
                         <h1>{{item.name}}</h1>
                     </router-link>

@@ -1,13 +1,11 @@
 <template>
-    <div class="stories-image">
-        <img :src="image.url" alt="stories_image"/>
-    </div>
+    <img :src="image.url" class="image" alt="stories_image"/>
 </template>
 <style lang="scss" scoped>
-    .stories-image{
-       img{ 
-           width: 100%
-       }
+    .image{ 
+        width: 100%;
+        height: auto;
+        display: block;
     }
 </style>
 <script>

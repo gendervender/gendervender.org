@@ -40,7 +40,7 @@
     name: 'Navigation',
     props: {
       handleClick: Function,
-      donateLink: String,
+      donateLink: String
     },
     components: {
       MobileNav
@@ -98,6 +98,26 @@
     methods: {
       toggleMenu(){
         this.showMenu = !this.showMenu;
+        if(this.showMenu){
+          // document.documentElement.style.overflow = "hidden";
+          document.body.style.overflow = "hidden";
+        }else{
+          document.body.style.overflow = "auto";
+        }
+      },
+      preventScroll(e){
+        e.preventDefault()
+      },
+      toggleScrollStatus(status){
+        if(true){
+          document.ontouchmove = function(e){ 
+            return true; 
+          }
+        }else{
+          document.ontouchmove = function(e){ 
+            e.preventDefault(); 
+          }
+        }
       },
       getImgUrl(url) {  
         var images = require.context('../assets/', false, /\.svg$/)
@@ -149,6 +169,7 @@
 #nav {
   z-index: 10;
   top: 0;
+  left: 0;
   position: fixed;
   width: 100%;
   display: flex;

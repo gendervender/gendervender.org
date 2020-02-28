@@ -119,4 +119,13 @@ export default {
             }
         }
     }
+
+    @include mobile{
+        h5{
+            font-size: 18px;
+        }
+        .card .links a img{
+            width: 24px
+        }
+    }
 </style>

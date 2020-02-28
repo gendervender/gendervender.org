@@ -45,6 +45,14 @@
       margin: 1rem 0 6rem 0;
       width: 60%;
     }
+    @include mobile{
+      .text{
+        width: 100%;
+      }
+      .members-container{
+        grid-template-columns: 1fr;
+      }
+    }
   }
 </style>
 <script>

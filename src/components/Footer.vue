@@ -93,4 +93,14 @@ export default {
             }
         }
     }
+    @include mobile{
+      #footer{
+        background-color: white;
+        .background{
+          z-index: 0;
+          background-size: 130%;
+          background-position: 0vw 50%;
+        }
+      }
+    }
 </style>

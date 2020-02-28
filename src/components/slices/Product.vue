@@ -28,6 +28,7 @@
         display: flex;
         width: 60%;
         margin: auto;
+        flex-direction: row;
         .product-left{
             img{
                 width: 100%;
@@ -47,6 +48,22 @@
             }
             .button{
                 display: inline-block;
+            }
+        }
+    }
+    @include mobile{
+        .product-wrapper{
+            padding: 52px 0;
+        }
+        .product{
+            width: 88%;
+            flex-direction: column;
+            .product-left, .product-right{
+                flex: 1;
+                padding: 0;
+            }
+            .product-right{
+                margin-top: 24px;
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="scrollDisabled?'overflow-y: hidden':'overflow-y: auto'">
     <Navigation :handleClick="this.handleClick" :donateLink="donateLink"/>
     <router-view v-if="stories !== null" :stories="stories" :handleClick="this.handleClick" :donateLink="donateLink"/>
     <Footer/>
@@ -19,7 +19,8 @@
     data() {
       return{
         stories: null,
-        donateLink: ""
+        donateLink: "",
+        scrollDisabled: false
       }
     },
     methods: {
@@ -214,6 +215,12 @@ button{
     color: $primary-hover;
     &:before{
       width: 0%;
+    }
+  }
+  @include mobile{
+    text-decoration: underline;
+    &:before{
+      display: none;
     }
   }
 }

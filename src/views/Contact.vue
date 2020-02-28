@@ -1,9 +1,9 @@
 <template>
   <section id="contact">
         <div class="banner" :style="{ 'background-image': `url(${fields.contact_image})` }"/>
+        <div class="center container">
         <prismic-rich-text class="text title" v-if="fields.contact_title" :field="fields.contact_title"/>
         <prismic-rich-text class="text body" v-if="fields.contact_description" :field="fields.contact_description"/>
-        <div class="center container">
             <ContactForm />
         </div>
   </section>
@@ -33,8 +33,8 @@ export default {
     assignContent(data){
        this.fields = {
         contact_image: data.contact_image.url,
-        contact_title: data.contact_title,
-        contact_description: data.contact_description
+        contact_title: data.page_title,
+        contact_description: data.page_description
        }
     }
   },
@@ -48,56 +48,8 @@ export default {
         min-height: 100vh;
         padding-bottom: 20vh;
         text-align: center;
-        form{
-            width: 50%;
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            flex-direction: row;
-            .form-message{
-                width: 100%;
-                text-align: left;
-                color: $secondary;
-            }
-            .form-message-error{
-                color: $primary;
-            }
-            input, textarea{
-                outline: none;
-                width: 100%;
-                padding: 16px;
-                font-size: 1rem;
-                box-sizing: border-box;
-                background-color: rgba($secondary, 0.12);
-                border: 2px solid transparent;
-                &:focus{
-                    border-color: $secondary;
-                }
-            }
-            textarea{
-                resize: none;
-                height: 240px;
-                line-height: 1.8;
-            }
-            .form-full, .form-half{
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                margin-bottom: 24px;
-            }
-            .form-full{
-                width: 100%;
-            }
-            .form-half{
-                width: 48%;
-                &:first-of-type{
-                    margin-right: 4%;
-                }
-            }
-            label{
-                margin-bottom: 4px;
-                font-size: 0.9rem;
-            }
+        .container{
+            flex-direction: column;
         }
         .title{
             font-size: 2.4rem;
@@ -112,7 +64,13 @@ export default {
             height: 50vh;
             background-size: cover;
             background-position: center;
-            margin-bottom: 20vh;
+            margin-bottom: 12vh;
+        }
+        @include mobile{
+            .banner{
+                height: 25vh;
+                margin-bottom: 12vh;
+            }
         }
     }
 </style>

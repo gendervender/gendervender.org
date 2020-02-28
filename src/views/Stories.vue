@@ -23,7 +23,7 @@
                 :is="slicesData[slice.slice_type]"
                 v-bind="slice.primary"
                 class="stories-block"
-                :class="slice.slice_type !== 'product' && 'container'"
+                :class="(slice.slice_type !== 'product' && slice.slice_type !== 'image') && 'container'"
             />
         </div>
         <MoreStories :data="moreData"/>
@@ -32,7 +32,7 @@
 <style lang="scss" scoped>
     .banner{
         width: 100%;
-        height: 88vh;
+        height: 72vh;
         position: relative;
         display: block;
     }
@@ -58,8 +58,24 @@
         }
     }
     .stories-block{
-        margin: 32px 0;
+        margin-top: 32px;
+        margin-bottom: 32px;
         display: inline-block;
+    }
+    @include mobile{
+        .content{
+            margin: 12vh 0;
+            h1{
+                font-size: 24px;
+                margin-bottom: 4px;
+            }
+        }
+        .banner{
+            height: 40vh;
+        }
+        .content .container{
+            width: 88%;
+        }
     }
 </style>
 <script>

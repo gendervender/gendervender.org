@@ -41,5 +41,8 @@ export default {
         grid-template-columns: repeat(3, 1fr);
         row-gap: 32px;
         column-gap: 24px;
+        @include mobile{
+          grid-template-columns: 1fr;
+        }
     }
 </style>

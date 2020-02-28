@@ -20,7 +20,7 @@
 </template>
 <style lang="scss">
   #about{
-    padding: 20vh 0 32vh 0;
+    padding: 20vh 0;
     .banner{
         width: 100%;
         height: 88vh;
@@ -29,7 +29,7 @@
     }
     .text{
       width: 60%;
-      margin: 0rem 0 6rem 0;
+      margin: 0rem 0 2rem 0;
       h6{
         margin-top: 1.2rem;
       }
@@ -37,6 +37,15 @@
     .about-block{
       margin: 32px 0;
       display: inline-flex;
+    }
+    @include mobile{
+      .banner{
+        height: 50vh;
+      }
+      .text{
+        width: 100%;
+        margin: 0;
+      }
     }
   }
 </style>

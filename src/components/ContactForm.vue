@@ -183,5 +183,8 @@ export default {
             height: 240px;
             line-height: 1.8;
         }
+        @include mobile{
+          width: 100%;
+        }
     }
 </style>

@@ -36,6 +36,8 @@ export default {
   .partners-directory{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .partners-item{
     cursor: pointer;
@@ -76,5 +78,11 @@ export default {
       margin-top: 25%;
     }
   }
-  
+  @include mobile{
+    .partners-item{
+      width: 100px;
+      height: 100px;
+      margin: 0px 12px 20px 12px;
+    }
+  }
 </style>
