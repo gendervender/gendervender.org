@@ -1,6 +1,7 @@
 <template>
-  <div id="app" :style="scrollDisabled?'overflow-y: hidden':'overflow-y: auto'">
-    <Navigation :handleClick="this.handleClick" :donateLink="donateLink"/>
+  <div id="app">
+    <LoadScreen :isLoading="isLoading"/>
+    <Navigation :handleClick="this.handleClick" :donateLink="donateLink" :disableScroll="disableScroll"/>
     <router-view v-if="stories !== null" :stories="stories" :handleClick="this.handleClick" :donateLink="donateLink"/>
     <Footer/>
   </div>
@@ -9,18 +10,21 @@
 <script>
   import Navigation from '@/components/Navigation.vue';
   import Footer     from '@/components/Footer.vue';
+  import LoadScreen from '@/components/LoadScreen.vue';
 
   export default {
     name: 'App',
     components: {
       Navigation,
-      Footer
+      Footer,
+      LoadScreen
     },
     data() {
       return{
         stories: null,
         donateLink: "",
-        scrollDisabled: false
+        isLoading: true,
+        removeLoading: false
       }
     },
     methods: {
@@ -39,7 +43,7 @@
       getContent(){ 
         this.$prismic.client.query(
           this.$prismic.Predicates.at('document.type', 'stories'),
-          { orderings: '[my.stories.partnership_status]' }
+          { orderings: '[my.stories.partnership_status, my.stories.name]' }
         ).then((res) => {
           let parsed = res.results.map(doc => {
             return {
@@ -53,11 +57,28 @@
       async getDonateLink(){
         const content = await this.$prismic.client.getSingle('donate');
         this.donateLink = content.data.donate_source.url;
+      },
+      disableScroll(status){
+        if(status){
+          document.body.style.overflow = "hidden";
+        }
+        else{
+          document.body.style.overflow = "auto";
+        }
       }
     },
     created(){
       this.getContent();
       this.getDonateLink();
+    },
+    mounted(){
+      setTimeout(()=>{
+        this.isLoading = false;
+        this.disableScroll(false);
+      }, 1500)
+      setTimeout(()=>{
+        this.removeLoading = true;
+      }, 2000)
     }
   }
 </script>
@@ -71,6 +92,8 @@
 body{
   margin: 0%;
   background-color: $site-bg;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 ::selection {
   background: $tertiary;
@@ -112,8 +135,8 @@ h6{font-size: 1.15rem; font-weight: 400};
   }
 }
 p, a, b, span, button{
-  line-height: 1.6;
-  font-size: 0.94rem;
+  line-height: 1.8;
+  font-size: 0.96rem;
   font-weight: 400;
   letter-spacing: 0.01rem;
 }
@@ -236,7 +259,7 @@ button{
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: -1;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -247,12 +270,12 @@ button{
     justify-content: center;
 };
 .overlay{
+  z-index: -1;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: -1;
   background-color: $text;
   opacity: 0.6;
 }

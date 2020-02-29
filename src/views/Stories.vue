@@ -16,6 +16,7 @@
                         target="_blank"
                     >{{link.link_name}}</a>
                 </div>
+                <img :src="data.logo.url" :alt="data.uid + ' logo'" class="logo" v-if="data.logo.url"/>
             </div>
             <component
                 v-for="slice in data.body"
@@ -30,6 +31,12 @@
     </section>
 </template>
 <style lang="scss" scoped>
+    .logo{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 16%;
+    }
     .banner{
         width: 100%;
         height: 72vh;
@@ -49,7 +56,7 @@
         width: 60%;
         }
         h1{
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
         h4{
@@ -131,7 +138,7 @@ export default {
                 this.data = found;
                 let index = this.stories.findIndex(s => s.uid == this.$route.params.id);
                 let curIndex = index+1;
-                for (let i=0; i<this.stories.length; i++){
+                while (this.moreData.length < 3){
                     if(curIndex >= this.stories.length){
                         curIndex = 0;
                     }

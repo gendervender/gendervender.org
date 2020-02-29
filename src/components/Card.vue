@@ -1,11 +1,11 @@
 <template>
      <div class="card" :class="isLink ? 'card-story' : 'card-team'">
-        <div class="top center" :style="isLink ? 'height: 50%' : 'height: 65%'">
+        <div class="top center" :style="isLink ? 'height: 48%' : 'height: 65%'">
             <div v-if="imageURL" class="background" :style="{ 'background-image': `url(${imageURL})` }"/>
                 <div v-if="isLink" class="overlay"/>
                 <h1 v-if="isLink">view story</h1>
             </div>
-            <div class="bottom" :style="isLink ? 'height: 50%' : 'height: 35%'">
+            <div class="bottom" :style="isLink ? 'height: 52%' : 'height: 35%'">
                 <h5 v-if="primary">{{primary}}</h5>
                 <h6 v-if="secondary">{{secondary}}</h6>
                 <p v-if="description">{{description}}</p>
@@ -102,7 +102,9 @@ export default {
             }
             p{
                 font-size: 0.9rem;
+                margin-top: 0.6rem;
                 opacity: 0.8;
+                line-height: 1.6;
             }
         }
         .links{

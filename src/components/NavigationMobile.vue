@@ -1,5 +1,5 @@
 <template>
-    <div id="mobile-menu" :style="showMenu ? 'opacity: 1; bottom: 0; pointer-events: all' : 'opacity: 0; bottom: -50%; pointer-events: none'">
+    <div id="mobile-menu" :style="showMenu ? 'opacity: 1; top: 12vh; pointer-events: all' : 'opacity: 0; top: 50vh; pointer-events: none'">
         <div class="container">
             <h3>Menu</h3>
             <div id="mobile-menu-items">
@@ -38,9 +38,11 @@
         flex-direction: column;
         a{
             margin-bottom: 16px;
+            color: $text!important;
         }
         .button{
             margin-top: 20px;
+            color: white!important;
         }
     }
     #mobile-menu{
@@ -48,9 +50,9 @@
         height: 88vh;
         background: $site-bg;
         position: fixed;
+        -webkit-transform: translateZ(0);
         z-index: 5;
-        bottom: 0;
-        right: 0;
+        left: 0;
         box-sizing: border-box;
         padding: 40px 0;
         transition: all 0.4s;

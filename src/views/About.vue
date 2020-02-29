@@ -20,7 +20,7 @@
 </template>
 <style lang="scss">
   #about{
-    padding: 20vh 0;
+    padding: 16vh 0;
     .banner{
         width: 100%;
         height: 88vh;

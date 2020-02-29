@@ -31,7 +31,7 @@
 </template>
 <style lang="scss" scoped>
   #team{
-    padding: 20vh 0 32vh 0;
+    padding: 16vh 0;
     .members-container{
       display: grid;
       grid-template-columns: repeat(3, 1fr);

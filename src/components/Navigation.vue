@@ -40,7 +40,8 @@
     name: 'Navigation',
     props: {
       handleClick: Function,
-      donateLink: String
+      donateLink: String,
+      disableScroll: Function
     },
     components: {
       MobileNav
@@ -98,12 +99,6 @@
     methods: {
       toggleMenu(){
         this.showMenu = !this.showMenu;
-        if(this.showMenu){
-          // document.documentElement.style.overflow = "hidden";
-          document.body.style.overflow = "hidden";
-        }else{
-          document.body.style.overflow = "auto";
-        }
       },
       preventScroll(e){
         e.preventDefault()
@@ -170,6 +165,7 @@
   z-index: 10;
   top: 0;
   left: 0;
+  -webkit-transform: translateZ(0);
   position: fixed;
   width: 100%;
   display: flex;
@@ -219,6 +215,14 @@
   background-color: transparent;
   a{
     color: white;
+  }
+}
+@include mobile{
+  .nav-dark a:hover{
+    color: $text!important;
+  }
+  .nav-light a:hover{
+    color: white!important;
   }
 }
 </style>

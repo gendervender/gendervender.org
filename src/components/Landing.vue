@@ -1,14 +1,15 @@
 <template>
   <div class="center" id="landing">
     <div class="background">
+      <div class="overlay"/>
       <video 
         v-if="fields.landing_video"
         autoPlay muted loop playsInline
         :src="fields.landing_video"
         :poster="fields.landing_image"
+        style="z-index: -2;"
       />
     </div>
-    <div class="overlay"/>
     <prismic-rich-text class="text mainTitle" v-if="fields.mainTitle" :field="fields.mainTitle"/>
     <prismic-rich-text class="description" v-if="fields.description" :field="fields.description"/>
     <div class="row">
