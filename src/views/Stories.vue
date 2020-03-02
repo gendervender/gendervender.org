@@ -45,8 +45,11 @@
     }
     .links{
         margin: 24px 0;
+        display: flex;
+        flex-wrap: wrap;
         .underline{
             margin-right: 12px;
+            margin-bottom: 12px;
         }
     }
     .content{

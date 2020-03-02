@@ -4,7 +4,7 @@
 <style lang="scss" scoped>
     .image{ 
         height: auto;
-        display: block;
+        width: 100%;
     }
 </style>
 <script>
