@@ -67,7 +67,7 @@ export default {
         width: 100%;
         height: 80vh;
         .container{
-            padding: 12vh 4vw 24vh 4vw;
+            padding: 12vh 0 24vh 0;
             text-align: left;
             display: flex;
             justify-content: space-between;

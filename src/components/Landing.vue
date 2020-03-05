@@ -10,15 +10,17 @@
         style="z-index: -2;"
       />
     </div>
-    <prismic-rich-text class="text mainTitle" v-if="fields.mainTitle" :field="fields.mainTitle"/>
-    <prismic-rich-text class="description" v-if="fields.description" :field="fields.description"/>
-    <div class="row">
-      <a @click="handleClick" data-id="stories" class="button" style="margin-right: 20px">View Stories</a>
-      <a class="button button-secondary" 
-        target="_blank"
-        :href="donateLink">
-        Donate
-      </a>
+    <div class="container">
+     <prismic-rich-text class="text mainTitle" v-if="fields.mainTitle" :field="fields.mainTitle"/>
+     <prismic-rich-text class="description" v-if="fields.description" :field="fields.description"/>
+      <div class="row">
+        <a @click="handleClick" data-id="stories" class="button" style="margin-right: 20px">View Stories</a>
+        <a class="button button-secondary" 
+          target="_blank"
+          :href="donateLink">
+          Donate
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -37,12 +39,13 @@ export default {
 <style scoped lang="scss">
   #landing{
     height: 100vh;
-    width: 100%;
-    padding: 24vh 6vw;
     box-sizing: border-box;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
+  }
+  .container{
+    padding-bottom: 16vh;
   }
   .mainTitle, .subtitle, .description{
     color: white;
@@ -50,15 +53,13 @@ export default {
   .mainTitle{
     font-size: 2.5rem;
     font-weight: 500;
-    line-height: 2rem;
-  }
-  .subtitle{
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    width: 50%;
   }
   .description{
-    margin-bottom: 1.4rem;
-    width: 28vw;
+    margin-bottom: 2rem;
+    width: 50%;
   }
   video{
     width: 100%;

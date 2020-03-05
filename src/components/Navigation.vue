@@ -1,5 +1,6 @@
 <template>
     <div id="nav" :class="this.navClass">
+      <div class="container">
         <div id="nav-left"> 
           <img src="../assets/logo.png"/>
           <router-link to="/" @click.native="handleClick" data-id="landing">Gender Vender</router-link>
@@ -31,6 +32,7 @@
           <img :src="getImgUrl(showMenu ? menuIcon.close : menuIcon.open)" @click="toggleMenu"/>
           <MobileNav :handleClick="handleClick" :navItems="navItems" :showMenu="showMenu" :toggleMenu="toggleMenu" :donateLink="donateLink"/>
         </div>
+      </div>
     </div>
 </template>
 <script>
@@ -161,6 +163,11 @@
   }
 </script>
 <style lang="scss" scoped>
+  .container, #nav-left, #nav-right, #nav{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
 #nav {
   z-index: 10;
   top: 0;
@@ -168,16 +175,8 @@
   -webkit-transform: translateZ(0);
   position: fixed;
   width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
   height: 12vh;
-  padding: 0px 6vw;
-  box-sizing: border-box;
   #nav-left, #nav-right{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
     flex: 1;
   }
   a {

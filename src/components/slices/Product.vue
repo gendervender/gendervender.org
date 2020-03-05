@@ -1,6 +1,6 @@
 <template>
     <div class="product-wrapper">
-    <div class="product">
+    <div class="product container">
         <div class="product-left">
             <img :src="product_image.url" :alt='product_name + " image"'/>
         </div>
@@ -23,12 +23,13 @@
     .product-wrapper{
         background-color: white;
         padding: 12vh 0;
+        width: 100%;
     }
     .product{
         display: flex;
-        width: 60%;
-        margin: auto;
         flex-direction: row;
+        align-items: center;
+        width: 50%;
         .product-left{
             img{
                 width: 100%;

@@ -56,7 +56,7 @@
         flex-direction: column;
         margin: 12vh 0 24vh 0;
         .container{
-        width: 60%;
+            width: 50%;
         }
         h1{
             font-size: 1.8rem;

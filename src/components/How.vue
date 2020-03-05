@@ -37,7 +37,7 @@ export default {
     }
     .how-block{
         background: white;
-        min-height: 90vh;
+        min-height: 200px;
         width: 100%;
         margin-bottom: 3rem;
         display: flex;

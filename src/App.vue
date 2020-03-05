@@ -120,8 +120,12 @@ h6{font-size: 1.15rem; font-weight: 400};
 .text{
   *{
     color: inherit;
-    // font-weight: inherit;
+    line-height: inherit;
     // font-size: inherit;
+    // font-weight: inherit;
+  }
+  h6, p{
+    line-height: 1.6
   }
   box-sizing: border-box;
   a{
@@ -130,8 +134,11 @@ h6{font-size: 1.15rem; font-weight: 400};
   p{
     margin: 0 0 1.4rem 0;
   }
-  ul{
+  ul, ol{
     list-style: none;
+    li{
+      margin-bottom: 4px;
+    }
   }
 }
 p, a, b, span, button{
@@ -174,9 +181,9 @@ section{
   background: $primary;
   &:hover{
     background: $primary-hover;
-    -webkit-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.25);
-    -moz-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.25);
-    box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.25);
+    -webkit-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
+    -moz-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
+    box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
   }
 }
 .button-secondary{
@@ -226,7 +233,7 @@ button{
     content: '';
     position: absolute;
     background: $primary;
-    bottom: 0.12rem;
+    bottom: 0.1rem;
     right: 0;
     height: 1px;
     width: 100%;
@@ -249,9 +256,12 @@ button{
 }
 .container{
   box-sizing: border-box;
-  margin: 0% 6vw;
+  margin: 0% auto;
   position: relative;
-  width: auto;
+  width: 64em;
+  @include desktop{
+    width: 86em;
+  }
 }
 .background{
   position: absolute;

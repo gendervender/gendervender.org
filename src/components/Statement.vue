@@ -31,7 +31,7 @@ export default {
   } 
   .title{
     text-align: center;
-    padding: 0 24vw;
+    padding: 0 20vw;
   }
   .underline{
     font-size: 1.2rem;
