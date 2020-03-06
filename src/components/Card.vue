@@ -5,7 +5,7 @@
                 <div v-if="isLink" class="overlay"/>
                 <h1 v-if="isLink">view story</h1>
             </div>
-            <div class="bottom" :style="isLink ? 'height: 18vw' : 'height: 11vw'">
+            <div class="bottom" :class="isLink ? 'card-bottom-link' : 'card-bottom'">
                 <h5 v-if="primary">{{primary}}</h5>
                 <h6 v-if="secondary">{{secondary}}</h6>
                 <p v-if="description">{{description}}</p>
@@ -99,7 +99,7 @@ export default {
             p{
                 font-size: 0.9rem;
                 margin-top: 0.6rem;
-                opacity: 0.6;
+                opacity: 0.8;
                 line-height: 1.6;
             }
         }
@@ -117,6 +117,12 @@ export default {
             }
         }
     }
+    .card-bottom-link{
+        height: 18vw
+    }
+    .card-bottom{
+        height: 11vw
+    }
 
     @include mobile{
         h5{
@@ -124,6 +130,27 @@ export default {
         }
         .card .links a img{
             width: 24px
+        }
+    }
+    @include desktop{
+        .top{
+            height: 14vw!important;
+        }
+        .bottom{
+            h6{
+                font-size: 1.1rem!important;
+            }
+            p{
+                font-size: 1rem!important;
+                line-height: 1.8!important;
+            }
+            padding: 28px!important;
+        }
+        .card-bottom-link{
+            height: 13vw;
+        }
+        .card-bottom{
+            height: 8vw;
         }
     }
 </style>

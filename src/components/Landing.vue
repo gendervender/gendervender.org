@@ -44,6 +44,9 @@ export default {
     justify-content: flex-end;
     align-items: flex-start;
   }
+  .background{
+      background-attachment: fixed;
+  }
   .container{
     padding-bottom: 16vh;
   }

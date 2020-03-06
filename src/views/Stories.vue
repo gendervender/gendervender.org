@@ -42,6 +42,9 @@
         height: 72vh;
         position: relative;
         display: block;
+        .background{
+          background-attachment: fixed;
+        }
     }
     .links{
         margin: 24px 0;
@@ -71,6 +74,17 @@
         margin-top: 32px;
         margin-bottom: 32px;
         display: inline-block;
+    }
+    @include desktop{
+        .banner{
+            height: 60vh;
+        }
+        .content{
+            h1{
+                font-size: 2.4rem;
+                margin-bottom: 0.25rem;
+            }
+        }
     }
     @include mobile{
         .content{

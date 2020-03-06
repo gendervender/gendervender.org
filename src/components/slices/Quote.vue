@@ -5,7 +5,13 @@
     q{
         font-size: 1.6rem;
         font-weight: 500;
-        line-height: 1.6;
+        line-height: 2;
+        padding: 4vh 0;
+    }
+    @include desktop{
+        q{
+            font-size: 2rem;
+        }
     }
 </style>
 <script>

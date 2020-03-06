@@ -37,7 +37,7 @@ export default {
     }
     .how-block{
         background: white;
-        min-height: 200px;
+        min-height: 92vh;
         width: 100%;
         margin-bottom: 3rem;
         display: flex;
@@ -67,9 +67,6 @@ export default {
         .how-text{
             padding: 5%;
             box-sizing: border-box;
-            p{
-                margin-bottom: 0.9rem;
-            }
             .block-title{
                 margin-bottom: 1.4rem;
                 position: relative;
@@ -88,6 +85,11 @@ export default {
         }
         .background{
             z-index: 0;
+        }
+    }
+    @include desktop{
+        .how-block{
+            min-height: 72vh!important;
         }
     }
     @include mobile{

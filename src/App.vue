@@ -111,7 +111,7 @@ h1,h2,h3,h4,h5,h6{
   line-height: 1.6;
   letter-spacing: 0.015rem;
 }
-h1{font-size: 3rem};
+h1{font-size: 2.8rem};
 h2{font-size: 2rem};
 h3{font-size: 1.5rem};
 h4{font-size: 1.25rem};
@@ -125,7 +125,7 @@ h6{font-size: 1.15rem; font-weight: 400};
     // font-weight: inherit;
   }
   h6, p{
-    line-height: 1.6
+    line-height: 1.8
   }
   box-sizing: border-box;
   a{
@@ -296,6 +296,21 @@ button{
   h4{font-size: 18px};
   h5{font-size: 16px};
   h6{font-size: 16px};
+}
+@include desktop{
+  h1{font-size: 3.2rem};
+  h2{font-size: 2.2rem};
+  h3{font-size: 2rem};
+  h4{font-size: 1.75rem};
+  h5{font-size: 1.25rem};
+  h6{font-size: 1.25rem};
+  p, a, b, span, button, li{
+    line-height: 2;
+    font-size: 1.1rem;
+  }
+  .button{
+    padding: 13px 20px 12px 20px;
+  }
 }
 
 </style>

@@ -20,4 +20,7 @@ export default {
         height: 60vh;
         width: 100%;
     }
+    .background{
+      background-attachment: fixed;
+    }
 </style>

@@ -6,7 +6,7 @@
 <style lang="scss" scoped>
 .video{
 	position: relative;
-	padding-bottom: 37.5%; /* 16:9 */
+	padding-bottom: 31.25%; /* 16:9 */
 	height: 0;
     width: 100%;
     iframe{

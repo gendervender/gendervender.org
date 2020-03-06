@@ -216,6 +216,17 @@
     color: white;
   }
 }
+@include desktop{
+  #nav-left{
+    img{
+      width: 32px!important;
+      margin-right: 12px!important;
+    }
+  }
+  a{
+    font-size: 1.1rem!important;
+  }
+}
 @include mobile{
   .nav-dark a:hover{
     color: $text!important;

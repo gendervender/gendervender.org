@@ -78,6 +78,11 @@ export default {
       margin-top: 25%;
     }
   }
+  @include desktop{
+    h1{
+      font-size: 1rem!important;
+    }
+  }
   @include mobile{
     .partners-item{
       width: 100px;
