@@ -2,7 +2,13 @@
   <div id="app">
     <LoadScreen :isLoading="isLoading"/>
     <Navigation :handleClick="this.handleClick" :donateLink="donateLink" :disableScroll="disableScroll"/>
-    <router-view v-if="stories !== null" :stories="stories" :handleClick="this.handleClick" :donateLink="donateLink"/>
+    <router-view 
+      v-if="stories !== null"
+      :stories="stories"
+      :handleClick="this.handleClick"
+      :donateLink="donateLink"
+      :setVideoRef="setVideoRef"
+    />
     <Footer/>
   </div>
 </template>
@@ -24,7 +30,8 @@
         stories: null,
         donateLink: "",
         isLoading: true,
-        removeLoading: false
+        removeLoading: false,
+        videoRef: null
       }
     },
     methods: {
@@ -65,6 +72,18 @@
         else{
           document.body.style.overflow = "auto";
         }
+      },
+      setVideoRef(ref){
+        this.videoRef = ref;
+      },
+      setLoadStatus(){
+        setTimeout(()=>{
+          this.isLoading = false;
+          this.disableScroll(false);
+        }, 1250)
+        setTimeout(()=>{
+          this.removeLoading = true;
+        }, 1750);
       }
     },
     created(){
@@ -72,13 +91,16 @@
       this.getDonateLink();
     },
     mounted(){
-      setTimeout(()=>{
-        this.isLoading = false;
-        this.disableScroll(false);
-      }, 1500)
-      setTimeout(()=>{
-        this.removeLoading = true;
-      }, 2000)
+      if(this.$route.name == 'home'){
+          var checkVidState = setInterval(()=>{
+          if(this.videoRef && this.videoRef.readyState >= 3){
+              this.setLoadStatus();
+              clearInterval(checkVidState);
+          }                   
+        },500);
+      }else{
+        this.setLoadStatus();
+      }
     }
   }
 </script>
@@ -226,6 +248,7 @@ button{
   cursor: pointer;
   position: relative;
   line-height: 1;
+  display: inline-block;
   &:visited{
     color: $primary;
   }
@@ -233,7 +256,7 @@ button{
     content: '';
     position: absolute;
     background: $primary;
-    bottom: 0.1rem;
+    bottom: 0.05rem;
     right: 0;
     height: 1px;
     width: 100%;

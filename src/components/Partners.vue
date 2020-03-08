@@ -34,24 +34,27 @@ export default {
     padding-bottom: 24vh;
   }
   .partners-directory{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 60%;
+    display: grid;
+    margin: auto;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+    row-gap: 40px;
+    justify-items: center;
+    align-items: center;
   }
   .partners-item{
     cursor: pointer;
-    margin: 0% 16px;
     position: relative;
     border-radius: 50%;
     box-sizing: border-box;
     overflow: hidden;
-    width: 12vw;
-    height: 12vw;
+    width: 152px;
+    height: 152px;
+    padding: 16px;
     -webkit-box-shadow: 0px 5px 20px 0px rgba($text,0.075);
     -moz-box-shadow: 0px 5px 20px 0px rgba($text,0.075);
     box-shadow: 0px 5px 20px 0px rgba($text,0.075);
-    padding: 12px;
     &:hover{
       -webkit-box-shadow: 0px 5px 20px 0px rgba($text,0.15);
       -moz-box-shadow: 0px 5px 20px 0px rgba($text,0.15);

@@ -3,6 +3,7 @@
     <div class="background">
       <div class="overlay"/>
       <video 
+        ref="video"
         v-if="fields.landing_video"
         autoPlay muted loop playsInline
         :src="fields.landing_video"
@@ -31,7 +32,16 @@ export default {
   props: {
     fields: Object,
     handleClick: Function,
-    donateLink: String
+    donateLink: String,
+    setVideoRef: Function
+  },
+  mounted(){
+    var setRef = setInterval(()=>{
+        if(this.$refs["video"]){
+            this.setVideoRef(this.$refs["video"]);
+            clearInterval(setRef);
+        }                   
+    },500);
   }
 }
 </script>

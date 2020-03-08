@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Landing :fields="landingFields" :handleClick="handleClick" :donateLink="donateLink"/>
+    <Landing :fields="landingFields" :handleClick="handleClick" :donateLink="donateLink" :setVideoRef="setVideoRef"/>
     <Statement :fields="statementFields"/>
     <PageDivider :imageUrl="homeFields.dividerOne"/>
     <How :fields="howFields" />
@@ -42,7 +42,8 @@ export default {
   props: {
     handleClick: Function,
     stories: Array,
-    donateLink: String
+    donateLink: String,
+    setVideoRef: Function
   },
   data() {
     return{
