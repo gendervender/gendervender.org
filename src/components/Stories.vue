@@ -1,5 +1,5 @@
 <template>
-  <div id="stories" class="home-block">
+  <div class="home-block" id="stories">
     <div class="container">
         <prismic-rich-text class="title" v-if="fields.title" :field="fields.title"/>
         <prismic-rich-text class="text desc" v-if="fields.description" :field="fields.description"/>

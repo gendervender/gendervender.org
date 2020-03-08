@@ -1,5 +1,5 @@
 <template>
-  <div id="footer">
+  <div id="footer" v-if="show">
     <div class="background" :style="{ 'background-image': `url(${fields.footer_image})` }"/>
     <div class="container">
         <div class="footer-block">
@@ -29,8 +29,18 @@
 <script>
 export default {
   name: 'Footer',
+  watch:{
+    '$route' (to, from){
+      this.show = false;
+      console.log(this.show)
+      setTimeout(() => {
+        this.show = true
+      }, 1000)
+    }
+  },
   data() {
     return{
+        show: false,
         fields: {
             footer_image: null,
             contact_title: null,
@@ -57,6 +67,11 @@ export default {
   },
   created(){
     this.getContent();
+  },
+  mounted(){
+    setTimeout(() => {
+      this.hide = true
+    }, 1000)
   }
 }
 </script>

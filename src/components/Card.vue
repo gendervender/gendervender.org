@@ -83,7 +83,7 @@ export default {
                 color: white;
                 font-weight: 500;
                 font-size: 1.2rem;
-                margin-top: 25%;
+                margin-top: 10%;
                 opacity: 0;
             }
         }

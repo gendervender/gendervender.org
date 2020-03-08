@@ -1,5 +1,5 @@
 <template>
-    <section id="about">
+    <section id="about" v-if="body.length>0">
       <div class="container">
           <prismic-rich-text v-if="title" :field="title"/>
           <prismic-rich-text class="text" v-if="description" :field="description"/>

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <section id="home" v-if="stories.length > 0">
     <Landing :fields="landingFields" :handleClick="handleClick" :donateLink="donateLink" :setVideoRef="setVideoRef"/>
     <Statement :fields="statementFields"/>
     <PageDivider :imageUrl="homeFields.dividerOne"/>
@@ -7,9 +7,12 @@
     <Stories :fields="storiesFields" :stories="stories"/>
     <Partners :fields="partnersFields"/>
     <PageDivider :imageUrl="homeFields.dividerTwo"/>
-  </div>
+  </section>
 </template>
 <style lang="scss">
+#home{
+  margin: 0%;
+}
 .home-block{
   padding: 12vh 0;
   .title{
@@ -113,6 +116,15 @@ export default {
   },
   created(){
     this.getContent();
+  },
+  mounted(){
+    if(this.$route.hash){
+      setTimeout(() => {
+        let selector = document.querySelector(this.$route.hash);
+        let top = selector.offsetTop;
+        window.scrollTo({top})
+      }, 200)
+    }
   }
 }
 </script>

@@ -1,5 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home      from '../views/Home';
+import Contact   from '../views/Contact';
+import Stories   from '../views/Stories';
+import About     from '../views/About';
+import Team      from '../views/Team';
+import ErrorPage from '../views/Error';
 
 Vue.use(VueRouter)
 
@@ -7,32 +13,32 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../views/Home.vue')
+    component: Home
   },
   {
     path: '/contact',
     name: 'contact',
-    component: () => import('../views/Contact.vue')
+    component: Contact
   },
   {
     path: '/stories/:id',
     name: "stories",
-    component: () => import('../views/Stories.vue')
+    component: Stories
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('../views/About.vue')
+    component: About
   },
   {
     path: '/team',
     name: 'team',
-    component: () => import('../views/Team.vue')
+    component: Team
   },
   {
     path: '*',
     name: "error",
-    component: () => import('../views/Error.vue')
+    component: ErrorPage
   }
 ]
 
@@ -41,11 +47,6 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
   scrollBehavior (to, from, savedPosition) {
-    if (to.hash) {
-      let selector = document.querySelector(to.hash);
-      let top = selector.offsetTop
-      return {x: 0, y: top}
-    }
     if (savedPosition) {
       return savedPosition
     } else {

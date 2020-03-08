@@ -2,6 +2,7 @@
   <div id="app">
     <LoadScreen :isLoading="isLoading"/>
     <Navigation :handleClick="this.handleClick" :donateLink="donateLink" :disableScroll="disableScroll"/>
+    <transition name="fade" mode="out-in">
     <router-view 
       v-if="stories !== null"
       :stories="stories"
@@ -9,6 +10,7 @@
       :donateLink="donateLink"
       :setVideoRef="setVideoRef"
     />
+    </transition>
     <Footer/>
   </div>
 </template>
@@ -93,7 +95,7 @@
     mounted(){
       if(this.$route.name == 'home'){
           var checkVidState = setInterval(()=>{
-          if(this.videoRef && this.videoRef.readyState >= 3){
+          if(this.videoRef && this.videoRef.readyState == 4){
               this.setLoadStatus();
               clearInterval(checkVidState);
           }                   
@@ -110,6 +112,13 @@
   &:before, &:after{
     transition: inherit;
   }
+}
+.fade-enter-active, .fade-leave-active {
+    transition: all 0.6s
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
 }
 body{
   margin: 0%;
@@ -182,6 +191,7 @@ a{
 section{
   margin-top: 12vh;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 .row{
   display: flex;

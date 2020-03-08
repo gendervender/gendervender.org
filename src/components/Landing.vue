@@ -7,7 +7,6 @@
         v-if="fields.landing_video"
         autoPlay muted loop playsInline
         :src="fields.landing_video"
-        :poster="fields.landing_image"
         style="z-index: -2;"
       />
     </div>
@@ -55,7 +54,7 @@ export default {
     align-items: flex-start;
   }
   .background{
-      background-attachment: fixed;
+    background: $site-bg;
   }
   .container{
     padding-bottom: 16vh;
