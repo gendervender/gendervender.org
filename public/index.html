@@ -19,6 +19,13 @@
     <meta property="twitter:title" content="Gender Vender">
     <meta property="twitter:description" content="Gender Vender is a vending machine pop-up. Our mission is to raise awareness on supporting local businesses run by women in the greater Seattle area, sparking dialogue on gender inequality, and enabling change.">
     <meta property="twitter:image" content="https://gendervender.org/metaimage.jpg">
+
+    <script>
+      window.prismic = {
+        endpoint: `https://${process.env.VUE_APP_PRISMIC_ENDPOINT}.prismic.io/api/v2`
+      };
+    </script>
+    <script src="https://static.cdn.prismic.io/prismic.min.js"></script>
     <title>Gender Vender</title>
   </head>
   <body>
@@ -27,5 +34,13 @@
     </noscript>
     <div id="app">
     </div>
+    <!-- built files will be auto injected -->
+    <form name="contact" method="POST" data-netlify="true" hidden> 
+      <input type="text" name="firstName">
+      <input type="text" name="lastName">
+      <input type="email" name="email">
+      <textarea name="message"></textarea>
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
