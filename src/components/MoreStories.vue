@@ -32,6 +32,9 @@
         @include mobile{
             grid-template-columns: 1fr;
         }
+        @include tablet{
+            grid-template-columns: 1fr 1fr;
+        }
     }
 </style>
 

@@ -32,7 +32,6 @@ export default {
   watch:{
     '$route' (to, from){
       this.show = false;
-      console.log(this.show)
       setTimeout(() => {
         this.show = true
       }, 1000)
@@ -70,7 +69,7 @@ export default {
   },
   mounted(){
     setTimeout(() => {
-      this.hide = true
+      this.show = true
     }, 1000)
   }
 }
@@ -109,6 +108,16 @@ export default {
         }
     }
     @include mobile{
+      #footer{
+        background-color: white;
+        .background{
+          z-index: 0;
+          background-size: 130%;
+          background-position: 0vw 50%;
+        }
+      }
+    }
+    @include tablet{
       #footer{
         background-color: white;
         .background{

@@ -83,12 +83,18 @@ export default {
   }
   @include mobile{
     #landing{
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    justify-content: center;
     }
-    .description{
+    .container{
+      padding: 0;
+    }
+    .mainTitle, .description{
       width: 100%;
+    }
+  }
+  @include tablet{
+    .mainTitle, .description{
+      width: 60%;
     }
   }
 </style>

@@ -106,4 +106,15 @@ export default {
             flex-direction: column!important;
         }
     }
+    @include tablet{
+        .how-block{
+             .how-text,.how-image{
+                 width: 100%;
+             }
+             .how-image{
+                 height: 48vh;
+             }
+            flex-direction: column!important;
+        }
+    }
 </style>

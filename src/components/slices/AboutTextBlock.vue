@@ -21,6 +21,13 @@
                 margin-bottom: 12px;
             }
         }
+        @include tablet{
+            flex-direction: column;
+            padding: 0;
+            .header{
+                margin-bottom: 12px;
+            }
+        }
     }
 </style>
 <script>

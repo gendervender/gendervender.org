@@ -38,10 +38,20 @@ export default {
     display: grid;
     margin: auto;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 24px;
-    row-gap: 40px;
+    grid-auto-rows: 1fr;
     justify-items: center;
     align-items: center;
+    &:before{
+      content: '';
+      width: 0;
+      padding-bottom: 100%;
+      grid-row: 1 / 1;
+      grid-column: 1 / 1;
+    }
+  }
+  .partners-directory > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
   }
   .partners-item{
     cursor: pointer;
@@ -49,8 +59,9 @@ export default {
     border-radius: 50%;
     box-sizing: border-box;
     overflow: hidden;
-    width: 152px;
-    height: 152px;
+    position: relative;
+    width: 75%;
+    height: 75%;
     padding: 16px;
     -webkit-box-shadow: 0px 5px 20px 0px rgba($text,0.075);
     -moz-box-shadow: 0px 5px 20px 0px rgba($text,0.075);
@@ -87,10 +98,36 @@ export default {
     }
   }
   @include mobile{
+    .partners-directory{
+      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+    }
     .partners-item{
-      width: 100px;
-      height: 100px;
-      margin: 0px 12px 20px 12px;
+      width: 80%;
+      height: 76%;
+      &:hover{
+        .overlay{
+          opacity: 0;
+        }
+        h1{
+          opacity: 0;
+        }
+      }
+    }
+  }
+  @include tablet{
+    .partners-directory{
+      width: 100%;
+    }
+    .partners-item{
+      &:hover{
+        .overlay{
+          opacity: 0;
+        }
+        h1{
+          opacity: 0;
+        }
+      }
     }
   }
 </style>

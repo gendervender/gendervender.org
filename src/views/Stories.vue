@@ -90,15 +90,41 @@
         .content{
             margin: 12vh 0;
             h1{
-                font-size: 24px;
-                margin-bottom: 4px;
+                font-size: 22px;
+                width: 60%;
             }
+        }
+        .logo{
+            width: 28%;
         }
         .banner{
             height: 40vh;
+            .background{
+                background-attachment: unset;
+            }
         }
         .content .container{
             width: 88%;
+        }
+    }
+    @include tablet{
+        .content{
+            h1{
+                font-size: 1.6rem;
+                width: 60%;
+            }
+            h4{
+                font-size: 1.2rem;
+            }
+        }
+        .banner{
+            height: 50vh;
+        }
+        .logo{
+            width: 20%;
+        }
+        .content .container{
+            width: 90%;
         }
     }
 </style>

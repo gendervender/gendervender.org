@@ -13,6 +13,18 @@
             font-size: 2rem;
         }
     }
+    @include mobile{
+        q{
+            font-size: 1.4rem;
+            line-height: 1.8;
+        }
+    }
+    @include tablet{
+        q{
+            font-size: 1.4rem;
+            line-height: 1.8;
+        }
+    }
 </style>
 <script>
 export default {

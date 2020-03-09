@@ -53,6 +53,14 @@
         grid-template-columns: 1fr;
       }
     }
+    @include tablet{
+      .text{
+        width: 100%;
+      }
+      .members-container{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   }
 </style>
 <script>

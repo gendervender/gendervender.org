@@ -20,6 +20,9 @@
         width: 100%!important;
         padding-bottom: 56.25%;
     }
+    @include tablet{
+        padding-bottom: 56.25%;
+    }
 }
 </style>
 <script>

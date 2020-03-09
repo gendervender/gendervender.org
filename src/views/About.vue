@@ -47,6 +47,12 @@
         margin: 0;
       }
     }
+    @include tablet{
+     .text{
+        width: 100%;
+        margin: 0;
+      }
+    }
   }
 </style>
 <script>

@@ -53,6 +53,7 @@
         -webkit-transform: translateZ(0);
         z-index: 5;
         left: 0;
+        bottom: 0;
         box-sizing: border-box;
         padding: 40px 0;
         transition: all 0.4s;

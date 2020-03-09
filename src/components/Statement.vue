@@ -44,4 +44,9 @@ export default {
       }
     }
   }
+  @include tablet{
+    .title{
+      padding: 0 8vw;
+    }
+  }
 </style>

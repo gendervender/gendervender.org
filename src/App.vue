@@ -164,6 +164,9 @@ h6{font-size: 1.15rem; font-weight: 400};
   }
   p{
     margin: 0 0 1.4rem 0;
+    @include tablet{
+      margin: 0 0 2rem 0;
+    }
   }
   ul, ol{
     list-style: none;
@@ -257,7 +260,7 @@ button{
   text-decoration: none;
   cursor: pointer;
   position: relative;
-  line-height: 1;
+  line-height: inherit;
   display: inline-block;
   &:visited{
     color: $primary;
@@ -295,6 +298,12 @@ button{
   @include desktop{
     width: 86em;
   }
+  @include mobile{
+    width: 88%;
+  }
+  @include tablet{
+    width: 90%;
+  }
 }
 .background{
   position: absolute;
@@ -330,6 +339,15 @@ button{
   h5{font-size: 16px};
   h6{font-size: 16px};
 }
+@include tablet{
+  h1{font-size: 2rem};
+  h2{font-size: 1.8rem};
+  h3{font-size: 1.6rem};
+  h4{font-size: 1.4rem};
+  h5{font-size: 1rem};
+  h6{font-size: 1rem};
+}
+
 @include desktop{
   h1{font-size: 3.2rem};
   h2{font-size: 2.2rem};

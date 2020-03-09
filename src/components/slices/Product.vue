@@ -70,6 +70,19 @@
             }
         }
     }
+    @include tablet{
+        .product{
+            width: 90%;
+            flex-direction: column;
+            .product-left, .product-right{
+                flex: 1;
+                padding: 0;
+            }
+            .product-right{
+                margin-top: 1.2rem;
+            }
+        }
+    }
 </style>
 <script>
 export default {

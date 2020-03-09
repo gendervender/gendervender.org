@@ -131,6 +131,46 @@ export default {
         .card .links a img{
             width: 24px
         }
+        .top{
+            height: 28vh!important;
+        }
+        .card-bottom-link{
+            height: 34vh;
+        }
+        .card-bottom{
+            height: 22vh;
+        }
+        .card{
+            .top{
+                .overlay{
+                    opacity: 0!important;
+                }
+                h1{
+                    opacity: 0!important;
+                }
+            }
+        }
+    }
+    @include tablet{
+        .top{
+            height: 28vh!important;
+        }
+        .card-bottom-link{
+            height: 40vh;
+        }
+        .card-bottom{
+            height: 22vh;
+        }
+        .card{
+            .top{
+                .overlay{
+                    opacity: 0!important;
+                }
+                h1{
+                    opacity: 0!important;
+                }
+            }
+        }
     }
     @include desktop{
         .top{

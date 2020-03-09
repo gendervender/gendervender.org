@@ -117,8 +117,8 @@
         }
       },
       getImgUrl(url) {  
-        var images = require.context('../assets/', false, /\.svg$/)
-        return images('./icon-' + url + ".svg")
+        var images = require.context('../assets/', false, /\.svg$/);
+        return images('./icon-' + url + ".svg");
       },
       handleScroll(e){
         if(this.$route.name == 'home'){
@@ -174,8 +174,8 @@
   left: 0;
   -webkit-transform: translateZ(0);
   position: fixed;
-  width: 100%;
   height: 12vh;
+  width: 100%;
   #nav-left, #nav-right{
     flex: 1;
   }
