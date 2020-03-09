@@ -4,6 +4,7 @@
     <Navigation :handleClick="this.handleClick" :donateLink="donateLink" :disableScroll="disableScroll"/>
     <transition name="fade" mode="out-in">
     <router-view 
+      :key="$route.path"
       v-if="stories !== null"
       :stories="stories"
       :handleClick="this.handleClick"
@@ -171,7 +172,7 @@ h6{font-size: 1.15rem; font-weight: 400};
   ul, ol{
     list-style: none;
     li{
-      margin-bottom: 4px;
+      margin-bottom: 0.4rem;
     }
   }
 }
@@ -260,7 +261,7 @@ button{
   text-decoration: none;
   cursor: pointer;
   position: relative;
-  line-height: inherit;
+  line-height: 1.05;
   display: inline-block;
   &:visited{
     color: $primary;

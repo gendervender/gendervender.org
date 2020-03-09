@@ -34,7 +34,7 @@ export default {
       this.show = false;
       setTimeout(() => {
         this.show = true
-      }, 1000)
+      }, 2000)
     }
   },
   data() {
@@ -70,7 +70,7 @@ export default {
   mounted(){
     setTimeout(() => {
       this.show = true
-    }, 1000)
+    }, 2000)
   }
 }
 </script>

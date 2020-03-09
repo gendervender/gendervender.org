@@ -2,7 +2,7 @@
   <div id="statement" class="center">
     <prismic-rich-text class="title" v-if="fields.mission" :field="fields.mission"/>
     <div>
-      <router-link class="underline" to="/">Learn more</router-link>
+      <router-link class="underline" to="/about">Learn more</router-link>
     </div>
   </div>
 </template>

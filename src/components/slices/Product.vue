@@ -28,7 +28,6 @@
     .product{
         display: flex;
         flex-direction: row;
-        align-items: center;
         width: 50%;
         .product-left{
             img{
@@ -39,13 +38,13 @@
         .product-right{
             flex: 1.2;
             box-sizing: border-box;
-            padding: 0 52px;
+            padding-left: 40px;
             display: flex;
             align-items: flex-start;
             flex-direction: column;
             justify-content: center;
             .text{
-                margin-top: 0.4rem;
+                margin: 0.4rem 0;
             }
             .button{
                 display: inline-block;

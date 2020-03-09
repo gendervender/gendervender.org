@@ -122,8 +122,8 @@ export default {
       setTimeout(() => {
         let selector = document.querySelector(this.$route.hash);
         let top = selector.offsetTop;
-        window.scrollTo({top})
-      }, 200)
+        window.scrollTo({top, behavior: 'smooth'})
+      }, 500)
     }
   }
 }

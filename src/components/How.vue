@@ -80,6 +80,9 @@ export default {
                 }
             }
             .block-desc{
+                p{
+                margin-bottom: 1rem;
+                }
                font-size: 0.92rem;
             }
         }
