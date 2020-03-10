@@ -97,11 +97,12 @@ export default {
     }
     @include mobile{
         .how-block{
+            min-height: 50vh;
              .how-text,.how-image{
                  width: 100%;
              }
              .how-text{
-                 padding: 20px;
+                 padding: 24px;
              }
              .how-image{
                  height: 32vh;

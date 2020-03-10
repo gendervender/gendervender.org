@@ -186,5 +186,9 @@ export default {
         @include mobile{
           width: 100%;
         }
+
+        @include tablet{
+          width: 100%;
+        }
     }
 </style>

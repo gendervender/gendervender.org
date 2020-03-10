@@ -64,12 +64,12 @@ export default {
             height: 50vh;
             background-size: cover;
             background-position: center;
-            margin-bottom: 12vh;
+            margin-bottom: 8vh;
         }
         @include mobile{
             .banner{
                 height: 25vh;
-                margin-bottom: 12vh;
+                margin-bottom: 4vh;
             }
         }
     }

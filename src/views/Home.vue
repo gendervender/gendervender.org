@@ -21,6 +21,9 @@
   .desc{
       margin-bottom: 3rem;
   }
+  @include mobile{
+    padding: 8vh 0;
+  }
 }
 </style>
 
@@ -31,6 +34,7 @@ import PageDivider   from '@/components/PageDivider.vue';
 import How           from '@/components/How.vue';
 import Stories       from '@/components/Stories.vue';
 import Partners      from '@/components/Partners.vue';
+
 export default {
   name: 'home',
   components: {
