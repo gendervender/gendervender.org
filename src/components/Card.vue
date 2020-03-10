@@ -138,10 +138,11 @@ export default {
             height: 34vh;
         }
         .card-bottom{
-            height: 22vh;
+            height: 20vh;
         }
         .card{
             .top{
+                height: 32vh!important;
                 .overlay{
                     opacity: 0!important;
                 }

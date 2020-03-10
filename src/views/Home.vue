@@ -21,6 +21,9 @@
   .desc{
       margin-bottom: 3rem;
   }
+  @include mobile{
+    padding: 8vh 0;
+  }
 }
 </style>
 

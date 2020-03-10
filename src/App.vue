@@ -171,6 +171,7 @@ h6{font-size: 1.15rem; font-weight: 400};
   }
   ul, ol{
     list-style: none;
+    padding-left: 1rem;
     li{
       margin-bottom: 0.4rem;
     }
