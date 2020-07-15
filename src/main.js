@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import PrismicVue from 'prismic-vue'
-import linkResolver from './prismic/link-resolver'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import PrismicVue from '@prismicio/vue';
+import linkResolver from './prismic/link-resolver';
 
 Vue.config.productionTip = false;
 

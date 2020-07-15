@@ -7,4 +7,4 @@ Gender Vender is a pop-up vending machine dedicated to educating others and upli
 
 [Phase 1 website](https://gendervender2019.netlify.com/)
 
-[Phase 2 website (in progress)](https://gendervender.org/)
+[Phase 2 website](https://gendervender.org/)
