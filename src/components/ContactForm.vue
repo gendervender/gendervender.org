@@ -3,6 +3,7 @@
     class="form"
     name="contact"
     method="POST"
+    data-netlify-recaptcha="true"
     data-netlify="true"
     @submit.prevent="handleForm"
     ref="form"
@@ -37,6 +38,12 @@
         name="message"
       />
     </div>
+    <vue-recaptcha v-if="recaptchaKey"
+      @verify="onVerify"
+      :loadRecaptchaScript="true"
+      :sitekey="recaptchaKey"
+      class="field"
+    />
     <button
       type="submit"
       class="button"
@@ -49,16 +56,19 @@
 
 <script>
 import axios from 'axios';
-
+import VueRecaptcha from 'vue-recaptcha';
 export default {
   name: 'ContactForm',
+  components: { VueRecaptcha },
   data() {
     return {
+      recaptchaKey: null,
+      verified: false,
       form: {
         firstName: '',
         lastName: '',
         email: '',
-        message: ''
+        message: '',
       },
       status: {
         success: false,
@@ -66,7 +76,13 @@ export default {
       }
     }
   },
+  created: function() {
+      this.recaptchaKey = process.env.VUE_APP_SITE_RECAPTCHA_KEY;
+  },
   methods: {
+    onVerify(){
+      this.verified = true;
+    },
     encode(data) {
       return Object.keys(data)
       .map(
@@ -91,6 +107,8 @@ export default {
             return{success: false, msg: "Please enter a valid email address."}
         }else if(form.message == ""){
             return{success: false, msg: "Please enter a message."}
+        }else if(!this.verified){
+          return {success: false, msg: "Please verify yourself with recaptcha"}
         }else{
             return{success: true, msg: ""}
         }
@@ -174,6 +192,7 @@ export default {
             border-radius: 5px;
             background-color: white;
             border: 2px solid transparent;
+            font-family: inherit;
             &:focus{
                 border-color: $secondary;
             }

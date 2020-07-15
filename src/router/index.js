@@ -5,6 +5,7 @@ import Contact   from '../views/Contact';
 import Stories   from '../views/Stories';
 import About     from '../views/About';
 import Team      from '../views/Team';
+import Order     from '../views/Order';
 import ErrorPage from '../views/Error';
 
 Vue.use(VueRouter)
@@ -34,6 +35,11 @@ const routes = [
     path: '/team',
     name: 'team',
     component: Team
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: Order
   },
   {
     path: '*',

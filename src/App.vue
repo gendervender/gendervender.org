@@ -291,6 +291,84 @@ button{
       display: none;
     }
   }
+  @include mobile{
+    text-decoration: underline;
+    &:before{
+      display: none;
+    }
+  }
+}
+.container{
+  box-sizing: border-box;
+  margin: 0% auto;
+  position: relative;
+  width: 64em;
+  @include desktop{
+    width: 86em;
+  }
+  @include mobile{
+    width: 88%;
+  }
+  @include tablet{
+    width: 90%;
+  }
+}
+.background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+};
+.overlay{
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $text;
+  opacity: 0.6;
+}
+@include mobile{
+  h1{font-size: 32px};
+  h2{font-size: 24px};
+  h3{font-size: 20px};
+  h4{font-size: 18px};
+  h5{font-size: 16px};
+  h6{font-size: 16px};
+}
+@include tablet{
+  h1{font-size: 2rem};
+  h2{font-size: 1.8rem};
+  h3{font-size: 1.6rem};
+  h4{font-size: 1.4rem};
+  h5{font-size: 1rem};
+  h6{font-size: 1rem};
+}
+@include desktop{
+  h1{font-size: 3.2rem};
+  h2{font-size: 2.2rem};
+  h3{font-size: 2rem};
+  h4{font-size: 1.75rem};
+  h5{font-size: 1.25rem};
+  h6{font-size: 1.25rem};
+  p, a, b, span, button, li{
+    line-height: 2;
+    font-size: 1.1rem;
+  }
+  .button{
+    padding: 13px 20px 12px 20px;
+  }
 }
 .container{
   box-sizing: border-box;
