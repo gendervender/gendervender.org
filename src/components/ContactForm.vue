@@ -39,6 +39,7 @@
       />
     </div>
     <vue-recaptcha v-if="recaptchaKey"
+      type="v2 Checkbox"
       @verify="onVerify"
       :loadRecaptchaScript="true"
       :sitekey="recaptchaKey"
