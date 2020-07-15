@@ -21,7 +21,6 @@
     "@prismicio/vue": "^2.0.7",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
-    "babel-plugin-transform-remove-console": "^6.9.4",
     "install": "^0.13.0",
     "npm": "^6.14.6",
     "vue-template-compiler": "^2.6.10"
