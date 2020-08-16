@@ -92,13 +92,13 @@ export default {
         }
         .footer-block{
             .title{
-              font-size: 1.1rem;
+              font-size: $font-size-s;
               font-weight: 500;
             }
             flex-direction: column;
             display: flex;
             a{
-                font-size: 1.6rem;
+                font-size: $font-size-m;
                 align-self: flex-start;
                 margin-top: 16px;
             }

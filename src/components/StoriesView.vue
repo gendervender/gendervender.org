@@ -9,12 +9,9 @@
                 <h4>{{data.business_name}}</h4>
                 <h4>{{data.location}}</h4>
                 <div class="links">
-                    <a
-                        class="underline"
-                        v-for="link in data.links"
-                        :href="link.link.url"
-                        target="_blank"
-                    >{{link.link_name}}</a>
+                    <prismic-link class="underline" v-for="item in data.links" :field="item.link">
+                        {{item.link_name}}
+                    </prismic-link>
                 </div>
                 <img :src="data.logo.url" :alt="data.uid + ' logo'" class="logo" v-if="data.logo.url"/>
             </div>

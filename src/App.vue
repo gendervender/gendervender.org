@@ -96,9 +96,12 @@
 }
 body{
   margin: 0%;
-  background-color: $site-bg;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
+  background-color: $site-bg;
+}
+body.home{
+  background-color: white;
 }
 ::selection {
   background: $tertiary;
@@ -116,12 +119,12 @@ h1,h2,h3,h4,h5,h6{
   line-height: 1.6;
   letter-spacing: 0.015rem;
 }
-h1{font-size: 2.8rem};
-h2{font-size: 2rem};
-h3{font-size: 1.5rem};
-h4{font-size: 1.25rem};
-h5{font-size: 1.15rem};
-h6{font-size: 1.15rem; font-weight: 400};
+h1{font-size: $font-size-xxl};
+h2{font-size: $font-size-xl};
+h3{font-size: $font-size-l};
+h4{font-size: $font-size-m};
+h5{font-size: $font-size-s};
+h6{font-size: $font-size-s; font-weight: 400};
 .text{
   *{
     color: inherit;
@@ -152,7 +155,7 @@ h6{font-size: 1.15rem; font-weight: 400};
 }
 p, a, b, span, button{
   line-height: 1.8;
-  font-size: 0.96rem;
+  font-size: $font-size-xs;
   font-weight: 400;
   letter-spacing: 0.01rem;
 }
@@ -181,11 +184,13 @@ section{
   overflow: hidden;
 }
 .button{
-  padding: 9px 20px 8px 20px;
+  padding: 12px 20px;
   position: relative;
   background-color: transparent;
-  border-radius: 5px;
+  border-radius: 24px;
   font-weight: 600;
+  text-transform: uppercase;
+  font-size: $font-size-xxs;
   line-height: 1;
   text-align: center;
   color: white!important;

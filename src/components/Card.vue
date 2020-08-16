@@ -94,7 +94,7 @@ export default {
             h6{
                 margin: 4px 0;
                 font-weight: 400;
-                font-size: 0.96rem;
+                font-size: $font-size-xs;
             }
             p{
                 font-size: 0.9rem;

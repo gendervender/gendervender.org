@@ -49,11 +49,9 @@ export default {
             flex-direction: column;
         }
         .title{
-            font-size: 2.4rem;
             font-weight: 600;
         }
         .body{
-            font-size: 1.2rem;
             margin: 0px 0px 52px 0px;
         }
         .banner{

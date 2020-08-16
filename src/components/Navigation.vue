@@ -14,12 +14,11 @@
                 {{item.name}}
               </router-link>
           </template>
-          <a class="button button-secondary" 
+          <router-link class="button button-secondary" 
             :class="this.buttonClass"
-            target="_blank"
-            :href="donateLink">
-            Donate
-          </a>
+            to="order">
+            SHOP NOW
+          </router-link>
         </div>
         <div id="nav-right" v-if="windowWidth < 1200">
           <img :src="getImgUrl(showMenu ? menuIcon.close : menuIcon.open)" @click="toggleMenu"/>
@@ -35,7 +34,6 @@
     name: 'Navigation',
     props: {
       handleClick: Function,
-      donateLink: String,
       disableScroll: Function
     },
     components: {
@@ -167,9 +165,9 @@
   #nav-left, #nav-right{
     flex: 1;
   }
-  a {
+  a:not(.button) {
     font-weight: bold;
-    font-size: 0.96rem;
+    font-size: $font-size-xs;
     &:hover{
       color: $primary;
     }
