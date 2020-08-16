@@ -1,16 +1,12 @@
 <template>
   <div id="app">
-    <LoadScreen :isLoading="isLoading"/>
-    <Navigation :handleClick="this.handleClick" :donateLink="donateLink" :disableScroll="disableScroll"/>
+    <!-- <LoadScreen :isLoading="isLoading"/> -->
+    <Navigation :handleClick="this.handleClick" :disableScroll="disableScroll"/>
     <transition name="fade" mode="out-in">
-    <router-view 
-      :key="$route.path"
-      v-if="stories !== null"
-      :stories="stories"
-      :handleClick="this.handleClick"
-      :donateLink="donateLink"
-      :setVideoRef="setVideoRef"
-    />
+      <router-view 
+        :handleClick="this.handleClick"
+        :setVideoRef="setVideoRef"
+      />
     </transition>
     <Footer/>
   </div>
@@ -30,8 +26,6 @@
     },
     data() {
       return{
-        stories: null,
-        donateLink: "",
         isLoading: true,
         removeLoading: false,
         videoRef: null
@@ -49,24 +43,6 @@
             window.scrollTo({top, behavior: 'smooth' })
           }
         }
-      },
-      getContent(){ 
-        this.$prismic.client.query(
-          this.$prismic.Predicates.at('document.type', 'stories'),
-          { orderings: '[my.stories.partnership_status, my.stories.name]' }
-        ).then((res) => {
-          let parsed = res.results.map(doc => {
-            return {
-              ...doc.data,
-              uid: doc.uid
-            }
-          });
-          this.stories = parsed;
-        });
-      },
-      async getDonateLink(){
-        const content = await this.$prismic.client.getSingle('donate');
-        this.donateLink = content.data.donate_source.url;
       },
       disableScroll(status){
         if(status){
@@ -89,21 +65,18 @@
         }, 1750);
       }
     },
-    created(){
-      this.getContent();
-      this.getDonateLink();
-    },
     mounted(){
-      if(this.$route.name == 'home'){
-          var checkVidState = setInterval(()=>{
-          if(this.videoRef && this.videoRef.readyState == 4){
-              this.setLoadStatus();
-              clearInterval(checkVidState);
-          }                   
-        },500);
-      }else{
         this.setLoadStatus();
-      }
+      // if(this.$route.name == 'home'){
+      //     var checkVidState = setInterval(()=>{
+      //     if(this.videoRef && this.videoRef.readyState == 4){
+      //         this.setLoadStatus();
+      //         clearInterval(checkVidState);
+      //     }                   
+      //   },500);
+      // }else{
+      //   this.setLoadStatus();
+      // }
     }
   }
 </script>
@@ -195,6 +168,7 @@ a{
 }
 section{
   margin-top: 12vh;
+  padding: 12vh 0;
   box-sizing: border-box;
   min-height: 100vh;
 }
@@ -256,46 +230,26 @@ button{
     letter-spacing: 0.08rem;
 }
 .underline{
+  text-decoration: none;
+  background-image: linear-gradient($primary, $primary);
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
   color: $primary;
   font-weight: 600;
   font-size: 100%;
-  text-decoration: none;
   cursor: pointer;
-  position: relative;
   line-height: 1.05;
-  display: inline-block;
   &:visited{
     color: $primary;
   }
-  &:before{
-    content: '';
-    position: absolute;
-    background: $primary;
-    bottom: 0.05rem;
-    right: 0;
-    height: 1px;
-    width: 100%;
-  }
-  &:before{
-    z-index: 1;
-  }
-  &:hover{
+  &:hover, &:focus{
     color: $primary-hover;
-    &:before{
-      width: 0%;
-    }
+    background-size: 0% 2px;
   }
   @include mobile{
-    text-decoration: underline;
-    &:before{
-      display: none;
-    }
-  }
-  @include mobile{
-    text-decoration: underline;
-    &:before{
-      display: none;
-    }
+    background-size: 100% 2px!important;
+    background-image: linear-gradient($primary-hover, $primary-hover);
   }
 }
 .container{
@@ -392,6 +346,7 @@ button{
   width: 100%;
   height: 100%;
   z-index: -1;
+  background-color: $site-bg;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -409,7 +364,7 @@ button{
   top: 0;
   left: 0;
   background-color: $text;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 @include mobile{
   h1{font-size: 32px};

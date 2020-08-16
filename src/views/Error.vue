@@ -7,6 +7,8 @@
 <style lang="scss" scoped>
     #error{
         height: 88vh;
+        margin: 0;
+        padding: 0;
         flex-direction: column;
         h2{
             margin-bottom: 2rem;

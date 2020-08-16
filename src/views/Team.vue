@@ -31,7 +31,6 @@
 </template>
 <style lang="scss" scoped>
   #team{
-    padding: 16vh 0;
     .members-container{
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -79,18 +78,15 @@ export default {
     }
   },
   methods: {
-    async getContent(){ 
-       const content = await this.$prismic.client.getSingle('team');
-       this.assignContent(content.data);
-    },
-    assignContent(data){
+    assignContent(){
+      const data = this.$store.state.teamPage;
       this.title = data.page_title;
       this.description = data.page_description;
       this.members = data.members;
     }
   },
   created(){
-    this.getContent();
+    this.assignContent();
   }
 }
 </script>

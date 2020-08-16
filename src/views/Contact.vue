@@ -26,11 +26,8 @@ export default {
     }
   },
   methods: {
-    async getContent(){ 
-       const content = await this.$prismic.client.getSingle('contact');
-       this.assignContent(content.data);
-    },
-    assignContent(data){
+    assignContent(){
+       const data = this.$store.state.contactPage;
        this.fields = {
         contact_image: data.contact_image.url,
         contact_title: data.page_title,
@@ -39,7 +36,7 @@ export default {
     }
   },
   created(){
-    this.getContent();
+    this.assignContent();
   }
 }
 </script>

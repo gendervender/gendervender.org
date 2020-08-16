@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home      from '../views/Home';
-import Contact   from '../views/Contact';
-import Stories   from '../views/Stories';
-import About     from '../views/About';
-import Team      from '../views/Team';
-import Order     from '../views/Order';
-import ErrorPage from '../views/Error';
+import Home        from '../views/Home';
+import Contact     from '../views/Contact';
+import Stories     from '../views/Stories';
+import About       from '../views/About';
+import Team        from '../views/Team';
+import Order       from '../views/Order';
+import ErrorPage   from '../views/Error';
 
 Vue.use(VueRouter)
 
@@ -22,9 +22,15 @@ const routes = [
     component: Contact
   },
   {
+    path: '/stories',
+    name: 'stories',
+    component: Stories
+  },
+  {
     path: '/stories/:id',
     name: "stories",
-    component: Stories
+    component: Stories,
+    props: true
   },
   {
     path: '/about',

@@ -2,7 +2,7 @@
     <section id="about" v-if="body.length>0">
       <div class="container">
           <prismic-rich-text v-if="title" :field="title"/>
-          <prismic-rich-text class="text" v-if="description" :field="description"/>
+          <prismic-rich-text class="description" v-if="description" :field="description"/>
       </div>
       <div class="banner">
         <div class="background" :style="{ 'background-image': `url(${bannerURL})` }" />
@@ -20,19 +20,18 @@
 </template>
 <style lang="scss">
   #about{
-    padding: 16vh 0;
     .banner{
         width: 100%;
         height: 88vh;
         margin: 10vh 0;
         position: relative;
     }
+    .description{
+      width: 60%
+    }
     .text{
       width: 60%;
       margin: 0rem 0 2rem 0;
-      h6{
-        margin-top: 1.2rem;
-      }
     }
     .about-block{
       margin: 32px 0;
@@ -82,11 +81,8 @@ export default {
     }
   },
   methods: {
-    async getContent(){ 
-       const content = await this.$prismic.client.getSingle('about');
-       this.assignContent(content.data);
-    },
-    assignContent(data){
+    assignContent(){
+      const data = this.$store.state.aboutPage;
       this.title = data.page_title;
       this.description = data.page_description;
       this.bannerURL = data.banner.url;
@@ -94,7 +90,7 @@ export default {
     }
   },
   created(){
-    this.getContent();
+    this.assignContent();
   }
 }
 </script>

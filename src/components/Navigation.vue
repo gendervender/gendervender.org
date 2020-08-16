@@ -7,15 +7,8 @@
         </div>
         <div id="nav-right" v-if="windowWidth >= 1200">
           <template v-for="item in navItems">
-              <a 
-                v-if="item.routerLink == false && !item.mobile"
-                @click="handleClick"
-                :data-id="item.ref"
-              >
-                {{item.name}}
-              </a>
               <router-link
-                v-else-if="item.routerLink == true && !item.mobile"
+                v-if="!item.mobile"
                 :to="item.ref"
               >
                 {{item.name}}
@@ -65,34 +58,29 @@
         buttonClass: "button-light",
         menuIcon: {
           open: "menu-light",
-          close: "menu-light-close"
+          close: "menu-close-light"
         },
         showMenu: false,
         navItems: [
           {
+            ref: "/",
+            name: "Home",
+          },
+          {
             ref: "/about",
             name: "About",
-            routerLink: true
           },
           {
-            ref: "how",
-            name: "How It Works",
-            routerLink: false
-          },
-          {
-            ref: "stories",
+            ref: "/stories",
             name: "Stories",
-            routerLink: false
           },
           {
             ref: "/team",
             name: "Team",
-            routerLink: true
           },
           {
             ref: "/contact",
             name: "Contact",
-            routerLink: true,
             mobile: true
           }
         ]
@@ -117,7 +105,7 @@
         }
       },
       getImgUrl(url) {  
-        var images = require.context('../assets/', false, /\.svg$/);
+        var images = require.context('@/assets/', false, /\.svg$/);
         return images('./icon-' + url + ".svg");
       },
       handleScroll(e){

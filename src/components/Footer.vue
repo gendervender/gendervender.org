@@ -50,11 +50,8 @@ export default {
     }
   },
   methods: {
-    async getContent(){ 
-       const content = await this.$prismic.client.getSingle('footer');
-       this.assignContent(content.data);
-    },
-    assignContent(data){
+    assignContent(){
+       const data = this.$store.state.footer;
        this.fields = {
         footer_image: data.footer_image.url,
         contact_title: data.contact_title,
@@ -65,7 +62,7 @@ export default {
     }
   },
   created(){
-    this.getContent();
+    this.assignContent();
   },
   mounted(){
     setTimeout(() => {
@@ -114,6 +111,7 @@ export default {
           z-index: 0;
           background-size: 130%;
           background-position: 0vw 50%;
+          background-color: white;
         }
       }
     }

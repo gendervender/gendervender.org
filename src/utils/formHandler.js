@@ -15,9 +15,9 @@ export default {
         handleForm(){
             const form = this.form;
             const validation = this.validate(form);
-            if (validation.success){
-                this.submitForm();
-            }
+            // if (validation.success){
+            //     this.submitForm();
+            // }
             this.status.msg = validation.msg;
         },
         validate(form){
@@ -35,7 +35,7 @@ export default {
             }
             return {success: true, msg: ""};
         },
-
+        
         validateEmail(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
