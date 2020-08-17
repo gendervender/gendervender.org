@@ -18,9 +18,10 @@ const DOC_TYPES = {
   aboutPage: "about",
   teamPage: "team",
   contactPage: "contact",
+  shopPage: "shop",
   footer: "footer",
   products: "products",
-  stories: "stories"
+  stories: "stories",
 }
 
 Vue.prototype.$prismic.client.query('').then(function(response) {

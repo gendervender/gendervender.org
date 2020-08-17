@@ -83,10 +83,7 @@ export default {
   methods: {
     assignContent(){
       const data = this.$store.state.aboutPage;
-      this.title = data.page_title;
-      this.description = data.page_description;
-      this.bannerURL = data.banner.url;
-      this.body = data.body;
+      Object.assign(this, data);
     }
   },
   created(){

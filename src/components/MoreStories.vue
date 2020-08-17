@@ -20,7 +20,7 @@
 
 <style lang="scss" scoped>
     .more-stories{
-        border-top: 1px rgba($text, 0.1) solid;
+        border-top: 1px $border solid;
         padding: 10vh 0 20vh 0;
     }
     .stories-grid{

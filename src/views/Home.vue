@@ -12,13 +12,18 @@
     />
     <ProductsDiscover/>
     <CTABlock
+      v-if="products_cta"
+      :content="products_cta"
+      :cta="{text: 'Shop now', href: '/shop'}"
+    />
+    <How v-bind="hiwFields" />
+    <CTABlock
       v-if="storiesCtaFields"
       :content="storiesCtaFields"
       :cta="{text: 'Learn more', href: '/stories'}"
     />
   <!--
     <Landing :fields="landingFields" :handleClick="handleClick" :donateLink="donateLink" :setVideoRef="setVideoRef"/>
-    <How :fields="howFields" />
     <Stories :fields="storiesFields" :stories="stories"/>
     <Partners :fields="partnersFields"/>
     -->
@@ -70,13 +75,14 @@ export default {
       noteFields: null,
       storiesCtaFields: null,
       hiwFields: null,
-      partnersFields: null
+      partnersFields: null,
+      products_cta: null
     }
   },
   methods: {
     assignData() {
       const data = this.$store.state.homePage;
-      const {headline, subheadline, hero_image, hero_video, hiw_cta, 
+      const {headline, subheadline, hero_image, hero_video, products_cta, 
       hiw_header, hiw_content, hiw_items, mission_content, mission_header,
       note_content, note_header, partners_content, stories_cta,
       partners_header, partners_items} = data;
@@ -84,7 +90,8 @@ export default {
       this.missionFields = {mission_header, mission_content};
       this.noteFields = {note_header, note_content};
       this.storiesCtaFields = stories_cta;
-      this.hiwFields = {hiw_header, hiw_content, hiw_items, hiw_cta}
+      this.hiwFields = {hiw_header, hiw_content, hiw_items};
+      this.products_cta = products_cta;
     }
   },
   created(){

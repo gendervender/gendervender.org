@@ -80,9 +80,7 @@ export default {
   methods: {
     assignContent(){
       const data = this.$store.state.teamPage;
-      this.title = data.page_title;
-      this.description = data.page_description;
-      this.members = data.members;
+      Object.assign(this, data);
     }
   },
   created(){

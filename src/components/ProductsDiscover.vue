@@ -3,9 +3,12 @@
     <prismic-rich-text :field="title"/>
     <prismic-rich-text :field="content"/>
     <div class="products__wrapper">
-        <div class="products__image">
+        <div class="products__info center">
             <prismic-image :field="items[selected].image_product"/>
-            <prismic-image :field="items[selected].image_partner"/>
+            <div class="products__info-text">
+                <h3>{{items[selected].business_name}}</h3>
+                <prismic-rich-text :field="items[selected].product_description" />
+            </div>
         </div>
         <div class="products__selection row center">
             <div
@@ -36,7 +39,6 @@ export default {
   },
   methods: {
       selectProduct(index){
-          console.log(index);
           this.selected = index;
       }
   },
@@ -45,7 +47,6 @@ export default {
       this.title = data.products_title;
       this.content = data.products_content;
       this.items = data.product_items;
-      console.log(this.items)
   }
 }
 </script>
@@ -72,13 +73,26 @@ export default {
   .products{
     &__wrapper{
         margin: 4% 0%;
+        width: 100%;
     }
-    &__image{
+    &__info{
+        width: 75%;
+        margin: auto;
         height: 60vh;
         img{
-            width: 50%;
+            width: 40%;
             height: 100%;
             object-fit: cover;
+        }
+        &-text{
+            height: 100%;
+            width: 60%;
+            box-sizing: border-box;
+            padding: 8%;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
         }
     }
     &__selection{
@@ -88,7 +102,7 @@ export default {
         cursor: pointer;
         width: 60px;
         height: 60px;
-        margin: 0% 16px;
+        margin: 0% 12px;
         border: 2px transparent solid;
         padding: 12px;
         span{

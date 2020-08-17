@@ -1,9 +1,9 @@
 <template>
   <section id="contact">
-        <div class="banner" :style="{ 'background-image': `url(${fields.contact_image})` }"/>
+        <div class="banner" :style="{ 'background-image': `url(${contact_image})` }"/>
         <div class="center container">
-        <prismic-rich-text class="text title" v-if="fields.contact_title" :field="fields.contact_title"/>
-        <prismic-rich-text class="text body" v-if="fields.contact_description" :field="fields.contact_description"/>
+        <prismic-rich-text class="text title" v-if="contact_title" :field="contact_title"/>
+        <prismic-rich-text class="text body" v-if="contact_description" :field="contact_description"/>
             <ContactForm />
         </div>
   </section>
@@ -18,21 +18,15 @@ export default {
   },
   data() {
     return{
-        fields: {
-            contact_image: null,
-            contact_title: null,
-            contact_description: null
-        }
+        contact_image: null,
+        contact_title: null,
+        contact_description: null
     }
   },
   methods: {
     assignContent(){
        const data = this.$store.state.contactPage;
-       this.fields = {
-        contact_image: data.contact_image.url,
-        contact_title: data.page_title,
-        contact_description: data.page_description
-       }
+        Object.assign(this, data);
     }
   },
   created(){

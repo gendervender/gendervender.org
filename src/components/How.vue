@@ -1,19 +1,18 @@
 <template>
-  <div id="how" class="home-block">
-    <div class="container">
-        <prismic-rich-text class="title" v-if="fields.title" :field="fields.title"/>
-        <prismic-rich-text class="desc" v-if="fields.description" :field="fields.description"/>
-        <div
-            v-for="(block, index) in fields.blocks"
-            :style=""
-            class="how-block card"
-        >
-            <div class="how-text">
-                <prismic-rich-text class="block-title" v-if="block.block_title" :field="block.block_title"/>
-                <prismic-rich-text class="block-desc text" v-if="block.block_description" :field="block.block_description"/>
-            </div>
-            <div class="how-image">
-                <div class="background" :style="`background-image: url(${block.block_image.url})`" />
+  <div id="hiw" class="home-block hiw">
+    <div class="container center">
+        <prismic-rich-text v-if="hiw_header" :field="hiw_header"/>
+        <prismic-rich-text v-if="hiw_content" :field="hiw_content"/>
+        <div class="hiw__wrapper">
+            <div class="hiw__block center" v-for="(item,key) in hiw_items" :key="`hiw-step-${key+1}`">
+                <div class="hiw__block-text">
+                <div class="hiw__block-text-header">
+                    <span>{{key+1}}.</span>
+                    <prismic-rich-text :field="item.header"/>
+                </div>
+                    <prismic-rich-text class="hiw__block-text-content" :field="item.content"/>
+                </div>
+                <prismic-image class="hiw__block-image" :field="item.image"/>
             </div>
         </div>
     </div>
@@ -21,104 +20,55 @@
 </template>
 <script>
 export default {
-  name: 'Landing',
+  name: 'HIW',
   props: {
-    fields: Object
+      hiw_header: Array,
+      hiw_content: Array,
+      hiw_items: Array
+  },
+  created(){
+      console.log(this.hiw_items)
   }
 }
 </script>
 
 <style lang="scss">
-    #how{
-        padding-top: 20vh;
-    }
-    .container{
-        flex-direction: column;
-    }
-    .how-block{
-        background: white;
-        min-height: 92vh;
-        width: 100%;
-        margin-bottom: 3rem;
-        display: flex;
-        flex-direction: row;
-        &:nth-of-type(even){
-         flex-direction: row-reverse;
+    .hiw{
+        &__wrapper{
+            margin-bottom: 8%;
         }
-        .how-text,.how-image{
-            position: relative;
-            width: 50%;
-        }
-        &:nth-of-type(3) .block-title{
-            &:after{
-                background: $tertiary;
-            }
-        }
-        &:nth-of-type(4) .block-title{
-            &:after{
-                background: $secondary;
-            }
-        }
-        &:nth-of-type(5) .block-title{
-            &:after{
-                background: $primary;
-            }
-        }
-        .how-text{
-            padding: 5%;
-            box-sizing: border-box;
-            .block-title{
-                margin-bottom: 1.4rem;
+        &__block{
+            display: flex;
+            flex-direction: row;
+            margin-top: 8%;
+            &-text{
+                width: 55%;
+                box-sizing: border-box;
+                padding: 0 4%;
                 position: relative;
-                display: inline-block;
-                &:after{
-                    content: '';
-                    width: 100%;
-                    height: 0.28rem;
-                    bottom: 0.1rem;
-                    position: absolute;
+                &-header{
+                    *{
+                        display: inline;
+                        line-height: 1;
+                    }
+                }
+                span{
+                    font-size: $font-size-xxl * 1.5;
+                    font-weight: 600;
+                    color: darken($site-bg, 10%);
+                    margin-right: 1rem;
+                }
+                &-content{
+                    padding-left: $font-size-xxl * 1.5 + 0.6;
                 }
             }
-            .block-desc{
-                p{
-                margin-bottom: 1rem;
-                }
-               font-size: 0.92rem;
+            &-image{
+                width: 45%;
+                object-fit: contain;
             }
-        }
-        .background{
-            z-index: 0;
-        }
-    }
-    @include desktop{
-        .how-block{
-            min-height: 72vh!important;
-        }
-    }
-    @include mobile{
-        .how-block{
-            min-height: 50vh;
-             .how-text,.how-image{
-                 width: 100%;
-             }
-             .how-text{
-                 padding: 24px;
-             }
-             .how-image{
-                 height: 32vh;
-             }
-            flex-direction: column!important;
-        }
-    }
-    @include tablet{
-        .how-block{
-             .how-text,.how-image{
-                 width: 100%;
-             }
-             .how-image{
-                 height: 48vh;
-             }
-            flex-direction: column!important;
+            &:nth-child(even){
+                flex-direction: row-reverse;
+            }
         }
     }
 </style>

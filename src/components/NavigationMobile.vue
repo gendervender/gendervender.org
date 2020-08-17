@@ -19,11 +19,12 @@
                         <h1>{{item.name}}</h1>
                     </router-link>
                 </template>
-                <a class="button" 
-                    target="_blank"
-                    :href="donateLink">
-                    <h2>Donate</h2>
-                </a>
+                <router-link class="button" 
+                    aria-role="button"
+                    :class="this.buttonClass"
+                    to="/shop">
+                    SHOP NOW
+                </router-link>
             </div>
         </div>
     </div>
@@ -65,7 +66,6 @@ export default {
     props: {
         handleClick: Function,
         navItems: Array,
-        donateLink: String,
         toggleMenu: Function,
         showMenu: Boolean
     },

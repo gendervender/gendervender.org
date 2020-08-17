@@ -15,8 +15,9 @@
               </router-link>
           </template>
           <router-link class="button button-secondary" 
+            aria-role="button"
             :class="this.buttonClass"
-            to="order">
+            to="/shop">
             SHOP NOW
           </router-link>
         </div>

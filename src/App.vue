@@ -232,7 +232,7 @@ button{
     outline: 0;
     background: none;
     font-weight: 600;
-    letter-spacing: 0.08rem;
+    letter-spacing: 0.05rem;
 }
 .underline{
   text-decoration: none;
@@ -262,6 +262,7 @@ button{
   margin: 0% auto;
   position: relative;
   width: 64em;
+  flex-direction: column;
   @include desktop{
     width: 86em;
   }
@@ -399,16 +400,20 @@ button{
     line-height: 2;
     font-size: 1.1rem;
   }
+  strong{
+    font-size: 100%;
+  }
   .button{
     padding: 13px 20px 12px 20px;
   }
 }
 .form{
-    width: 50%;
+    width: 60%;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-between;
     .form-message{
         width: 100%;
         text-align: left;
@@ -424,23 +429,23 @@ button{
     }
     .field-half{
         width: 49%;
-        &:first-child{
-            margin-right: 2%;
-        }
+    }
+    .field-third{
+        width: 23.5%;
     }
     label{
-        font-size: 0.9rem;
+        font-size: $font-size-xxs;
     }
-    input, textarea{
-        margin-top: 8px;
+    input, textarea, select{
         outline: none;
         width: 100%;
-        padding: 16px;
-        font-size: 1rem;
+        margin-top: 4px;
+        padding: 8px 12px;
+        font-size: $font-size-xs;
         box-sizing: border-box;
-        border-radius: 5px;
+        border-radius: 4px;
         background-color: white;
-        border: 2px solid transparent;
+        border: 1px solid transparent;
         font-family: inherit;
         &:focus{
             border-color: $secondary;

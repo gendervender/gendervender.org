@@ -1,23 +1,23 @@
 <template>
   <div id="footer" v-if="show">
-    <div class="background" :style="{ 'background-image': `url(${fields.footer_image})` }"/>
+    <div class="background" :style="{ 'background-image': `url(${footer_image.url})` }"/>
     <div class="container">
         <div class="footer-block">
-            <prismic-rich-text class="text title" v-if="fields.contact_title" :field="fields.contact_title"/>
+            <prismic-rich-text class="text title" v-if="contact_title" :field="contact_title"/>
             <router-link
                 class="text underline"
                 to="/contact"
             >
-                {{fields.contact_link_name}}
+                {{contact_link_name}}
             </router-link>
         </div>
         <div class="footer-block">
-            <prismic-rich-text class="text title" v-if="fields.connect_title" :field="fields.connect_title"/>
+            <prismic-rich-text class="text title" v-if="connect_title" :field="connect_title"/>
             <a 
                 class="text underline"
                 :href="item.connect_link.url"
                 target="_blank"
-                v-for="item in fields.connect_links">
+                v-for="item in connect_links">
                 {{item.connect_link_name}}
             </a>
         </div>
@@ -40,25 +40,17 @@ export default {
   data() {
     return{
         show: false,
-        fields: {
-            footer_image: null,
-            contact_title: null,
-            contact_link_name: null,
-            connect_title: null,
-            connect_links: null
-        }
+        footer_image: null,
+        contact_title: null,
+        contact_link_name: null,
+        connect_title: null,
+        connect_links: null
     }
   },
   methods: {
     assignContent(){
        const data = this.$store.state.footer;
-       this.fields = {
-        footer_image: data.footer_image.url,
-        contact_title: data.contact_title,
-        contact_link_name: data.contact_link_name,
-        connect_title: data.connect_title,
-        connect_links: data.connect_links
-       }
+       Object.assign(this, data);
     }
   },
   created(){
