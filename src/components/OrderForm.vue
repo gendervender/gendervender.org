@@ -40,10 +40,11 @@
     <div class="field field-half">
       <label for="phone">Phone number</label>
       <input
-        placeholder="123-456-7890"
+        placeholder="10 digits phone number"
+        v-model="form.phone"
         type="tel"
+        pattern="[0-9]{10}"
         name="phone"
-        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
       />
     </div>
     <div class="field">
@@ -54,9 +55,18 @@
         name="address"
       >
     </div>
+    <div class="field field-half">
+      <label for="city">City *</label>
+      <input
+        required
+        v-model="form.city"
+        name="city"
+      />
+    </div>
     <div class="field field-third">
       <label for="state">State *</label>
       <input
+        style="text-transform:uppercase"
         required
         v-model="form.state"
         name="state"
@@ -68,14 +78,6 @@
         required
         v-model="form.zip"
         name="zip"
-      />
-    </div>
-    <div class="field field-half">
-      <label for="city">City *</label>
-      <input
-        required
-        v-model="form.city"
-        name="city"
       />
     </div>
     <div class="field field-half">
@@ -103,6 +105,7 @@
 export default {
   name: 'OrderForm',
   props: {
+    handleForm: Function,
     verified: Boolean,
     form: {
         firstName: String,

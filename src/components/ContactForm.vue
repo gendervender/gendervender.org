@@ -52,12 +52,11 @@
       class="field"
     />
     <Agreement />
-    <button
+    <input
       type="submit"
       class="button"
-    >
-      Send
-    </button>
+      value="send"
+    />
     <p class="form-message" :class="{'form-message-error': !status.success}">{{status.msg}}</p>
   </form>
 </template>

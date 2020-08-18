@@ -5,7 +5,10 @@
             <div class="shop__checkout-payment">
                 <h3>Order information</h3>
                 <div class="shop__checkout-card">
-                    <OrderForm v-bind="$data" />
+                    <OrderForm
+                        v-bind="$data"
+                        :handleForm="handleForm"
+                    />
                 </div>
                 <br/>
                 <h3>How it works</h3>
@@ -45,7 +48,12 @@
                             class="field"
                         />
                         <Agreement/>
-                        <button form="order-form" @click="handleForm" type="submit" class="button">place order</button>
+                        <input
+                            form="order-form"
+                            class="button"
+                            type="submit"
+                            value="place order"
+                        />
                         <p class="form-message" :class="{'form-message-error': !status.success}">{{status.msg}}</p>
                     </div>
                 </div>

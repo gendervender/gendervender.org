@@ -13,31 +13,26 @@ export default {
             .join("&");
         },
         handleForm(){
-            const form = this.form;
-            const validation = this.validate(form);
-            console.log(form);
-            if (validation.success){
-              // this.submitForm();
-            }
-            this.status.msg = validation.msg;
-        },
-        validate(){
             if(!this.verified){
-                return {success: false, msg: "Please verify yourself with recaptcha"}
+              this.status.msg = "Please verify yourself with reCaptcha";
+            }else{
+              this.submitForm();
             }
-            return {success: true, msg: ""};
         },
         async submitForm() {
           this.status.msg = "Submitting your form...";
+          const processedForm = {
+            "form-name": this.formName,
+            ...this.form,
+            ... this.selectedBox && {boxPref: this.selectedBox}
+          }
+          console.log(processedForm);
           try {
               const config = {
                 header: {"Content-Type": "application/x-www-form-urlencoded"}
               }
               let res = await axios.post( "/", 
-                this.encode({
-                  "form-name": this.formName,
-                  ...this.form
-                }),
+                this.encode(processedForm),
                 config
               )
               if(res.status === 200) {
@@ -50,7 +45,7 @@ export default {
               }
           } catch (error) {
             this.status.success = false;
-            this.status.msg = error.msg;
+            this.status.msg = error.message;
           }
         }
     }

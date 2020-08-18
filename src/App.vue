@@ -187,6 +187,12 @@ section{
   overflow: hidden;
 }
 .button{
+  width: auto;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  letter-spacing: 0.05rem;
+  border: none;
   padding: 12px 20px;
   position: relative;
   background-color: transparent;
@@ -227,15 +233,6 @@ section{
     background: $primary;
     color: white!important;
   }
-}
-button{
-    width: auto;
-    cursor: pointer;
-    border: 0;
-    outline: 0;
-    background: none;
-    font-weight: 600;
-    letter-spacing: 0.05rem;
 }
 .underline{
   text-decoration: none;
@@ -422,9 +419,6 @@ button{
         text-align: left;
         color: $secondary;
     }
-    .form-message-error{
-        color: $primary;
-    }
     .field {
         text-align: left;
         width: 100%;
@@ -466,5 +460,8 @@ button{
     @include tablet{
       width: 100%;
     }
+}
+.form-message-error{
+    color: $primary;
 }
 </style>
