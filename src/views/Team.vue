@@ -1,8 +1,8 @@
 <template>
     <section id="team" v-if="members.length>0">
       <div class="container">
-          <prismic-rich-text v-if="title" :field="title"/>
-          <prismic-rich-text class="text" v-if="description" :field="description"/>
+          <prismic-rich-text v-if="page_title" :field="page_title"/>
+          <prismic-rich-text class="text" v-if="page_description" :field="page_description"/>
           <div class="members-container">
             <Card
               v-for="member in members"
@@ -72,8 +72,8 @@ export default {
   },
   data(){
     return{
-      title: null,
-      description: null,
+      page_title: null,
+      page_description: null,
       members: []
     }
   },

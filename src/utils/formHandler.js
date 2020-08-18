@@ -15,8 +15,9 @@ export default {
         handleForm(){
             const form = this.form;
             const validation = this.validate(form);
+            console.log(form);
             if (validation.success){
-                this.submitForm();
+              // this.submitForm();
             }
             this.status.msg = validation.msg;
         },

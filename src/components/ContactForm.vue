@@ -51,6 +51,7 @@
       :sitekey="recaptchaKey"
       class="field"
     />
+    <Agreement />
     <button
       type="submit"
       class="button"
@@ -63,11 +64,13 @@
 
 <script>
 import VueRecaptcha from 'vue-recaptcha';
-import formHandler from '@/utils/formHandler';
+import formHandler  from '@/utils/formHandler';
+import Agreement    from '@/components/Agreement';
 
 export default {
   name: 'ContactForm',
-  components: { VueRecaptcha },
+  mixins: [formHandler],
+  components: { VueRecaptcha, Agreement },
   data() {
     return {
       recaptchaKey: null,

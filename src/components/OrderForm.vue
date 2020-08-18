@@ -96,57 +96,32 @@
         name="paymentUsername"
       />
     </div>
-    <vue-recaptcha v-if="recaptchaKey"
-      type="v2 Checkbox"
-      @verify="onVerify"
-      :loadRecaptchaScript="true"
-      :sitekey="recaptchaKey"
-      class="field"
-    />
-    <button
-      type="submit"
-      class="button"
-    >
-      place order
-    </button>
-    <p class="form-message" :class="{'form-message-error': !status.success}">{{status.msg}}</p>
   </form>
 </template>
 
 <script>
-import VueRecaptcha from 'vue-recaptcha';
-import formHandler from '@/utils/formHandler';
-
 export default {
   name: 'OrderForm',
-  mixins: [formHandler],
-  components: { VueRecaptcha },
-  data() {
-    return {
-      recaptchaKey: null,
-      verified: false,
-      form: {
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          address: "",
-          city: "",
-          state: "",
-          zip: "",
-          paymentMethod: "",
-          paymentUsername: ""
-      },
-      formName: "order",
-      formInitiated: false,
-      status: {
-        success: false,
-        msg: ""
-      }
+  props: {
+    verified: Boolean,
+    form: {
+        firstName: String,
+        lastName: String,
+        email: String,
+        phone: String,
+        address: String,
+        city: String,
+        state: String,
+        zip: String,
+        paymentMethod: String,
+        paymentUsername: String
+    },
+    formName: String,
+    formInitiated: Boolean,
+    status: {
+      success: Boolean,
+      msg: String
     }
-  },
-  created: function() {
-      this.recaptchaKey = process.env.VUE_APP_SITE_RECAPTCHA_KEY;
   }
 }
 </script>
@@ -154,11 +129,5 @@ export default {
 <style lang="scss">
   #order-form{
     width: 100%;
-    input,textarea,select{
-      border-color: $border;
-      &:focus{
-        border-color: $secondary;
-      }
-    }
   }
 </style>

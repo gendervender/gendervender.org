@@ -22,6 +22,7 @@ const DOC_TYPES = {
   footer: "footer",
   products: "products",
   stories: "stories",
+  privacyPolicy: "privacy_policy"
 }
 
 Vue.prototype.$prismic.client.query('').then(function(response) {

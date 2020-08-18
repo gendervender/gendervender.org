@@ -10,13 +10,18 @@
                 <div class="shop__boxes-item-price center">
                   <h4>${{item.price}}</h4>
                   <p><strong>${{item.shipping}}</strong> shipping</p>
-                  <button class="button" @click="selectBox(item.name)" >SELECT THIS BOX</button>
+                  <button class="button" @click="selectBox(item)" >SELECT THIS BOX</button>
                 </div>
               </div>
             </div>
         </div>
         <ProductsDiscover v-if="!toggleCheckout" />
-        <ShopCheckout v-if="toggleCheckout" :selectedBox="selectedBox"/>
+        <ShopCheckout 
+          v-if="toggleCheckout"
+          :selectedBox="selectedBox"
+          :payment_instructions="payment_instructions"
+          :price="selectedPrice"
+        />
   </section>
 </template>
 <script>
@@ -33,6 +38,10 @@ export default {
     return {
       toggleCheckout: false,
       selectedBox: "",
+      selectedPrice: {
+        base: 0,
+        shipping: 0
+      },
       boxes: [],
       payment_instructions: [],
       shop_content: null,
@@ -44,9 +53,13 @@ export default {
       const data = this.$store.state.shopPage;
       Object.assign(this, data);
     },
-    selectBox(name){
-      this.selectedBox = name;
+    selectBox(box){
+      this.selectedBox = box.name;
+      this.setPrice(box.price, box.shipping);
       this.toggleCheckout = true;
+    },
+    setPrice(base, shipping){
+      this.selectedPrice = { base, shipping }
     }
   },
   created(){

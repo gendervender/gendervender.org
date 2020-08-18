@@ -1,11 +1,11 @@
 <template>
     <section id="about" v-if="body.length>0">
       <div class="container">
-          <prismic-rich-text v-if="title" :field="title"/>
-          <prismic-rich-text class="description" v-if="description" :field="description"/>
+          <prismic-rich-text v-if="page_title" :field="page_title"/>
+          <prismic-rich-text class="page_description" v-if="page_description" :field="page_description"/>
       </div>
       <div class="banner">
-        <div class="background" :style="{ 'background-image': `url(${bannerURL})` }" />
+        <div class="background" :style="{ 'background-image': `url(${banner.url})` }" />
       </div>
       <div class="container">
         <component
@@ -26,7 +26,7 @@
         margin: 10vh 0;
         position: relative;
     }
-    .description{
+    .page_description{
       width: 60%
     }
     .text{
@@ -69,9 +69,9 @@ export default {
   },
   data(){
     return{
-      title: null,
-      description: null,
-      bannerURL: null,
+      page_title: null,
+      page_description: null,
+      banner: null,
       body: [],
       slicesData: {
         image: "ImageItem",

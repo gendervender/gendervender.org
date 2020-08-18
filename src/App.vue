@@ -159,6 +159,9 @@ p, a, b, span, button{
   font-weight: 400;
   letter-spacing: 0.01rem;
 }
+p a{
+  @extend .underline;
+}
 b, strong{
   font-weight: bold;
 }
@@ -237,9 +240,9 @@ button{
 .underline{
   text-decoration: none;
   background-image: linear-gradient($primary, $primary);
-  background-position: 100% 100%;
+  background-position: 100% 95%;
   background-repeat: no-repeat;
-  background-size: 100% 2px;
+  background-size: 100% 1px;
   color: $primary;
   font-weight: 600;
   font-size: 100%;
@@ -250,10 +253,10 @@ button{
   }
   &:hover, &:focus{
     color: $primary-hover;
-    background-size: 0% 2px;
+    background-size: 0% 1px;
   }
   @include mobile{
-    background-size: 100% 2px!important;
+    background-size: 100% 1px!important;
     background-image: linear-gradient($primary-hover, $primary-hover);
   }
 }
@@ -445,7 +448,7 @@ button{
         box-sizing: border-box;
         border-radius: 4px;
         background-color: white;
-        border: 1px solid transparent;
+        border: 1px solid $border;
         font-family: inherit;
         &:focus{
             border-color: $secondary;

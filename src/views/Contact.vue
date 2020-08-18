@@ -1,9 +1,9 @@
 <template>
   <section id="contact">
-        <div class="banner" :style="{ 'background-image': `url(${contact_image})` }"/>
+        <div class="banner" :style="{ 'background-image': `url(${contact_image.url})` }"/>
         <div class="center container">
-        <prismic-rich-text class="text title" v-if="contact_title" :field="contact_title"/>
-        <prismic-rich-text class="text body" v-if="contact_description" :field="contact_description"/>
+        <prismic-rich-text class="text title" v-if="page_title" :field="page_title"/>
+        <prismic-rich-text class="text body" v-if="page_description" :field="page_description"/>
             <ContactForm />
         </div>
   </section>
@@ -19,8 +19,8 @@ export default {
   data() {
     return{
         contact_image: null,
-        contact_title: null,
-        contact_description: null
+        page_title: null,
+        page_description: null
     }
   },
   methods: {
@@ -38,6 +38,7 @@ export default {
     #contact{
         min-height: 100vh;
         padding-bottom: 20vh;
+        margin-top: 0;
         text-align: center;
         .container{
             flex-direction: column;
