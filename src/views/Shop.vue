@@ -4,7 +4,12 @@
             <prismic-rich-text :field="shop_header" v-if="shop_header"/>
             <prismic-rich-text :field="shop_content" v-if="shop_content"/>
             <div class="shop__boxes row">
-              <div class="shop__boxes-item" v-for="item in boxes" :key="`box-${item.name}`">
+              <div
+                class="shop__boxes-item" 
+                v-for="item in boxes"
+                :key="`box-${item.name}`"
+                :style="{ 'background-image': `url(${boxBg[item.size]})` }"
+              >
                 <h3>{{item.name}} <span>({{item.amount}} items)</span></h3>
                 <prismic-rich-text :field="item.description"/>
                 <div class="shop__boxes-item-price center">
@@ -20,6 +25,7 @@
           v-if="toggleCheckout"
           :selectedBox="selectedBox"
           :payment_instructions="payment_instructions"
+          :payment_services="payment_services"
           :price="selectedPrice"
         />
   </section>
@@ -27,6 +33,8 @@
 <script>
 import ProductsDiscover from '@/components/ProductsDiscover';
 import ShopCheckout     from '@/components/ShopCheckout';
+import BOX_BG_SMALL     from '@/assets/box-small-bg.png';
+import BOX_BG_LARGE     from '@/assets/box-large-bg.png';
 
 export default {
   name: 'Shop',
@@ -44,8 +52,13 @@ export default {
       },
       boxes: [],
       payment_instructions: [],
+      payment_services: "",
       shop_content: null,
-      shop_header: null
+      shop_header: null,
+      boxBg: {
+        small: BOX_BG_SMALL,
+        large: BOX_BG_LARGE
+      }
     }
   },
   methods: {
@@ -72,13 +85,16 @@ export default {
   .shop{
     &__boxes{
       &-item{
-        width: 28vw;
+        width: 32vw;
         margin: 0 12px;
         background-color: white;
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
         border: 1px $border solid;
         border-radius: 8px;
         box-sizing: border-box;
-        padding: 32px 24px;
+        padding: 12% 24px 32px 24px;
         &-price{
           border-top: 1px $border solid;
           margin-top: 20px;

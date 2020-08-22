@@ -3,7 +3,7 @@
         <h2>Check out</h2>
         <div class="shop__checkout-wrapper row">
             <div class="shop__checkout-payment">
-                <h3>Order information</h3>
+                <h3>Delivery information</h3>
                 <div class="shop__checkout-card">
                     <OrderForm
                         v-bind="$data"
@@ -11,11 +11,30 @@
                     />
                 </div>
                 <br/>
-                <h3>How it works</h3>
-                <div class="shop__checkout-card shop__checkout-info" v-if="payment_instructions">
-                    <div class="shop__checkout-info-item center" v-for="item in payment_instructions">
-                        <prismic-image :field="item.icon" />
-                        <prismic-rich-text :field="item.content" />
+                <h3>Payment information</h3>
+                <div class="shop__checkout-card">
+                    <h4>Choose a service</h4>
+                    <div class="shop__checkout-service">
+                        <button
+                            @click="form.paymentMethod = service"
+                            :class="form.paymentMethod === service ? 'button' : 'button button-secondary button-dark'"
+                            v-for="service in payment_services.split(/[ ,]+/)"
+                        >
+                            {{service}}
+                        </button>
+                    </div>
+                    <h4>Enter username/email for payment request</h4>
+                    <input 
+                        class="field field-half"
+                        name="paymentUsername"
+                        v-model="form.paymentUsername"
+                    />
+                    <h4>How it works</h4>
+                    <div class="shop__checkout-info" v-if="payment_instructions">
+                        <div class="shop__checkout-info-item center" v-for="item in payment_instructions">
+                            <prismic-image :field="item.icon" />
+                            <prismic-rich-text :field="item.content" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,7 +97,8 @@ export default {
   props: {
       selectedBox: String,
       price: Object,
-      payment_instructions: Array
+      payment_instructions: Array,
+      payment_services: String
   },
   data(){
     return {
@@ -131,8 +151,14 @@ export default {
             margin-bottom: 0.4rem;
         }
         &-payment{
-            flex: 2;
+            flex: 3;
             margin-right: 4%;
+        }
+        &-service{
+            margin-bottom: 4%;
+            button{
+                margin-right: 8px;
+            }
         }
         &-summary{
             flex: 1;
@@ -163,6 +189,7 @@ export default {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             column-gap: 20px;
+            margin-top: 4%;
             &-item{
                 flex-direction: column;
                 justify-content: flex-start;

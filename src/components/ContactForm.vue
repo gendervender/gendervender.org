@@ -1,5 +1,6 @@
 <template>
   <form
+    id="contact-form"
     class="form"
     name="contact"
     method="POST"
@@ -53,9 +54,10 @@
     />
     <Agreement />
     <input
-      type="submit"
+      form="contact-form"
       class="button"
-      value="send"
+      type="submit"
+      value="send message"
     />
     <p class="form-message" :class="{'form-message-error': !status.success}">{{status.msg}}</p>
   </form>

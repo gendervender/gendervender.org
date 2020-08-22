@@ -186,54 +186,6 @@ section{
   border-radius: 5px;
   overflow: hidden;
 }
-.button{
-  width: auto;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-  letter-spacing: 0.05rem;
-  border: none;
-  padding: 12px 20px;
-  position: relative;
-  background-color: transparent;
-  border-radius: 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: $font-size-xxs;
-  line-height: 1;
-  text-align: center;
-  color: white!important;
-  background: $primary;
-  &:hover{
-    background: $primary-hover;
-    -webkit-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
-    -moz-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
-    box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
-  }
-}
-.button-secondary{
-  color: white;
-  border: 1px solid white;
-  background: transparent;
-  &:hover{
-    color: $text!important;
-    background-color: white;
-  }
-}
-.button-light{
-  color: white!important;
-  &:hover{
-    box-shadow: none;
-  }
-}
-.button-dark{
-  border-color: $primary;
-  color: $primary!important;
-  &:hover{
-    background: $primary;
-    color: white!important;
-  }
-}
 .underline{
   text-decoration: none;
   background-image: linear-gradient($primary, $primary);
@@ -408,60 +360,110 @@ section{
   }
 }
 .form{
-    width: 60%;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    .form-message{
-        width: 100%;
-        text-align: left;
-        color: $secondary;
-    }
-    .field {
-        text-align: left;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .field-half{
-        width: 49%;
-    }
-    .field-third{
-        width: 23.5%;
-    }
-    label{
-        font-size: $font-size-xxs;
-    }
-    input, textarea, select{
-        outline: none;
-        width: 100%;
-        margin-top: 4px;
-        padding: 8px 12px;
-        font-size: $font-size-xs;
-        box-sizing: border-box;
-        border-radius: 4px;
-        background-color: white;
-        border: 1px solid $border;
-        font-family: inherit;
-        &:focus{
-            border-color: $secondary;
-        }
-    }
-    textarea{
-        resize: none;
-        height: 240px;
-        line-height: 1.8;
-    }
-    @include mobile{
-      width: 100%;
-    }
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  @include mobile{
+    width: 100%;
+  }
 
-    @include tablet{
-      width: 100%;
-    }
+  @include tablet{
+    width: 100%;
+  }
+}
+.form-message{
+  width: 100%;
+  text-align: left;
+  color: $secondary;
 }
 .form-message-error{
-    color: $primary;
+  color: $primary;
+}
+.field {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.field-half{
+  width: 49%;
+}
+.field-third{
+  width: 23.5%;
+}
+label{
+  font-size: $font-size-xxs;
+}
+input, textarea, select{
+  outline: none;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 12px;
+  font-size: $font-size-xs;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid $border;
+  font-family: inherit;
+  &:focus{
+      border-color: $secondary;
+  }
+}
+textarea{
+  resize: none;
+  height: 240px;
+  line-height: 1.8;
+}
+.button{
+  width: auto;
+  cursor: pointer;
+  border: 1px transparent solid;
+  outline: 0;
+  letter-spacing: 0.05rem;
+  padding: 12px 20px;
+  position: relative;
+  background-color: transparent;
+  border-radius: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: $font-size-xxs;
+  line-height: 1;
+  text-align: center;
+  color: white!important;
+  background: $primary;
+  &:hover{
+    background: $primary-hover;
+    -webkit-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
+    -moz-box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
+    box-shadow: 0px 4px 8px 0px rgba($primary-hover,0.16);
+  }
+}
+.button-secondary{
+  color: white;
+  border: 1px solid white;
+  background: transparent;
+  &:hover{
+    color: $text!important;
+    background-color: white;
+  }
+}
+.button-light{
+  color: white!important;
+  &:hover{
+    box-shadow: none;
+  }
+}
+.button-dark{
+  border-color: $primary;
+  color: $primary!important;
+  &:hover{
+    background: $primary;
+    color: white!important;
+  }
+}
+input[type=submit]{
+  @extend .button;
 }
 </style>

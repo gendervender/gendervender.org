@@ -13,11 +13,27 @@ export default {
             .join("&");
         },
         handleForm(){
-            if(!this.verified){
-              this.status.msg = "Please verify yourself with reCaptcha";
-            }else{
-              this.submitForm();
+          let validated = true;
+          //validate shop data
+          if (this.formName === 'order'){
+            if (this.form.paymentMethod === ""){
+              validated = false;
+              this.status.success = false;
+              this.status.msg = "Please choose a payment service";
+            } else if (this.form.paymentUsername === ""){
+              validated = false;
+              this.status.success = false;
+              this.status.msg = "Please enter your username/email for payment request";
             }
+          }
+          //general validation
+          if(!this.verified){
+            validated = false;
+            this.status.success = false;
+            this.status.msg = "Please verify yourself with reCaptcha";
+          }
+
+          validated && this.submitForm();
         },
         async submitForm() {
           this.status.msg = "Submitting your form...";

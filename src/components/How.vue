@@ -25,9 +25,6 @@ export default {
       hiw_header: Array,
       hiw_content: Array,
       hiw_items: Array
-  },
-  created(){
-      console.log(this.hiw_items)
   }
 }
 </script>
@@ -36,6 +33,7 @@ export default {
     .hiw{
         &__wrapper{
             margin-bottom: 8%;
+            width: 90%;
         }
         &__block{
             display: flex;

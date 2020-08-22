@@ -80,24 +80,6 @@
         name="zip"
       />
     </div>
-    <div class="field field-half">
-      <label for="paymentMethod">Payment method *</label>
-      <select v-model="form.paymentMethod" name="paymentMethod" required>
-        <option disabled value="">Please select one</option>
-        <option value="venmo">Venmo</option>
-        <option value="zelle">Zelle</option>
-        <option value="cash app">Cash App</option>
-        <option value="paypal">Paypal</option>
-      </select>
-    </div>
-      <div class="field field-half">
-      <label for="paymentUsername">Payment username/email for request *</label>
-      <input
-        required
-        v-model="form.paymentUsername"
-        name="paymentUsername"
-      />
-    </div>
   </form>
 </template>
 
@@ -115,9 +97,7 @@ export default {
         address: String,
         city: String,
         state: String,
-        zip: String,
-        paymentMethod: String,
-        paymentUsername: String
+        zip: String
     },
     formName: String,
     formInitiated: Boolean,
