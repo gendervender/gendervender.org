@@ -38,7 +38,6 @@ export default {
         &__block{
             display: flex;
             flex-direction: row;
-            margin-top: 8%;
             &-text{
                 width: 55%;
                 box-sizing: border-box;

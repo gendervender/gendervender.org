@@ -18,10 +18,12 @@
     />
     <How v-bind="hiwFields" />
     <CTABlock
+      :stories="true"
       v-if="storiesCtaFields"
       :content="storiesCtaFields"
       :cta="{text: 'Learn more', href: '/stories'}"
     />
+    <Partners v-bind="partnersFields"/>
   <!--
     <Landing :fields="landingFields" :handleClick="handleClick" :donateLink="donateLink" :setVideoRef="setVideoRef"/>
     <Stories :fields="storiesFields" :stories="stories"/>
@@ -49,11 +51,11 @@
 </style>
 
 <script>
-import Hero          from '@/components/Hero';
-import CTABlock      from '@/components/CTABlock';
+import Hero             from '@/components/Hero';
+import CTABlock         from '@/components/CTABlock';
 import ProductsDiscover from '@/components/ProductsDiscover';
-import How           from '@/components/How';
-import Partners      from '@/components/Partners';
+import How              from '@/components/How';
+import Partners         from '@/components/Partners';
 
 export default {
   name: 'home',
@@ -82,15 +84,16 @@ export default {
   methods: {
     assignData() {
       const data = this.$store.state.homePage;
-      const {headline, subheadline, hero_image, hero_video, products_cta, 
+      const {headline, subheadline, hero_image, hero_video,
       hiw_header, hiw_content, hiw_items, mission_content, mission_header,
-      note_content, note_header, partners_content, stories_cta,
-      partners_header, partners_items} = data;
+      note_content, note_header, stories_cta, products_cta,
+      partners_header, partners_content, partners_items} = data;
       this.heroFields = {headline, subheadline, hero_image, hero_video};
       this.missionFields = {mission_header, mission_content};
       this.noteFields = {note_header, note_content};
       this.storiesCtaFields = stories_cta;
       this.hiwFields = {hiw_header, hiw_content, hiw_items};
+      this.partnersFields = {partners_header, partners_content, partners_items}
       this.products_cta = products_cta;
     }
   },

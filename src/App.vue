@@ -88,11 +88,10 @@
   }
 }
 .fade-enter-active, .fade-leave-active {
-    transition: all 0.6s
+    transition: all 0.4s
 }
 .fade-enter, .fade-leave-to {
     opacity: 0;
-    transform: translateY(20px);
 }
 body{
   margin: 0%;

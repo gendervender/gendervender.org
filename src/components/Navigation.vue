@@ -43,7 +43,10 @@
     watch:{
       '$route' (to, from){
         if(this.$route.name == 'home'){
-          this.setNavStyles("light");
+          setTimeout(() => {
+            //delay to match route transition
+            this.setNavStyles("light");
+          }, 400)
         }else{
           this.setNavStyles("dark");
         }

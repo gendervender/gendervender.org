@@ -52,24 +52,6 @@ export default {
 </script>
 
 <style lang="scss">
-  .cta-block{
-    background-color: $site-bg;
-    padding: 8%;
-    box-sizing: border-box;
-    text-align: center;
-    p {
-      font-size: $font-size-m;
-      margin-top: 0rem;
-    }
-    .button{
-      margin-top: 0.4rem;
-    }
-    @include mobile{
-      p{
-        font-size: $font-size-xs;
-      }
-    }
-  } 
   .products{
     &__wrapper{
         margin: 4% 0%;
