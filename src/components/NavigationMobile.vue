@@ -4,15 +4,7 @@
             <h3>Menu</h3>
             <div id="mobile-menu-items">
                 <template v-for="item in navItems">
-                    <a 
-                        v-if="item.routerLink == false"
-                        @click="handleClickMobile"
-                        :data-id="item.ref"
-                    >
-                        <h1 :data-id="item.ref">{{item.name}}</h1>
-                    </a>
                     <router-link
-                        v-else
                         :to="item.ref"
                         @click.native="toggleMenu"
                     >
@@ -21,6 +13,7 @@
                 </template>
                 <router-link class="button" 
                     aria-role="button"
+                    @click.native="toggleMenu"
                     :class="this.buttonClass"
                     to="/shop">
                     SHOP NOW
@@ -64,16 +57,9 @@
 export default {
   name: "MobileNav",
     props: {
-        handleClick: Function,
         navItems: Array,
         toggleMenu: Function,
         showMenu: Boolean
-    },
-    methods: {
-        handleClickMobile(e){
-            this.handleClick(e);
-            this.toggleMenu();
-        }
     }
 }
 </script>

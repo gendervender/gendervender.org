@@ -10,8 +10,10 @@
                 :key="`box-${item.name}`"
                 :style="{ 'background-image': `url(${boxBg[item.size]})` }"
               >
-                <h3>{{item.name}} <span>({{item.amount}} items)</span></h3>
-                <prismic-rich-text :field="item.description"/>
+                <div>
+                  <h3>{{item.name}} <span>({{item.amount}} items)</span></h3>
+                  <prismic-rich-text :field="item.description"/>
+                </div>
                 <div class="shop__boxes-item-price center">
                   <h4>${{item.price}}</h4>
                   <p><strong>${{item.shipping}}</strong> shipping</p>
@@ -82,32 +84,51 @@ export default {
 
 </script>
 <style lang="scss" scoped>
-  .shop{
-    &__boxes{
-      &-item{
-        width: 32vw;
-        margin: 0 12px;
-        background-color: white;
-        background-size: cover;
-        background-position: top;
-        background-repeat: no-repeat;
-        border: 1px $border solid;
-        border-radius: 8px;
-        box-sizing: border-box;
-        padding: 12% 24px 32px 24px;
-        &-price{
-          border-top: 1px $border solid;
-          margin-top: 20px;
-          padding-top: 12px;
-          flex-direction: column;
-          p{
-            margin: 0
-          }
-          .button{
-            margin-top: 12px;
-          }
+.shop {
+  &__boxes {
+    &-item {
+      width: 32vw;
+      margin: 0 12px;
+      background-color: white;
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+      border: 1px $border solid;
+      border-radius: 8px;
+      box-sizing: border-box;
+      padding: 12% 24px 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      h3 {
+        font-size: $font-size-m;
+      }
+
+      &-price {
+        border-top: 1px $border solid;
+        margin-top: 20px;
+        padding-top: 12px;
+        flex-direction: column;
+
+        p {
+          margin: 0
+        }
+
+        .button {
+          margin-top: 12px;
         }
       }
     }
+
+    @include mobile {
+      flex-direction: column;
+
+      &-item {
+        width: 100%;
+        margin: 12px 0;
+        padding-top: 20%;
+      }
+    }
   }
+}
 </style>

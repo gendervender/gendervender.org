@@ -3,7 +3,7 @@
       <div class="container">
         <div id="nav-left"> 
           <img src="../assets/logo.png"/>
-          <router-link to="/" @click.native="handleClick" data-id="landing">Gender Vender</router-link>
+          <router-link to="/">Gender Vender</router-link>
         </div>
         <div id="nav-right" v-if="windowWidth >= 1200">
           <template v-for="item in navItems">
@@ -23,7 +23,7 @@
         </div>
         <div id="nav-right" v-if="windowWidth < 1200">
           <img :src="getImgUrl(showMenu ? menuIcon.close : menuIcon.open)" @click="toggleMenu"/>
-          <MobileNav :handleClick="handleClick" :navItems="navItems" :showMenu="showMenu" :toggleMenu="toggleMenu" :donateLink="donateLink"/>
+          <MobileNav :navItems="navItems" :showMenu="showMenu" :toggleMenu="toggleMenu" :donateLink="donateLink"/>
         </div>
       </div>
     </div>
@@ -34,7 +34,6 @@
   export default {
     name: 'Navigation',
     props: {
-      handleClick: Function,
       disableScroll: Function
     },
     components: {
@@ -165,7 +164,7 @@
   -webkit-transform: translateZ(0);
   position: fixed;
   height: 12vh;
-  width: 100%;
+  width: 100vw;
   #nav-left, #nav-right{
     flex: 1;
   }

@@ -30,80 +30,72 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  #partners{
-    text-align: center;
-    padding: 20vh 0;
+#partners{
+  text-align: center;
+  padding: 20vh 0;
+}
+.partners-directory{
+  margin-top: 4%;
+  width: 100%;
+}
+.partners-item{
+  cursor: pointer;
+  margin: 0% 12px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    -webkit-box-shadow: 0px 5px 12px 0px rgba($text,0.1);
+    -moz-box-shadow: 0px 5px 12px 0px rgba($text,0.1);
+    box-shadow: 0px 5px 12px 0px rgba($text,0.1);
   }
-  .partners-directory{
+  span{
+    position: absolute;
+    top: 112px;
+    color: $primary;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.2s;
     margin-top: 4%;
-    width: 100%;
+    width: 250px;
   }
-  .partners-item{
-    cursor: pointer;
-    margin: 0% 12px;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    img{
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      -webkit-box-shadow: 0px 5px 12px 0px rgba($text,0.1);
-      -moz-box-shadow: 0px 5px 12px 0px rgba($text,0.1);
-      box-shadow: 0px 5px 12px 0px rgba($text,0.1);
+  .overlay, img{
+    border-radius: 50%;
+  }
+  .overlay{
+    background: $primary;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  &:hover{
+    .overlay{
+      opacity: 0.6;
     }
     span{
-      position: absolute;
-      top: 112px;
-      color: $primary;
-      font-weight: 500;
-      opacity: 0;
-      transition: all 0.2s;
-      margin-top: 4%;
-      width: 250px;
-    }
-    .overlay, img{
-      border-radius: 50%;
-    }
-    .overlay{
-      background: $primary;
-      z-index: 2;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    &:hover{
-      .overlay{
-        opacity: 0.6;
-      }
-      span{
-        opacity: 1;
-        margin-top: 0%;
-      }
+      opacity: 1;
+      margin-top: 0%;
     }
   }
-  @include desktop{
-    h1{
-      font-size: 1rem!important;
+}
+@include tablet{
+  #partners{
+    padding: 40px 0;
+  }
+  .partners-item{
+    margin: 0 12px 12px;
+    img{
+      width: 80px;
+      height: 80px;
     }
   }
-  @include mobile{
-    .partners-directory{
-      grid-template-columns: repeat(2, 1fr);
-      width: 100%;
-    }
-    .partners-item{
-      &:hover{
-        span{
-          opacity: 0;
-        }
-      }
-    }
+  .partners-directory{
+    width: 100%;
   }
-  @include tablet{
-    .partners-directory{
-      width: 100%;
-    }
-  }
+}
 </style>

@@ -46,6 +46,9 @@
     }
     @include mobile{
       padding: 8vh 0;
+      .description{
+        text-align: left;
+      }
     }
   }
 </style>

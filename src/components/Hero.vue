@@ -7,7 +7,8 @@
      <prismic-rich-text class="text mainTitle" v-if="headline" :field="headline"/>
      <prismic-rich-text class="description" v-if="subheadline" :field="subheadline"/>
       <div class="row">
-        <a class="button" style="margin-right: 20px">Get Started</a>
+        <button @click="scrollDown" class="button" style="margin-right: 20px">Get Started</button>
+        <router-link class="button button-secondary button-light" to="/about">Learn more</router-link>
       </div>
     </div>
   </div>
@@ -21,6 +22,12 @@ export default {
     subheadline: Array,
     hero_image: Object,
     hero_video: Object
+  },
+  methods: {
+    scrollDown(e){
+      let selector = document.querySelector('#hiw');
+      window.scrollTo({top: selector.offsetTop, behavior: 'smooth' });
+    }
   }
 }
 </script>

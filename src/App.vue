@@ -1,12 +1,9 @@
 <template>
   <div id="app">
     <!-- <LoadScreen :isLoading="isLoading"/> -->
-    <Navigation :handleClick="this.handleClick" :disableScroll="disableScroll"/>
+    <Navigation :disableScroll="disableScroll"/>
     <transition name="fade" mode="out-in">
-      <router-view 
-        :handleClick="this.handleClick"
-        :setVideoRef="setVideoRef"
-      />
+      <router-view />
     </transition>
     <Footer/>
   </div>
@@ -32,18 +29,6 @@
       }
     },
     methods: {
-      handleClick(e){
-        let id = e.target.dataset.id;
-        if(this.$route.name !== 'home'){
-          this.$router.push('/#'+ id);
-        }else{
-          let selector = document.querySelector('#'+ id);
-          if (selector) {
-            let top =  id !== 'landing' ? selector.offsetTop : 0;
-            window.scrollTo({top, behavior: 'smooth' })
-          }
-        }
-      },
       disableScroll(status){
         if(status){
           document.body.style.overflow = "hidden";
@@ -124,6 +109,40 @@ h3{font-size: $font-size-l};
 h4{font-size: $font-size-m};
 h5{font-size: $font-size-s};
 h6{font-size: $font-size-s; font-weight: 400};
+@include tablet{
+  h1{font-size: $font-size-xl};
+  h2{font-size: $font-size-l};
+  h3{font-size: $font-size-m};
+  h4{font-size: $font-size-s};
+  h5{font-size: $font-size-xs};
+  h6{font-size: $font-size-xs};
+}
+@include mobile{
+  h1{font-size: 32px};
+  h2{font-size: 24px};
+  h3{font-size: 20px};
+  h4{font-size: 18px};
+  h5{font-size: 16px};
+  h6{font-size: 16px};
+  p, a, b, span, button, li{
+    font-size: 16px;
+  }
+}
+@include desktop{
+  h1{font-size: 3.2rem};
+  h2{font-size: 2.2rem};
+  h3{font-size: 2rem};
+  h4{font-size: 1.75rem};
+  h5{font-size: 1.25rem};
+  h6{font-size: 1.25rem};
+  p, a, b, span, button, li{
+    line-height: 2;
+    font-size: 1.1rem;
+  }
+  .button{
+    padding: 13px 20px 12px 20px;
+  }
+}
 .text{
   *{
     color: inherit;
@@ -140,9 +159,6 @@ h6{font-size: $font-size-s; font-weight: 400};
   }
   p{
     margin: 0 0 1.4rem 0;
-    @include tablet{
-      margin: 0 0 2rem 0;
-    }
   }
   ul, ol{
     list-style: none;
@@ -173,9 +189,12 @@ a{
 }
 section{
   margin-top: 12vh;
-  padding: 12vh 0;
+  padding: 8vh 0;
   box-sizing: border-box;
   min-height: 100vh;
+  @include tablet{
+    padding: 32px 0;
+  }
 }
 .row{
   display: flex;
@@ -217,11 +236,11 @@ section{
   @include desktop{
     width: 86em;
   }
-  @include mobile{
-    width: 88%;
-  }
   @include tablet{
     width: 90%;
+  }
+  @include mobile{
+    width: 88%;
   }
 }
 .background{
@@ -249,37 +268,6 @@ section{
   left: 0;
   background-color: $text;
   opacity: 0.6;
-}
-@include mobile{
-  h1{font-size: 32px};
-  h2{font-size: 24px};
-  h3{font-size: 20px};
-  h4{font-size: 18px};
-  h5{font-size: 16px};
-  h6{font-size: 16px};
-}
-@include tablet{
-  h1{font-size: 2rem};
-  h2{font-size: 1.8rem};
-  h3{font-size: 1.6rem};
-  h4{font-size: 1.4rem};
-  h5{font-size: 1rem};
-  h6{font-size: 1rem};
-}
-@include desktop{
-  h1{font-size: 3.2rem};
-  h2{font-size: 2.2rem};
-  h3{font-size: 2rem};
-  h4{font-size: 1.75rem};
-  h5{font-size: 1.25rem};
-  h6{font-size: 1.25rem};
-  p, a, b, span, button, li{
-    line-height: 2;
-    font-size: 1.1rem;
-  }
-  .button{
-    padding: 13px 20px 12px 20px;
-  }
 }
 .container{
   box-sizing: border-box;
@@ -323,14 +311,6 @@ section{
   background-color: $text;
   opacity: 0.7;
 }
-@include mobile{
-  h1{font-size: 32px};
-  h2{font-size: 24px};
-  h3{font-size: 20px};
-  h4{font-size: 18px};
-  h5{font-size: 16px};
-  h6{font-size: 16px};
-}
 @include tablet{
   h1{font-size: 2rem};
   h2{font-size: 1.8rem};
@@ -339,7 +319,14 @@ section{
   h5{font-size: 1rem};
   h6{font-size: 1rem};
 }
-
+@include mobile{
+  h1{font-size: 32px};
+  h2{font-size: 24px};
+  h3{font-size: 20px};
+  h4{font-size: 18px};
+  h5{font-size: 16px};
+  h6{font-size: 16px};
+}
 @include desktop{
   h1{font-size: 3.2rem};
   h2{font-size: 2.2rem};

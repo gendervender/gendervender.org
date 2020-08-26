@@ -27,13 +27,14 @@ export default {
     box-sizing: border-box;
     text-align: center;
     p {
-      font-size: $font-size-m;
+      font-size: $font-size-s;
       margin-top: 0rem;
     }
     .button{
       display: inline-block;
     }
     @include mobile{
+      width: 100%;
       p{
         font-size: $font-size-xs;
       }
