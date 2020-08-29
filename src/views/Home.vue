@@ -2,33 +2,20 @@
   <section id="home">
     <Hero v-bind="heroFields" />
     <div class="center container home-block" v-if="noteFields" >
-        <prismic-rich-text class="title" :field="noteFields.note_header"/>
-        <prismic-rich-text class="description" :field="noteFields.note_content"/>
+      <prismic-rich-text class="title" :field="noteFields.note_header"/>
+      <prismic-rich-text class="description" :field="noteFields.note_content"/>
     </div>
-    <CTABlock
-      v-if="missionFields"
-      :content="[].concat(...Object.values(missionFields))"
-      :cta="{text: 'Learn more', href: '/about'}"
-    />
-    <ProductsDiscover/>
+    <div class="center container home-block" v-if="noteFields" >
+      <prismic-rich-text class="title" :field="noteFields.note_header"/>
+      <prismic-rich-text class="description" :field="noteFields.note_content"/>
+    </div>
     <CTABlock
       v-if="products_cta"
       :content="products_cta"
       :cta="{text: 'Shop now', href: '/shop'}"
     />
     <How v-bind="hiwFields" />
-    <CTABlock
-      :stories="true"
-      v-if="storiesCtaFields"
-      :content="storiesCtaFields"
-      :cta="{text: 'Learn more', href: '/stories'}"
-    />
     <Partners v-bind="partnersFields"/>
-  <!--
-    <Landing :fields="landingFields" :handleClick="handleClick" :donateLink="donateLink" :setVideoRef="setVideoRef"/>
-    <Stories :fields="storiesFields" :stories="stories"/>
-    <Partners :fields="partnersFields"/>
-    -->
   </section>
 </template>
 <style lang="scss">
@@ -56,7 +43,6 @@
 <script>
 import Hero             from '@/components/Hero';
 import CTABlock         from '@/components/CTABlock';
-import ProductsDiscover from '@/components/ProductsDiscover';
 import How              from '@/components/How';
 import Partners         from '@/components/Partners';
 
@@ -65,7 +51,6 @@ export default {
   components: {
     Hero,
     CTABlock,
-    ProductsDiscover,
     How,
     Partners
   },
@@ -76,9 +61,7 @@ export default {
   data() {
     return{
       heroFields: null,
-      missionFields: null,
       noteFields: null,
-      storiesCtaFields: null,
       hiwFields: null,
       partnersFields: null,
       products_cta: null
@@ -92,9 +75,7 @@ export default {
       note_content, note_header, stories_cta, products_cta,
       partners_header, partners_content, partners_items} = data;
       this.heroFields = {headline, subheadline, hero_image, hero_video};
-      this.missionFields = {mission_header, mission_content};
       this.noteFields = {note_header, note_content};
-      this.storiesCtaFields = stories_cta;
       this.hiwFields = {hiw_header, hiw_content, hiw_items};
       this.partnersFields = {partners_header, partners_content, partners_items}
       this.products_cta = products_cta;

@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home          from '../views/Home';
-import Contact       from '../views/Contact';
-import Stories       from '../views/Stories';
-import About         from '../views/About';
-import Team          from '../views/Team';
-import Shop          from '../views/Shop';
-import ErrorPage     from '../views/Error';
-import PrivacyPolicy from '../views/PrivacyPolicy';
+import Home          from '@/views/Home';
+import Contact       from '@/views/Contact';
+import Stories       from '@/views/Stories';
+import About         from '@/views/About';
+import Team          from '@/views/Team';
+import Products      from '@/views/Products';
+import Shop          from '@/views/Shop';
+import ErrorPage     from '@/views/Error';
+import PrivacyPolicy from '@/views/PrivacyPolicy';
 
 Vue.use(VueRouter)
 
@@ -42,6 +43,11 @@ const routes = [
     path: '/team',
     name: 'team',
     component: Team
+  },
+  {
+    path: '/products',
+    name: 'products',
+    component: Products
   },
   {
     path: '/shop',

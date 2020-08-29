@@ -2,7 +2,7 @@
     <section id="about" v-if="body.length>0">
       <div class="container">
           <prismic-rich-text v-if="page_title" :field="page_title"/>
-          <prismic-rich-text class="page_description" v-if="page_description" :field="page_description"/>
+          <prismic-rich-text class="page-description" v-if="page_description" :field="page_description"/>
       </div>
       <div class="banner">
         <div class="background" :style="{ 'background-image': `url(${banner.url})` }" />
@@ -14,6 +14,7 @@
             :is="slicesData[slice.slice_type]"
             v-bind="slice.primary"
             class="about-block"
+            :class="slice.slice_type === 'video' && 'about-block-video'"
         />
       </div>
     </section>
@@ -26,7 +27,7 @@
         margin: 10vh 0;
         position: relative;
     }
-    .page_description{
+    .page-description{
       width: 60%
     }
     .text{
@@ -34,22 +35,28 @@
       margin: 0rem 0 2rem 0;
     }
     .about-block{
-      margin: 32px 0;
+      margin: 4% 0;
       display: inline-flex;
+      &-video{
+        width: 50%;
+        margin: 0% 25% 4% 25%;
+      }
+    }
+    @include tablet{
+     .text, .page-description{
+        width: 100%;
+        margin: 0;
+      }
+      .about-block{
+        &-video{
+          width: 100%;
+          margin: 0;
+        }
+      }
     }
     @include mobile{
       .banner{
         height: 50vh;
-      }
-      .text{
-        width: 100%;
-        margin: 0;
-      }
-    }
-    @include tablet{
-     .text{
-        width: 100%;
-        margin: 0;
       }
     }
   }
@@ -58,6 +65,7 @@
 import ImageItem from '@/components/slices/StoriesImage.vue';
 import TextBlock from '@/components/slices/AboutTextBlock.vue';
 import Timeline from '@/components/slices/Timeline.vue';
+import StoriesVideo from '@/components/slices/StoriesVideo.vue';
 
 
 export default {
@@ -65,7 +73,8 @@ export default {
   components: {
     ImageItem,
     TextBlock,
-    Timeline
+    Timeline,
+    StoriesVideo
   },
   data(){
     return{
@@ -76,7 +85,8 @@ export default {
       slicesData: {
         image: "ImageItem",
         text_block: "TextBlock",
-        timeline: "Timeline"
+        timeline: "Timeline",
+        video: "StoriesVideo"
       }
     }
   },

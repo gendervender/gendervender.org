@@ -3,8 +3,8 @@
 </template>
 <style lang="scss" scoped>
     .image{ 
-        height: auto;
-        width: 100%;
+      height: auto;
+      width: 100%;
     }
 </style>
 <script>

@@ -22,7 +22,6 @@
               </div>
             </div>
         </div>
-        <ProductsDiscover v-if="!toggleCheckout" />
         <ShopCheckout 
           v-if="toggleCheckout"
           :selectedBox="selectedBox"
@@ -33,7 +32,6 @@
   </section>
 </template>
 <script>
-import ProductsDiscover from '@/components/ProductsDiscover';
 import ShopCheckout     from '@/components/ShopCheckout';
 import BOX_BG_SMALL     from '@/assets/box-small-bg.png';
 import BOX_BG_LARGE     from '@/assets/box-large-bg.png';
@@ -41,7 +39,6 @@ import BOX_BG_LARGE     from '@/assets/box-large-bg.png';
 export default {
   name: 'Shop',
   components: {
-    ProductsDiscover,
     ShopCheckout
   },
   data() {

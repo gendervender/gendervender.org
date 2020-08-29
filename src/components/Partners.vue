@@ -32,7 +32,7 @@ export default {
 <style scoped lang="scss">
 #partners{
   text-align: center;
-  padding: 20vh 0;
+  padding: 12vh 0 20vh 0;
 }
 .partners-directory{
   margin-top: 4%;
@@ -92,6 +92,11 @@ export default {
     img{
       width: 80px;
       height: 80px;
+    }
+    &:hover{
+      span{
+        opacity: 0;
+      }
     }
   }
   .partners-directory{

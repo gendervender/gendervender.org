@@ -32,7 +32,6 @@ export default {
 <style lang="scss">
 .hiw {
   &__wrapper {
-    margin-bottom: 8%;
     width: 90%;
   }
 
