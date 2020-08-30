@@ -87,7 +87,7 @@ export default {
       width: 32vw;
       margin: 0 12px;
       background-color: white;
-      background-size: cover;
+      background-size: contain;
       background-position: top;
       background-repeat: no-repeat;
       border: 1px $border solid;
@@ -117,7 +117,7 @@ export default {
       }
     }
 
-    @include mobile {
+    @include tablet {
       flex-direction: column;
 
       &-item {

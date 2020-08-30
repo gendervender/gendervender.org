@@ -5,10 +5,6 @@
       <prismic-rich-text class="title" :field="noteFields.note_header"/>
       <prismic-rich-text class="description" :field="noteFields.note_content"/>
     </div>
-    <div class="center container home-block" v-if="noteFields" >
-      <prismic-rich-text class="title" :field="noteFields.note_header"/>
-      <prismic-rich-text class="description" :field="noteFields.note_content"/>
-    </div>
     <CTABlock
       v-if="products_cta"
       :content="products_cta"

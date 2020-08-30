@@ -291,7 +291,6 @@ section{
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: $site-bg;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

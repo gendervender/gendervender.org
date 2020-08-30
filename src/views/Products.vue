@@ -130,9 +130,11 @@ export default {
     }
     &-show{
       opacity: 1;
+      pointer-events: all;
     }
     &-hide{
       opacity: 0;
+      pointer-events: none;
     }
     &-text {
       right: 0;
