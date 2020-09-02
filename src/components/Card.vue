@@ -1,26 +1,21 @@
 <template>
-     <div class="card" :class="isLink ? 'card-story' : 'card-team'">
-        <div class="top center">
-            <div v-if="imageURL" class="background" :style="{ 'background-image': `url(${imageURL})` }"/>
-                <div v-if="isLink" class="overlay"/>
-                <h1 v-if="isLink">view story</h1>
-            </div>
-            <div class="bottom" :class="isLink ? 'card-bottom-link' : 'card-bottom'">
-                <h5 v-if="primary">{{primary}}</h5>
-                <h6 v-if="secondary">{{secondary}}</h6>
-                <p v-if="description">{{description}}</p>
-                <div class="links" v-if="links">
-                    <a 
-                        v-for="link in links"
-                        v-if="link.url"
-                        :href="link.url"
-                        target="_blank"
-                    >
-                        <img :src="getImgUrl(link.name)" :alt="link.name"/>
-                    </a>
-                </div>
-            </div>
-        </div>
+  <div class="card" :class="isLink ? 'card-story' : 'card-team'">
+    <div class="background top center">
+      <prismic-image v-if="image" :field="image" />
+      <div v-if="isLink" class="overlay" />
+      <h1 v-if="isLink">view story</h1>
+    </div>
+    <div class="bottom" :class="isLink ? 'card-bottom-link' : 'card-bottom'">
+      <h5 v-if="primary">{{primary}}</h5>
+      <h6 v-if="secondary">{{secondary}}</h6>
+      <p v-if="description">{{description}}</p>
+      <div class="links" v-if="links">
+        <a v-for="link in links" v-if="link.url" :href="link.url" target="_blank">
+          <img :src="getImgUrl(link.name)" :alt="link.name" />
+        </a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -32,7 +27,8 @@ export default {
     description: String,
     imageURL: String,
     links: Array,
-    isLink: Boolean
+    isLink: Boolean,
+    image: Object
   },
   methods: {
     getImgUrl(url) {

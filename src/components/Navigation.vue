@@ -33,9 +33,6 @@ import MobileNav  from '@/components/NavigationMobile';
 
 export default {
   name: 'Navigation',
-  props: {
-    disableScroll: Function
-  },
   components: {
     MobileNav
   },

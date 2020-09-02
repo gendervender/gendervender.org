@@ -1,6 +1,7 @@
 <template>
   <div class="center" id="hero">
-    <div v-if="hero_image" class="background" :style="`background-image: url(${hero_image.url})`">
+    <div v-if="hero_image" class="background">
+      <prismic-image :field="hero_image"/>
       <div class="overlay"/>
     </div>
     <div class="container">
@@ -42,9 +43,6 @@ export default {
     .container{
       padding-bottom: 20vh;
     }
-    .background{
-      background-size: cover;
-    }
     .mainTitle, .subtitle, .description{
       color: white;
     }
@@ -69,18 +67,15 @@ export default {
       left: 0;
       top: 0;
     }
-    @include mobile{
-      .container{
-        padding-bottom: 12vh;
-      }
-      .mainTitle, .description{
-        width: 100%;
-      }
-    }
     @include tablet{
       .mainTitle, .description{
         width: 100%;
       }
    }
+    @include mobile{
+      .container{
+        padding-bottom: 12vh;
+      }
+    }
   }
 </style>

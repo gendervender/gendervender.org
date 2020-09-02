@@ -1,69 +1,78 @@
 <template>
   <div id="app">
-    <!-- <LoadScreen :isLoading="isLoading"/> -->
-    <Navigation :disableScroll="disableScroll"/>
-    <transition name="fade" mode="out-in">
+    <LoadScreen :isLoading="isLoading"/>
+    <Navigation  v-if="!isLoading" :enableScroll="enableScroll"/>
+    <transition  v-if="!isLoading" name="fade" mode="out-in">
       <router-view />
     </transition>
-    <Footer/>
+    <Footer v-if="!isLoading" />
   </div>
 </template>
 
 <script>
-  import Navigation from '@/components/Navigation.vue';
-  import Footer     from '@/components/Footer.vue';
-  import LoadScreen from '@/components/LoadScreen.vue';
+import Navigation from '@/components/Navigation.vue';
+import Footer from '@/components/Footer.vue';
+import LoadScreen from '@/components/LoadScreen.vue';
 
-  export default {
-    name: 'App',
+const DOC_TYPES = {
+  homePage: "home_page_v2",
+  aboutPage: "about",
+  teamPage: "team",
+  contactPage: "contact",
+  shopPage: "shop",
+  footer: "footer",
+  products: "products",
+  stories: "stories",
+  privacyPolicy: "privacy_policy"
+}
+
+export default {
+  name: 'App',
     components: {
       Navigation,
       Footer,
       LoadScreen
     },
-    data() {
-      return{
-        isLoading: true,
-        removeLoading: false,
-        videoRef: null
-      }
-    },
-    methods: {
-      disableScroll(status){
-        if(status){
-          document.body.style.overflow = "hidden";
-        }
-        else{
-          document.body.style.overflow = "auto";
-        }
-      },
-      setVideoRef(ref){
-        this.videoRef = ref;
-      },
-      setLoadStatus(){
-        setTimeout(()=>{
-          this.isLoading = false;
-          this.disableScroll(false);
-        }, 1250)
-        setTimeout(()=>{
-          this.removeLoading = true;
-        }, 1750);
-      }
-    },
-    mounted(){
-        this.setLoadStatus();
-      // if(this.$route.name == 'home'){
-      //     var checkVidState = setInterval(()=>{
-      //     if(this.videoRef && this.videoRef.readyState == 4){
-      //         this.setLoadStatus();
-      //         clearInterval(checkVidState);
-      //     }                   
-      //   },500);
-      // }else{
-      //   this.setLoadStatus();
-      // }
+  data() {
+    return {
+      isLoading: true,
     }
+  },
+  methods: {
+    enableScroll() {
+      document.body.style.overflow = "auto";
+    },
+    finishLoading(){
+      Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
+        this.isLoading = false;
+        this.enableScroll();
+      });
+    }
+  },
+  created() {
+    this.$prismic.client.query('').then(response => {
+      let data = {}
+      Object.keys(DOC_TYPES).forEach(item => {
+        data[item] = response.results.filter(doc => doc.type === DOC_TYPES[item]);
+        if (item === 'stories') {
+          data[item] = data[item].map(i => {
+            return {
+              ...i.data,
+              uid: i.uid
+            }
+          })
+        } else {
+          data[item] = data[item].map(i => i.data);
+        }
+        if (data[item].length === 1) {
+          data[item] = data[item][0]
+        }
+      })
+      this.$store.dispatch('setData', data);
+      this.finishLoading();
+    });
   }
+}
 </script>
 <style lang="scss">
 *{
@@ -97,6 +106,7 @@ body.home{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 h1,h2,h3,h4,h5,h6{
   margin: 0%;
@@ -245,14 +255,23 @@ section{
 }
 .background{
   position: absolute;
+  pointer-events: none;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  .overlay{
+    z-index: -1;
+  }
+  img{
+    z-index: -2;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 .center{
     display: flex;
@@ -283,17 +302,6 @@ section{
   @include tablet{
     width: 90%;
   }
-}
-.background{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 .center{
     display: flex;

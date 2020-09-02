@@ -8,21 +8,26 @@
             <prismic-image
               v-for="(item, index) in items"
               :field="item.image_product"
-              :style="[item.product_id === 'gender-vender' ? {'width': '100%'} : {'width': '40%'}]"
               :class="index === selected ? 'products__info-show' : 'products__info-hide'
             "/>
             <div
               class="products__info-text"
               v-for="(item, index) in items"
-              v-if="item.product_id !== 'gender-vender'"
               :class="index === selected ? 'products__info-show' : 'products__info-hide' "
             >
                 <h3>{{item.business_name}}</h3>
                 <prismic-rich-text :field="item.product_description" />
                 <router-link
+                  v-if="item.product_id !== 'gender-vender'"
                   class="button"
                   :to="`/stories/${item.product_id}`">
                     READ STORY
+                </router-link>
+                <router-link
+                  v-else
+                  class="button"
+                  :to="`/shop`">
+                    SHOP NOW
                 </router-link>
             </div>
         </div>
@@ -59,6 +64,12 @@
               v-if="items[selected].product_id !== 'gender-vender'"
               :to="`/stories/${items[selected].product_id}`">
               READ STORY
+            </router-link>
+            <router-link
+              v-else
+              class="button"
+              :to="`/shop`">
+                SHOP NOW
             </router-link>
         </div>
     </div>
@@ -124,6 +135,7 @@ export default {
       top: 0%;
     }
     img {
+      width: 40%;
       left: 0;
       height: 100%;
       object-fit: cover;

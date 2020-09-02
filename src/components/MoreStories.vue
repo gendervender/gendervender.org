@@ -1,21 +1,21 @@
 <template>
-    <div class="more-stories container">
-        <h3>More Stories</h3>
-        <div class="stories-grid">
-            <router-link
-                v-for="item in data"
-                :to="`/stories/${item.uid}`"
-            >
-                <Card 
-                    :isLink="true"
-                    :primary="item.name"
-                    :secondary="item.business_name"
-                    :description="item.short_description"
-                    :imageURL="item.thumbnail_image.url"
-                />
-            </router-link>
-        </div>
+  <div class="more-stories container">
+    <h3>More Stories</h3>
+    <div class="stories-grid">
+        <router-link
+            v-for="item in data"
+            :to="`/stories/${item.uid}`"
+        >
+        <Card 
+          :isLink="true"
+          :primary="item.name"
+          :secondary="item.business_name"
+          :description="item.short_description"
+          :image="item.thumbnail_image"
+        />
+        </router-link>
     </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>

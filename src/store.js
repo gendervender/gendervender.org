@@ -3,9 +3,19 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-function store(data) {
+function store() {
   return new Vuex.Store({
-    state: {...data}
+    state: {},
+    mutations: {
+      setData(state, payload) {
+        Object.assign(state, payload)
+      }
+    },
+    actions: {
+      setData({commit}, payload){
+        commit('setData', payload)
+      },
+    }
   });
 }
 

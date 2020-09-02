@@ -1,6 +1,8 @@
 <template>
   <div id="footer" v-if="show">
-    <div class="background" :style="{ 'background-image': `url(${footer_image.url})` }"/>
+    <div class="background">
+      <prismic-image :field="footer_image" />
+    </div>
     <div class="container">
         <div class="footer-block">
             <prismic-rich-text class="text title" v-if="contact_title" :field="contact_title"/>
@@ -65,56 +67,52 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    #footer{
-        position: relative;
-        width: 100%;
-        height: 80vh;
-        .container{
-            padding: 12vh 0 24vh 0;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            height: 100%;
-        }
-        span{
-            position: absolute;
-            bottom: 4vh;
-            opacity: 0.8;
-        }
-        .footer-block{
-            .title{
-              font-size: $font-size-s;
-              font-weight: 500;
-            }
-            flex-direction: column;
-            display: flex;
-            a{
-                font-size: $font-size-m;
-                align-self: flex-start;
-                margin-top: 16px;
-            }
-        }
+#footer {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  background: white;
+  .background{
+    img{
+      z-index: 0;
     }
-    @include mobile{
-      #footer{
-        background-color: white;
-        .background{
-          z-index: 0;
-          background-size: 130%;
-          background-position: 0vw 50%;
-          background-color: white;
-        }
-      }
+  }
+  .container {
+    padding: 12vh 0 24vh 0;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  span {
+    position: absolute;
+    bottom: 4vh;
+    opacity: 0.8;
+  }
+
+  .footer-block {
+    .title {
+      font-size: $font-size-s;
+      font-weight: 500;
     }
-    @include tablet{
-      #footer{
-        background-color: white;
-        .background{
-          z-index: 0;
-          background-size: 130%;
-          background-position: 0vw 50%;
-        }
-      }
+
+    flex-direction: column;
+    display: flex;
+
+    a {
+      font-size: $font-size-m;
+      align-self: flex-start;
+      margin-top: 16px;
     }
+  }
+}
+@include tablet {
+  .background{
+    img{
+      object-fit: contain;
+    }
+  }
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div id="stories-view" v-if="data">
-        <div class="banner">
-            <div class="background" :style="{'background-image': `url(${data.main_image.url})`}"/>
+        <div class="banner background">
+          <prismic-image :field="data.main_image" />
         </div>
         <div class="content center">
             <div class="container">
@@ -37,13 +37,10 @@
 
     .banner {
       width: 100%;
-      height: 72vh;
+      height: 68vh;
+      margin-top: 12vh;
       position: relative;
       display: block;
-
-      .background {
-        background-attachment: fixed;
-      }
     }
 
     .links {
@@ -140,10 +137,6 @@
 
       .banner {
         height: 40vh;
-
-        .background {
-          background-attachment: unset;
-        }
       }
 
       .content .container {
