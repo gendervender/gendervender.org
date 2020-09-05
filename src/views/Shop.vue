@@ -1,5 +1,8 @@
 <template>
   <section id="shop" class="shop">
+        <div class="banner">
+          <prismic-image :field="banner" />
+        </div>
         <div class="center container" v-if="!toggleCheckout">
             <prismic-rich-text :field="shop_header" v-if="shop_header"/>
             <prismic-rich-text :field="shop_content" v-if="shop_content"/>
@@ -8,9 +11,10 @@
                 class="shop__boxes-item" 
                 v-for="item in boxes"
                 :key="`box-${item.name}`"
-                :style="{ 'background-image': `url(${boxBg[item.size]})` }"
               >
-                <div>
+                <prismic-image class="shop__boxes-item-image" :field="item.image"/>
+                <img class="shop__boxes-item-graphics" :src="boxBg[item.size]"/>
+                <div class="shop__boxes-item-info">
                   <h3>{{item.name}} <span>({{item.amount}} items)</span></h3>
                   <prismic-rich-text :field="item.description"/>
                 </div>
@@ -49,6 +53,7 @@ export default {
         base: 0,
         shipping: 0
       },
+      banner: {},
       boxes: [],
       payment_instructions: [],
       payment_services: "",
@@ -82,28 +87,39 @@ export default {
 </script>
 <style lang="scss" scoped>
 .shop {
+  padding-top: 0;
   &__boxes {
     &-item {
-      width: 32vw;
+      width: 40vw;
       margin: 0 12px;
-      background-color: white;
-      background-size: contain;
-      background-position: top;
-      background-repeat: no-repeat;
       border: 1px $border solid;
       border-radius: 8px;
-      box-sizing: border-box;
-      padding: 12% 24px 32px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-sizing: border-box;
+      padding-bottom: 2rem;
+      background-color: white;
+      &-info, &-price{
+        box-sizing: border-box;
+        padding: 1rem 2rem 0;
+      }
+      &-info{
+        flex: 1;
+        align-items: flex-start;
+      }
       h3 {
         font-size: $font-size-m;
       }
-
+      img{
+        width: 100%;
+      }
+      &-image{
+        height: 32vh;
+        object-fit: cover;
+      }
       &-price {
         border-top: 1px $border solid;
-        margin-top: 20px;
         padding-top: 12px;
         flex-direction: column;
 
@@ -116,14 +132,17 @@ export default {
         }
       }
     }
-
+    @include desktop{
+      &-item{
+        width: 32vw;
+      }
+    }
     @include tablet {
       flex-direction: column;
 
       &-item {
         width: 100%;
         margin: 12px 0;
-        padding-top: 20%;
       }
     }
   }

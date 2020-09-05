@@ -13,12 +13,6 @@
             font-size: $font-size-xl;
         }
     }
-    @include mobile{
-        q{
-            font-size: $font-size-l;
-            line-height: 1.8;
-        }
-    }
     @include tablet{
         q{
             font-size: $font-size-l;

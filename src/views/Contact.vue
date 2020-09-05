@@ -1,11 +1,13 @@
 <template>
   <section id="contact">
-        <div class="banner" :style="{ 'background-image': `url(${contact_image.url})` }"/>
-        <div class="center container">
-        <prismic-rich-text class="text title" v-if="page_title" :field="page_title"/>
-        <prismic-rich-text class="text body" v-if="page_description" :field="page_description"/>
-            <ContactForm />
-        </div>
+    <div class="banner">
+      <prismic-image :field="contact_image" />
+    </div>
+    <div class="center container">
+    <prismic-rich-text class="text title" v-if="page_title" :field="page_title"/>
+    <prismic-rich-text class="text body" v-if="page_description" :field="page_description"/>
+        <ContactForm />
+    </div>
   </section>
 </template>
 <script>
@@ -35,32 +37,22 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    #contact{
-        min-height: 100vh;
-        padding-bottom: 20vh;
-        margin-top: 0;
-        text-align: center;
-        .container{
-            flex-direction: column;
-        }
-        .title{
-            font-weight: 600;
-        }
-        .body{
-            margin: 0px 0px 52px 0px;
-        }
-        .banner{
-            width: 100%;
-            height: 50vh;
-            background-size: cover;
-            background-position: center;
-            margin-bottom: 8vh;
-        }
-        @include mobile{
-            .banner{
-                height: 25vh;
-                margin-bottom: 4vh;
-            }
-        }
+  #contact {
+    min-height: 100vh;
+    padding-bottom: 20vh;
+    margin-top: 0;
+    text-align: center;
+
+    .container {
+      flex-direction: column;
     }
+
+    .title {
+      font-weight: 600;
+    }
+
+    .body {
+      margin: 0px 0px 52px 0px;
+    }
+  }
 </style>

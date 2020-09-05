@@ -1,15 +1,16 @@
 <template>
   <div class="center" id="hero">
     <div v-if="hero_image" class="background">
-      <prismic-image :field="hero_image"/>
-      <div class="overlay"/>
+      <prismic-image :field="hero_image" />
     </div>
     <div class="container">
-     <prismic-rich-text class="text mainTitle" v-if="headline" :field="headline"/>
-     <prismic-rich-text class="description" v-if="subheadline" :field="subheadline"/>
-      <div class="row">
-        <button @click="scrollDown" class="button" style="margin-right: 20px">Get Started</button>
-        <router-link class="button button-secondary button-light" to="/about">Learn more</router-link>
+      <div class="hero__wrapper">
+        <prismic-rich-text v-if="headline" :field="headline" />
+        <prismic-rich-text v-if="subheadline" :field="subheadline" />
+        <div class="row">
+          <button @click="scrollDown" class="button" style="margin-right: 12px">Get Started</button>
+          <router-link class="button button-secondary button-dark" to="/about">Learn more</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -41,23 +42,20 @@ export default {
     justify-content: flex-end;
     align-items: flex-start;
     .container{
-      padding-bottom: 20vh;
+      padding-bottom: 8vh;
     }
-    .mainTitle, .subtitle, .description{
-      color: white;
+    .hero__wrapper{
+      width: 45%;
+      background: rgba(255,255,255, 0.95);
+      padding: 3.2rem 2.4rem;
+      border-radius: 8px;
+      box-sizing: border-box;
     }
-    .mainTitle{
-      font-weight: 500;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      width: 60%;
+    h1 {
+      font-size: $font-size-xl;
     }
-    .description{
-      margin-bottom: 2rem;
-      width: 60%;
-      p{
-        font-size: $font-size-m;
-      }
+    p {
+      font-size: $font-size-xs;
     }
     video{
       width: 100%;
@@ -67,14 +65,40 @@ export default {
       left: 0;
       top: 0;
     }
-    @include tablet{
-      .mainTitle, .description{
-        width: 100%;
-      }
-   }
-    @include mobile{
+    @include desktop {
       .container{
         padding-bottom: 12vh;
+      }
+      h1 {
+        font-size: $font-size-xxl;
+      }
+
+      p {
+        font-size: $font-size-m;
+      }
+    }
+    @include tablet {
+      .hero__wrapper {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: $font-size-l;
+      }
+
+      p {
+        font-size: $font-size-xs;
+      }
+    }
+    @include mobile{
+      .container{
+        .row{
+          flex-direction: column;
+          .button{
+            margin-right: 0%!important;
+            margin-top: 0.8rem;
+          }
+        }
       }
     }
   }

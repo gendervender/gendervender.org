@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <LoadScreen :isLoading="isLoading"/>
-    <Navigation  v-if="!isLoading" :enableScroll="enableScroll"/>
+    <Navigation  v-if="!isLoading" />
     <transition  v-if="!isLoading" name="fade" mode="out-in">
       <router-view />
     </transition>
@@ -110,7 +110,7 @@ body.home{
 }
 h1,h2,h3,h4,h5,h6{
   margin: 0%;
-  line-height: 1.6;
+  line-height: 1.4;
   letter-spacing: 0.015rem;
 }
 h1{font-size: $font-size-xxl};
@@ -119,40 +119,7 @@ h3{font-size: $font-size-l};
 h4{font-size: $font-size-m};
 h5{font-size: $font-size-s};
 h6{font-size: $font-size-s; font-weight: 400};
-@include tablet{
-  h1{font-size: $font-size-xl};
-  h2{font-size: $font-size-l};
-  h3{font-size: $font-size-m};
-  h4{font-size: $font-size-s};
-  h5{font-size: $font-size-xs};
-  h6{font-size: $font-size-xs};
-}
-@include mobile{
-  h1{font-size: 32px};
-  h2{font-size: 24px};
-  h3{font-size: 20px};
-  h4{font-size: 18px};
-  h5{font-size: 16px};
-  h6{font-size: 16px};
-  p, a, b, span, button, li{
-    font-size: 16px;
-  }
-}
-@include desktop{
-  h1{font-size: 3.2rem};
-  h2{font-size: 2.2rem};
-  h3{font-size: 2rem};
-  h4{font-size: 1.75rem};
-  h5{font-size: 1.25rem};
-  h6{font-size: 1.25rem};
-  p, a, b, span, button, li{
-    line-height: 2;
-    font-size: 1.1rem;
-  }
-  .button{
-    padding: 13px 20px 12px 20px;
-  }
-}
+
 .text{
   *{
     color: inherit;
@@ -209,6 +176,10 @@ section{
 .row{
   display: flex;
   flex-direction: row;
+}
+.column{
+  display: flex;
+  flex-direction: column;
 }
 .card{
   border-radius: 5px;
@@ -348,9 +319,6 @@ section{
   strong{
     font-size: 100%;
   }
-  .button{
-    padding: 13px 20px 12px 20px;
-  }
 }
 .form{
   width: 60%;
@@ -458,5 +426,23 @@ textarea{
 }
 input[type=submit]{
   @extend .button;
+}
+.banner {
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 8vh;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include mobile {
+    height: 25vh;
+    margin-bottom: 4vh;
+  }
 }
 </style>

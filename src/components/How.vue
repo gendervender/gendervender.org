@@ -86,5 +86,17 @@ export default {
       }
     }
   }
+  @include mobile{
+    &__block{
+      &-text{
+        span{
+          font-size: $font-size-xl;
+        }
+        &-content {
+         padding-left: $font-size-xl + 0.8;
+        }
+      }
+    }
+  }
 }
 </style>

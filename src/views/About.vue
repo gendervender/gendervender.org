@@ -4,8 +4,8 @@
           <prismic-rich-text v-if="page_title" :field="page_title"/>
           <prismic-rich-text class="page-description" v-if="page_description" :field="page_description"/>
       </div>
-      <div class="banner">
-        <div class="background" :style="{ 'background-image': `url(${banner.url})` }" />
+      <div class="banner background">
+        <prismic-image :field="banner" />
       </div>
       <div class="container">
         <component

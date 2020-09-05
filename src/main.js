@@ -19,6 +19,9 @@ Vue.use(PrismicVue, {
     if (doc.type === 'shop') {
       return '/shop';
     }
+    if (doc.type === 'stories') {
+      return '/stories';
+    }
     return '/404';
   }
 });

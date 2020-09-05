@@ -20,7 +20,7 @@
   h1 {
     font-weight: 400;
     font-size: $font-size-m;
-    margin-bottom: 12px;
+    margin-bottom: 2rem;
   }
   h2{
     font-size: 1.8rem;

@@ -36,27 +36,27 @@ export default {
   components: {
     MobileNav
   },
-  watch:{
-    '$route' (to, from){
-      if(this.$route.name == 'home'){
-        setTimeout(() => {
-          //delay to match route transition
-          this.setNavStyles("light");
-        }, 400)
-      }else{
-        this.setNavStyles("dark");
-      }
-    }
-  },
+  // watch:{
+  //   '$route' (to, from){
+  //     if(this.$route.name == 'home'){
+  //       setTimeout(() => {
+  //         //delay to match route transition
+  //         this.setNavStyles("light");
+  //       }, 400)
+  //     }else{
+  //       this.setNavStyles("dark");
+  //     }
+  //   }
+  // },
   data() {
     return{
       windowHeight: 0,
       windowWidth: 0,
-      navClass: "nav-light",
-      buttonClass: "button-light",
+      navClass: "nav-dark",
+      buttonClass: "button-dark",
       menuIcon: {
-        open: "menu-light",
-        close: "menu-close-light"
+        open: "menu",
+        close: "menu-close"
       },
       showMenu: false,
       navItems: [
@@ -91,9 +91,6 @@ export default {
   methods: {
     toggleMenu(){
       this.showMenu = !this.showMenu;
-    },
-    preventScroll(e){
-      e.preventDefault()
     },
     toggleScrollStatus(status){
       if(true){
@@ -139,11 +136,11 @@ export default {
   },
   created () {
     this.handleResize();
-    window.addEventListener('scroll', this.handleScroll);
+    // window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.handleResize);
   },
   destroyed () {
-    window.removeEventListener('scroll', this.handleResize);
+    window.removeEventListener('resize', this.handleResize);
   },
   mounted(){
     if(this.$route.name !== 'home'){

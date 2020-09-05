@@ -1,6 +1,6 @@
 <template>
   <div id="footer" v-if="show">
-    <div class="background">
+    <div class="background center">
       <prismic-image :field="footer_image" />
     </div>
     <div class="container">
@@ -36,7 +36,7 @@ export default {
       this.show = false;
       setTimeout(() => {
         this.show = true
-      }, 2000)
+      }, 1250)
     }
   },
   data() {
@@ -81,7 +81,6 @@ export default {
     padding: 12vh 0 24vh 0;
     text-align: left;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     height: 100%;
   }
@@ -93,6 +92,7 @@ export default {
   }
 
   .footer-block {
+    margin-bottom: 2rem;
     .title {
       font-size: $font-size-s;
       font-weight: 500;
@@ -112,6 +112,21 @@ export default {
   .background{
     img{
       object-fit: contain;
+    }
+  }
+}
+@include desktop{
+  #footer{
+    height: 60vh;
+    .container {
+      padding: 12vh 0;
+    }
+  }
+  .background{
+    img{
+      position: relative;
+      width: 50%;
+      height: 50%;
     }
   }
 }

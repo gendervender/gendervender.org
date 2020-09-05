@@ -22,8 +22,8 @@
             <input class="field field-half" name="paymentUsername" v-model="form.paymentUsername" />
             <h4>How it works</h4>
             <div class="shop__checkout-info" v-if="payment_instructions">
-              <div class="shop__checkout-info-item center" v-for="item in payment_instructions">
-                <prismic-image :field="item.icon" />
+              <div class="shop__checkout-info-item center" v-for="(item, index) in payment_instructions">
+                <img :src="icons[index]" />
                 <prismic-rich-text :field="item.content" />
               </div>
             </div>
@@ -65,6 +65,9 @@ import OrderForm     from '@/components/OrderForm';
 import Agreement     from '@/components/Agreement';
 import formHandler   from '@/utils/formHandler';
 import VueRecaptcha  from 'vue-recaptcha';
+import ICON_SEND     from '@/assets/icon-send.svg';
+import ICON_MAIL     from '@/assets/icon-mail.svg';
+import ICON_CHECK    from '@/assets/icon-check.svg';
 
 export default {
   name: 'ShopCheckout',
@@ -82,6 +85,7 @@ export default {
     },
     data() {
       return {
+        icons: [ICON_SEND, ICON_MAIL, ICON_CHECK],
         recaptchaKey: null,
         verified: false,
         form: {
@@ -136,7 +140,7 @@ export default {
     }
 
     &-payment {
-      flex: 3;
+      flex: 4;
       margin-right: 4%;
     }
 
@@ -149,7 +153,7 @@ export default {
     }
 
     &-summary {
-      flex: 1;
+      flex: 1
     }
 
     &-card {
@@ -224,6 +228,11 @@ export default {
             margin-right: 20px;
           }
         }
+      }
+    }
+    @include mobile{
+      .field{
+        width: 100%;
       }
     }
   }
