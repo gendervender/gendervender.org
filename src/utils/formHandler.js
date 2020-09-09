@@ -40,9 +40,8 @@ export default {
           const processedForm = {
             "form-name": this.formName,
             ...this.form,
-            ... this.selectedBox && {boxPref: this.selectedBox}
+            ... this.selectedBox && {boxPref: this.selectedBox, orderNumber: Math.floor(100000000 + Math.random() * 900000000)}
           }
-          console.log(processedForm);
           try {
               const config = {
                 header: {"Content-Type": "application/x-www-form-urlencoded"}
