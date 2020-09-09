@@ -1,19 +1,18 @@
 <template>
   <div id="partners" class="home-block center">
     <div class="container">
-        <prismic-rich-text class="title" v-if="fields.title" :field="fields.title"/>
-        <prismic-rich-text class="text desc" v-if="fields.description" :field="fields.description"/>
+        <prismic-rich-text class="title" v-if="partners_header" :field="partners_header"/>
+        <prismic-rich-text class="text desc" v-if="partners_content" :field="partners_content"/>
         <div class="partners-directory">
-          <a
-            class="partners-item center"
-            v-for="item in fields.directory"
-            :href="item.link.url"
-            target="_blank"
+          <prismic-link
+            class="partners-item" 
+            :aria-label="'visit ' + item.name + ' website'"
+            v-for="item in partners_items" :field="item.link"
           >
-            <div class="background" :style="{'background-image': `url(${item.partner_image.url})`}"/>
-            <div class="overlay" />
-              <h1>{{item.partner_name}}</h1>
-          </a>
+            <div class="overlay"/>
+            <prismic-image :field="item.image" />
+            <span>{{item.name}}</span>
+          </prismic-link>
         </div>
     </div>
   </div>
@@ -23,111 +22,85 @@
 export default {
   name: 'Partners',
   props: {
-    fields: Object
+    partners_header: Array,
+    partners_content: Array,
+    partners_items: Array
   }
 }
 </script>
 
 <style scoped lang="scss">
-  #partners{
-    text-align: center;
-    padding-bottom: 24vh;
+#partners{
+  text-align: center;
+  padding: 12vh 0 20vh 0;
+}
+.partners-directory{
+  margin-top: 4%;
+  width: 100%;
+}
+.partners-item{
+  cursor: pointer;
+  margin: 0% 12px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    -webkit-box-shadow: 0px 5px 12px 0px rgba($text,0.1);
+    -moz-box-shadow: 0px 5px 12px 0px rgba($text,0.1);
+    box-shadow: 0px 5px 12px 0px rgba($text,0.1);
   }
-  .partners-directory{
-    width: 60%;
-    display: grid;
-    margin: auto;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-    justify-items: center;
-    align-items: center;
-    &:before{
-      content: '';
-      width: 0;
-      padding-bottom: 100%;
-      grid-row: 1 / 1;
-      grid-column: 1 / 1;
+  span{
+    position: absolute;
+    top: 112px;
+    color: $primary;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.2s;
+    margin-top: 4%;
+    width: 250px;
+  }
+  .overlay, img{
+    border-radius: 50%;
+  }
+  .overlay{
+    background: $primary;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  &:hover{
+    .overlay{
+      opacity: 0.6;
+    }
+    span{
+      opacity: 1;
+      margin-top: 0%;
     }
   }
-  .partners-directory > *:first-child {
-    grid-row: 1 / 1;
-    grid-column: 1 / 1;
+}
+@include tablet{
+  #partners{
+    padding: 40px 0;
   }
   .partners-item{
-    cursor: pointer;
-    position: relative;
-    border-radius: 50%;
-    box-sizing: border-box;
-    overflow: hidden;
-    position: relative;
-    width: 75%;
-    height: 75%;
-    padding: 16px;
-    -webkit-box-shadow: 0px 5px 20px 0px rgba($text,0.075);
-    -moz-box-shadow: 0px 5px 20px 0px rgba($text,0.075);
-    box-shadow: 0px 5px 20px 0px rgba($text,0.075);
+    margin: 0 12px 12px;
+    img{
+      width: 80px;
+      height: 80px;
+    }
     &:hover{
-      -webkit-box-shadow: 0px 5px 20px 0px rgba($text,0.15);
-      -moz-box-shadow: 0px 5px 20px 0px rgba($text,0.15);
-      box-shadow: 0px 5px 20px 0px rgba($text,0.15);
-      .overlay{
-          opacity: 0.8;
-      }
-      h1{
-        margin-top: 0%;
-        opacity: 1;
-      }
-    }
-    .overlay{
-      background: $primary;
-      opacity: 0;
-      transition: 0.24s all ease-in-out;
-    }
-    h1{
-      transition: 0.24s all ease-in-out;
-      color: white;
-      font-weight: 500;
-      font-size: 0.9rem;
-      opacity: 0;
-      margin-top: 25%;
-    }
-  }
-  @include desktop{
-    h1{
-      font-size: 1rem!important;
-    }
-  }
-  @include mobile{
-    .partners-directory{
-      grid-template-columns: repeat(2, 1fr);
-      width: 100%;
-    }
-    .partners-item{
-      width: 80%;
-      height: 76%;
-      &:hover{
-        .overlay{
-          opacity: 0;
-        }
-        h1{
-          opacity: 0;
-        }
+      span{
+        opacity: 0;
       }
     }
   }
-  @include tablet{
-    .partners-directory{
-      width: 100%;
-    }
-    .partners-item{
-      &:hover{
-        .overlay{
-          opacity: 0;
-        }
-        h1{
-          opacity: 0;
-        }
-      }
-    }
+  .partners-directory{
+    width: 100%;
   }
+}
 </style>

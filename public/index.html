@@ -35,12 +35,26 @@
     </div>
     <!-- built files will be auto injected -->
     <form name="contact" method="POST" data-netlify="true" hidden> 
-      <input type="text" name="firstName">
-      <input type="text" name="lastName">
-      <input type="email" name="email">
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
       <textarea name="message"></textarea>
-      <div data-netlify-recaptcha="true"></div>
-      <button type="submit">Submit</button>
+      <input type="submit"/>
+    </form>
+    <form name="order" method="POST" data-netlify="true" hidden> 
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <input type="phone" name="phone" />
+      <input type="text" name="address"/>
+      <input type="text" name="city"/>
+      <input type="text" name="state"/>
+      <input type="text" name="zip"/>
+      <input type="text" name="boxPref"/>
+      <input type="text" name="orderNumber"/>
+      <select name="paymentMethod"></select>
+      <input type="text" name="paymentUsername"/>
+      <input type="submit"/>
     </form>
   </body>
 </html>

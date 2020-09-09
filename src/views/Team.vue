@@ -1,16 +1,17 @@
 <template>
     <section id="team" v-if="members.length>0">
       <div class="container">
-          <prismic-rich-text v-if="title" :field="title"/>
-          <prismic-rich-text class="text" v-if="description" :field="description"/>
+          <prismic-rich-text v-if="page_title" :field="page_title"/>
+          <prismic-rich-text class="text" v-if="page_description" :field="page_description"/>
           <div class="members-container">
             <Card
               v-for="member in members"
               v-if="member.status == 'current'"
+              :isLink="true"
               :primary="member.name"
               :secondary="member.role"
               :description="member.description"
-              :imageURL="member.photo.url"
+              :image="member.photo"
               :links="[{name: 'linkedin', url: member.linkedin.url},{name: 'email', url: member.email.url},{name: 'link', url: member.website.url}]"
             />
           </div>
@@ -19,10 +20,11 @@
             <Card
               v-for="member in members"
               v-if="member.status == 'past'"
+              :isLink="true"
               :primary="member.name"
               :secondary="member.role"
               :description="member.description"
-              :imageURL="member.photo.url"
+              :image="member.photo"
               :links="[{name: 'linkedin', url: member.linkedin.url},{name: 'email', url: member.email.url},{name: 'link', url: member.website.url}]"
             />
           </div>
@@ -31,7 +33,6 @@
 </template>
 <style lang="scss" scoped>
   #team{
-    padding: 16vh 0;
     .members-container{
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -45,20 +46,18 @@
       margin: 1rem 0 6rem 0;
       width: 60%;
     }
-    @include mobile{
-      .text{
-        width: 100%;
-      }
-      .members-container{
-        grid-template-columns: 1fr;
-      }
-    }
     @include tablet{
       .text{
+        margin: 16px 0 24px 0;
         width: 100%;
       }
       .members-container{
         grid-template-columns: 1fr 1fr;
+      }
+    }
+    @include mobile{
+      .members-container{
+        grid-template-columns: 1fr;
       }
     }
   }
@@ -73,24 +72,19 @@ export default {
   },
   data(){
     return{
-      title: null,
-      description: null,
+      page_title: null,
+      page_description: null,
       members: []
     }
   },
   methods: {
-    async getContent(){ 
-       const content = await this.$prismic.client.getSingle('team');
-       this.assignContent(content.data);
-    },
-    assignContent(data){
-      this.title = data.page_title;
-      this.description = data.page_description;
-      this.members = data.members;
+    assignContent(){
+      const data = this.$store.state.teamPage;
+      Object.assign(this, data);
     }
   },
   created(){
-    this.getContent();
+    this.assignContent();
   }
 }
 </script>

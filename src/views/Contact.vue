@@ -1,11 +1,13 @@
 <template>
   <section id="contact">
-        <div class="banner" :style="{ 'background-image': `url(${fields.contact_image})` }"/>
-        <div class="center container">
-        <prismic-rich-text class="text title" v-if="fields.contact_title" :field="fields.contact_title"/>
-        <prismic-rich-text class="text body" v-if="fields.contact_description" :field="fields.contact_description"/>
-            <ContactForm />
-        </div>
+    <div class="banner">
+      <prismic-image :field="contact_image" />
+    </div>
+    <div class="center container">
+    <prismic-rich-text class="text title" v-if="page_title" :field="page_title"/>
+    <prismic-rich-text class="text body" v-if="page_description" :field="page_description"/>
+        <ContactForm />
+    </div>
   </section>
 </template>
 <script>
@@ -18,59 +20,39 @@ export default {
   },
   data() {
     return{
-        fields: {
-            contact_image: null,
-            contact_title: null,
-            contact_description: null
-        }
+        contact_image: null,
+        page_title: null,
+        page_description: null
     }
   },
   methods: {
-    async getContent(){ 
-       const content = await this.$prismic.client.getSingle('contact');
-       this.assignContent(content.data);
-    },
-    assignContent(data){
-       this.fields = {
-        contact_image: data.contact_image.url,
-        contact_title: data.page_title,
-        contact_description: data.page_description
-       }
+    assignContent(){
+       const data = this.$store.state.contactPage;
+        Object.assign(this, data);
     }
   },
   created(){
-    this.getContent();
+    this.assignContent();
   }
 }
 </script>
 <style lang="scss" scoped>
-    #contact{
-        min-height: 100vh;
-        padding-bottom: 20vh;
-        text-align: center;
-        .container{
-            flex-direction: column;
-        }
-        .title{
-            font-size: 2.4rem;
-            font-weight: 600;
-        }
-        .body{
-            font-size: 1.2rem;
-            margin: 0px 0px 52px 0px;
-        }
-        .banner{
-            width: 100%;
-            height: 50vh;
-            background-size: cover;
-            background-position: center;
-            margin-bottom: 8vh;
-        }
-        @include mobile{
-            .banner{
-                height: 25vh;
-                margin-bottom: 4vh;
-            }
-        }
+  #contact {
+    min-height: 100vh;
+    padding-bottom: 20vh;
+    margin-top: 0;
+    text-align: center;
+
+    .container {
+      flex-direction: column;
     }
+
+    .title {
+      font-weight: 600;
+    }
+
+    .body {
+      margin: 0px 0px 52px 0px;
+    }
+  }
 </style>

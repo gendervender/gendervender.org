@@ -1,5 +1,6 @@
 <template>
   <form
+    id="contact-form"
     class="form"
     name="contact"
     method="POST"
@@ -9,31 +10,37 @@
     ref="form"
   > 
     <div class="field field-half">
-      <label for="firstName">First Name</label>
+      <label for="firstName">First Name *</label>
       <input
+        required
         v-model="form.firstName"
         type="text"
         name="firstName"
-      >
+      />
     </div>
     <div class="field field-half">
-      <label for="lastName">Last Name</label>
+      <label for="lastName">Last Name *</label>
       <input
+        required
         v-model="form.lastName"
         type="text"
         name="lastName"
-      >
+      />
     </div>
     <div class="field">
-      <label for="email">Email</label>
+      <label for="email">Email *</label>
       <input
+        required
         v-model="form.email"
+        type="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
         name="email"
-      >
+      />
     </div>
     <div class="field">
       <label for="message">Your Message</label>
       <textarea
+        required
         v-model="form.message"
         name="message"
       />
@@ -45,22 +52,26 @@
       :sitekey="recaptchaKey"
       class="field"
     />
-    <button
-      type="submit"
+    <Agreement />
+    <input
+      form="contact-form"
       class="button"
-    >
-      Send
-    </button>
+      type="submit"
+      value="send message"
+    />
     <p class="form-message" :class="{'form-message-error': !status.success}">{{status.msg}}</p>
   </form>
 </template>
 
 <script>
-import axios from 'axios';
 import VueRecaptcha from 'vue-recaptcha';
+import formHandler  from '@/utils/formHandler';
+import Agreement    from '@/components/Agreement';
+
 export default {
   name: 'ContactForm',
-  components: { VueRecaptcha },
+  mixins: [formHandler],
+  components: { VueRecaptcha, Agreement },
   data() {
     return {
       recaptchaKey: null,
@@ -71,6 +82,8 @@ export default {
         email: '',
         message: '',
       },
+      formName: "contact",
+      formInitiated: false,
       status: {
         success: false,
         msg: ''
@@ -79,136 +92,6 @@ export default {
   },
   created: function() {
       this.recaptchaKey = process.env.VUE_APP_SITE_RECAPTCHA_KEY;
-  },
-  methods: {
-    onVerify(){
-      this.verified = true;
-    },
-    encode(data) {
-      return Object.keys(data)
-      .map(
-          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-        )
-        .join("&");
-    },
-    handleForm(){
-        const form = this.form;
-        const validation = this.validate(form);
-        if (validation.success){
-            this.submitForm();
-        }
-        this.status.msg = validation.msg;
-    },
-    validate(form){
-        if(form.firstName == "" || form.lastName == ""){
-            return{success: false, msg: "Please fill out your name."}
-        }else if(form.email == ""){
-            return{success: false, msg: "Please enter your email address."}
-        }else if(!this.validateEmail(form.email)){
-            return{success: false, msg: "Please enter a valid email address."}
-        }else if(form.message == ""){
-            return{success: false, msg: "Please enter a message."}
-        }else if(!this.verified){
-          return {success: false, msg: "Please verify yourself with recaptcha"}
-        }else{
-            return{success: true, msg: ""}
-        }
-    },
-    validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    },
-    async submitForm() {
-      this.status.msg = "Submitting your message...";
-      try {
-          const config = {
-            header: {"Content-Type": "application/x-www-form-urlencoded"}
-          }
-          let res = await axios.post( "/", 
-            this.encode({
-              "form-name": "contact",
-              ...this.form
-            }),
-            config
-          )
-          if(res.status === 200) {
-            this.status.success = true;
-            this.status.msg = 'Thank you! Your message has been submitted.';
-            this.form = {
-                firstName: '',
-                lastName: '',
-                email: '',
-                message: ''
-            }
-          }
-          else {
-            this.status.success = false;
-            this.status.msg = 'Something went wrong... please try again later.';
-          }
-      } catch (error) {
-        this.status.success = false;
-        this.status.msg = error.msg;
-      }
-    }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-    .form{
-        width: 50%;
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        flex-direction: row;
-        .form-message{
-            width: 100%;
-            text-align: left;
-            color: $secondary;
-        }
-        .form-message-error{
-            color: $primary;
-        }
-        .field {
-            text-align: left;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .field-half{
-            width: 49%;
-            &:first-child{
-                margin-right: 2%;
-            }
-        }
-        label{
-            font-size: 0.9rem;
-        }
-        input, textarea{
-            margin-top: 8px;
-            outline: none;
-            width: 100%;
-            padding: 16px;
-            font-size: 1rem;
-            box-sizing: border-box;
-            border-radius: 5px;
-            background-color: white;
-            border: 2px solid transparent;
-            font-family: inherit;
-            &:focus{
-                border-color: $secondary;
-            }
-        }
-        textarea{
-            resize: none;
-            height: 240px;
-            line-height: 1.8;
-        }
-        @include mobile{
-          width: 100%;
-        }
-
-        @include tablet{
-          width: 100%;
-        }
-    }
-</style>

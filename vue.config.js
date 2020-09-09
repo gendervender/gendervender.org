@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     css: {
         loaderOptions: {
@@ -9,5 +11,16 @@ module.exports = {
           }
         }
     },
-    publicPath: './'
+    publicPath: './',
+    configureWebpack: {
+      resolve: {
+        alias: {
+          // Relative path to your root dir (adjust accordingly)
+          '@': path.resolve(__dirname, './src'),
+    
+          vue$: 'vue/dist/vue.esm.js',
+        },
+        extensions: ['*', '.js', '.vue', '.json'],
+      }
+    }
 }

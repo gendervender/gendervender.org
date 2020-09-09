@@ -1,6 +1,6 @@
 <template>
     <div class="video">
-        <iframe :src="link.url" frameborder="0" allowfullscreen></iframe>
+        <iframe :src="video_link || link.url" frameborder="0" allowfullscreen></iframe>
     </div>
 </template>
 <style lang="scss" scoped>
@@ -16,11 +16,8 @@
         width: 100%;
         height: 100%;
     }
-    @include mobile{
-        width: 100%!important;
-        padding-bottom: 56.25%;
-    }
     @include tablet{
+        width: 100%!important;
         padding-bottom: 56.25%;
     }
 }
@@ -29,7 +26,8 @@
 export default {
     name: "StoriesVideo",
     props: {
-       link: Object
+       link: Object,
+       video_link: String
     }
 }
 </script>

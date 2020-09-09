@@ -1,11 +1,11 @@
 <template>
     <section id="about" v-if="body.length>0">
       <div class="container">
-          <prismic-rich-text v-if="title" :field="title"/>
-          <prismic-rich-text class="text" v-if="description" :field="description"/>
+          <prismic-rich-text v-if="page_title" :field="page_title"/>
+          <prismic-rich-text class="page-description" v-if="page_description" :field="page_description"/>
       </div>
-      <div class="banner">
-        <div class="background" :style="{ 'background-image': `url(${bannerURL})` }" />
+      <div class="banner background">
+        <prismic-image :field="banner" />
       </div>
       <div class="container">
         <component
@@ -14,43 +14,49 @@
             :is="slicesData[slice.slice_type]"
             v-bind="slice.primary"
             class="about-block"
+            :class="slice.slice_type === 'video' && 'about-block-video'"
         />
       </div>
     </section>
 </template>
 <style lang="scss">
   #about{
-    padding: 16vh 0;
     .banner{
         width: 100%;
         height: 88vh;
         margin: 10vh 0;
         position: relative;
     }
+    .page-description{
+      width: 60%
+    }
     .text{
       width: 60%;
       margin: 0rem 0 2rem 0;
-      h6{
-        margin-top: 1.2rem;
-      }
     }
     .about-block{
-      margin: 32px 0;
+      margin: 4% 0;
       display: inline-flex;
+      &-video{
+        width: 50%;
+        margin: 0% 25% 4% 25%;
+      }
+    }
+    @include tablet{
+     .text, .page-description{
+        width: 100%;
+        margin: 0;
+      }
+      .about-block{
+        &-video{
+          width: 100%;
+          margin: 0;
+        }
+      }
     }
     @include mobile{
       .banner{
         height: 50vh;
-      }
-      .text{
-        width: 100%;
-        margin: 0;
-      }
-    }
-    @include tablet{
-     .text{
-        width: 100%;
-        margin: 0;
       }
     }
   }
@@ -59,6 +65,7 @@
 import ImageItem from '@/components/slices/StoriesImage.vue';
 import TextBlock from '@/components/slices/AboutTextBlock.vue';
 import Timeline from '@/components/slices/Timeline.vue';
+import StoriesVideo from '@/components/slices/StoriesVideo.vue';
 
 
 export default {
@@ -66,35 +73,31 @@ export default {
   components: {
     ImageItem,
     TextBlock,
-    Timeline
+    Timeline,
+    StoriesVideo
   },
   data(){
     return{
-      title: null,
-      description: null,
-      bannerURL: null,
+      page_title: null,
+      page_description: null,
+      banner: null,
       body: [],
       slicesData: {
         image: "ImageItem",
         text_block: "TextBlock",
-        timeline: "Timeline"
+        timeline: "Timeline",
+        video: "StoriesVideo"
       }
     }
   },
   methods: {
-    async getContent(){ 
-       const content = await this.$prismic.client.getSingle('about');
-       this.assignContent(content.data);
-    },
-    assignContent(data){
-      this.title = data.page_title;
-      this.description = data.page_description;
-      this.bannerURL = data.banner.url;
-      this.body = data.body;
+    assignContent(){
+      const data = this.$store.state.aboutPage;
+      Object.assign(this, data);
     }
   },
   created(){
-    this.getContent();
+    this.assignContent();
   }
 }
 </script>
