@@ -132,26 +132,17 @@ export default {
 }
 
 .card-bottom-link {
-  height: 18vw
+  height: 34vh;
 }
 
 .card-bottom {
-  height: 11vw
+  height: 20vh;
 }
 
 @include tablet {
   .top {
     height: 28vh !important;
   }
-
-  .card-bottom-link {
-    height: 40vh;
-  }
-
-  .card-bottom {
-    height: 22vh;
-  }
-
   .card {
     .top {
       .overlay {
@@ -175,11 +166,11 @@ export default {
   }
 
   .card-bottom-link {
-    height: 32vw;
+    height: 55vw;
   }
 
   .card-bottom {
-    height: 55vw;
+    height: 32vw;
     p{
       font-size: $font-size-xs!important;
     }
