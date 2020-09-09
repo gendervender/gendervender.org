@@ -34,6 +34,7 @@
           :selectedBox="selectedBox"
           :payment_instructions="payment_instructions"
           :payment_services="payment_services"
+          :payment_content="payment_content"
           :price="selectedPrice"
         />
   </section>
@@ -64,6 +65,7 @@ export default {
       banner: {},
       boxes: [],
       payment_instructions: [],
+      payment_content: [],
       payment_services: "",
       shop_content: null,
       shop_header: null,

@@ -36,9 +36,6 @@
     }
 
     .banner {
-      width: 100%;
-      height: 68vh;
-      margin-top: 12vh;
       position: relative;
       display: block;
     }
@@ -80,10 +77,6 @@
     }
 
     @include desktop {
-      .banner {
-        height: 60vh;
-      }
-
       .content {
         h1 {
           font-size: 2.4rem;
@@ -103,12 +96,6 @@
           font-size: 1.2rem;
         }
       }
-
-      .banner {
-        margin-top: 12vh;
-        height: 50vh;
-      }
-
       .logo {
         width: 20%;
       }
@@ -134,12 +121,6 @@
       .logo {
         width: 4rem;
       }
-
-      .banner {
-        height: 32vh;
-        margin-top: 8vh;
-      }
-
       .content .container {
         width: 88%;
       }

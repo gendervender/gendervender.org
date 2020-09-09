@@ -154,6 +154,13 @@ export default {
       }
     }
   }
+  .card-bottom-link {
+    height: 28vh;
+  }
+
+  .card-bottom {
+    height: 16vh;
+  }
 }
 
 @include mobile {

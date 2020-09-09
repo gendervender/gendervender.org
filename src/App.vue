@@ -435,6 +435,7 @@ input[type=submit]{
 .banner {
   width: 100%;
   height: 50vh;
+  margin-top: 12vh;
   background-size: cover;
   background-position: center;
   margin-bottom: 8vh;
@@ -444,10 +445,13 @@ input[type=submit]{
     height: 100%;
     object-fit: cover;
   }
-
   @include mobile {
-    height: 25vh;
+    height: 32vh;
     margin-bottom: 4vh;
+    margin-top: 8vh;
+  }
+  @include desktop{
+    height: 22vw;
   }
 }
 </style>

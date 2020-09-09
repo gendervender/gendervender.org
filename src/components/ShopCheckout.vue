@@ -33,8 +33,11 @@
           <h3>Order summary</h3>
           <div class="shop__checkout-card">
             <div class="shop__checkout-card-block">
-              <h4>Your box</h4>
-              <span> {{selectedBox}} </span>
+              <h4 style="font-weight: 400">Your box</h4>
+              <b> {{selectedBox}} </b>
+            </div>
+            <div class="shop__checkout-card-block">
+              <prismic-rich-text :field="payment_content" />
             </div>
             <div class="shop__checkout-total">
               <div class="shop__checkout-card-block row">
@@ -81,7 +84,8 @@ export default {
       selectedBox: String,
       price: Object,
       payment_instructions: Array,
-      payment_services: String
+      payment_services: String,
+      payment_content: Array,
     },
     data() {
       return {
@@ -166,6 +170,9 @@ export default {
 
       &-block {
         margin-bottom: 16px;
+        p{
+          font-size: $font-size-xs;
+        }
       }
     }
 
