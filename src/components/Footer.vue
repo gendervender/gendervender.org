@@ -36,7 +36,7 @@ export default {
       this.show = false;
       setTimeout(() => {
         this.show = true
-      }, 1250)
+      }, 500)
     }
   },
   data() {
@@ -112,6 +112,14 @@ export default {
   .background{
     img{
       object-fit: contain;
+    }
+  }
+}
+@include mobile{
+  #footer{
+    height: 50vh;
+    .container {
+      padding: 8vh 0;
     }
   }
 }

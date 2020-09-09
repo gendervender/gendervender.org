@@ -30,7 +30,7 @@ const routes = [
   },
   {
     path: '/stories/:id',
-    name: "stories",
+    name: "stories-detail",
     component: Stories,
     props: true
   },
@@ -52,6 +52,11 @@ const routes = [
   {
     path: '/shop',
     name: 'shop',
+    component: Shop
+  },
+  {
+    path: '/shop/:id',
+    name: 'shop-checkout',
     component: Shop
   },
   {
@@ -79,4 +84,9 @@ const router = new VueRouter({
   }
 })
 
+router.beforeEach((to, from, next) => {
+  Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
+    next();
+  });
+})
 export default router

@@ -189,12 +189,12 @@ export default {
 
     &:hover,
     &:focus {
-      border-color: $secondary;
+      border-color: $text;
     }
   }
 
   &__selection-logo-selected {
-    border-color: $secondary;
+    border-color: $text;
   }
 
   &__selection__mobile{

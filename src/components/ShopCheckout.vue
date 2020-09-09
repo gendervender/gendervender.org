@@ -121,6 +121,7 @@ export default {
 </script>
 <style lang="scss">
   .shop__checkout {
+    padding-top: 8vh;
     h2 {
       margin-bottom: 1rem;
     }

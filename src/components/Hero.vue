@@ -41,6 +41,14 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
+    .background{
+      margin-top: 12vh;
+      height: 88vh;
+      @include mobile{
+        height: 92vh;
+        margin-top: 8vh;
+      }
+    }
     .container{
       padding-bottom: 8vh;
     }
@@ -91,6 +99,7 @@ export default {
       }
     }
     @include mobile{
+      justify-content: center;
       .container{
         .row{
           flex-direction: column;

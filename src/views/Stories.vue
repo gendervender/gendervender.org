@@ -1,26 +1,30 @@
 <template>
   <div>
     <StoriesGrid :stories="stories" v-if="!viewMode"/>
-    <StoriesView :data="currentStory" :moreStories="moreStories" v-if="viewMode" />
+    <StoriesView :data="currentStory" :moreStories="moreStories" v-if="viewMode && dataReady" />
+    <LoadScreen  :isLoading="!dataReady && viewMode"/>
   </div>
 </template>
 
 <script>
 import StoriesGrid from '@/components/StoriesGrid';
 import StoriesView from '@/components/StoriesView';
+import LoadScreen from '@/components/LoadScreen';
 
 export default {
   name: 'Stories',
   components: {
       StoriesGrid,
-      StoriesView
+      StoriesView,
+      LoadScreen
   },
   data(){
     return{
       stories: [],
       viewMode: false,
       currentStory: null,
-      moreStories: []
+      moreStories: [],
+      dataReady: false
     }
   },
   watch:{
@@ -31,6 +35,7 @@ export default {
   methods: {
     checkRouteParams() {
       if (this.$route.params.id && this.stories.length > 0){
+        this.dataReady = false;
         this.assignData(this.$route.params.id);
       }else if (this.$route.params.id && this.stories.length <= 0) {
         this.getContent();
@@ -60,6 +65,9 @@ export default {
             curIndex++;
         }
         this.moreStories = moreStories;
+        Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
+          this.dataReady = true;
+        });
       }else{
         this.$router.push('/404');
       }

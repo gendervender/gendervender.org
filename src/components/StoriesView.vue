@@ -132,11 +132,12 @@
       }
 
       .logo {
-        width: 28%;
+        width: 4rem;
       }
 
       .banner {
-        height: 40vh;
+        height: 32vh;
+        margin-top: 8vh;
       }
 
       .content .container {
@@ -153,29 +154,29 @@ import StoriesVideo  from '@/components/slices/StoriesVideo';
 import MoreStories   from '@/components/MoreStories';
 
 export default {
-    name: "StoriesView",
-    components:{
-        TextBlock,
-        Quote,
-        Product,
-        StoriesImage,
-        StoriesVideo,
-        MoreStories
-    },
-    props: {
-        data: Object,
-        moreStories: Array
-    },
-    data(){
-        return {
-            slicesData: {
-                text_block: "TextBlock",
-                quote: "Quote",
-                product: "Product",
-                image: "StoriesImage",
-                video: "StoriesVideo"
-            }
-        }
+  name: "StoriesView",
+  components: {
+    TextBlock,
+    Quote,
+    Product,
+    StoriesImage,
+    StoriesVideo,
+    MoreStories
+  },
+  props: {
+    data: Object,
+    moreStories: Array
+  },
+  data() {
+    return {
+      slicesData: {
+        text_block: "TextBlock",
+        quote: "Quote",
+        product: "Product",
+        image: "StoriesImage",
+        video: "StoriesVideo"
+      }
     }
+  }
 }
 </script>

@@ -7,6 +7,7 @@
             <Card
               v-for="member in members"
               v-if="member.status == 'current'"
+              :isLink="true"
               :primary="member.name"
               :secondary="member.role"
               :description="member.description"
@@ -19,6 +20,7 @@
             <Card
               v-for="member in members"
               v-if="member.status == 'past'"
+              :isLink="true"
               :primary="member.name"
               :secondary="member.role"
               :description="member.description"

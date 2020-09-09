@@ -7,7 +7,6 @@
             :to="`/stories/${item.uid}`"
         >
         <Card 
-          :isLink="true"
           :primary="item.name"
           :secondary="item.business_name"
           :description="item.short_description"

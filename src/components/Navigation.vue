@@ -222,4 +222,9 @@ export default {
     color: white!important;
   }
 }
+@include mobile{
+  #nav{
+    height: 8vh;
+  }
+}
 </style>

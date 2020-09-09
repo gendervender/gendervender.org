@@ -1,6 +1,6 @@
 <template>
   <section id="shop" class="shop">
-        <div class="banner">
+        <div class="banner" v-if="!toggleCheckout">
           <prismic-image :field="banner" />
         </div>
         <div class="center container" v-if="!toggleCheckout">
@@ -21,7 +21,10 @@
                 <div class="shop__boxes-item-price center">
                   <h4>${{item.price}}</h4>
                   <p><strong>${{item.shipping}}</strong> shipping</p>
-                  <button class="button" @click="selectBox(item)" >SELECT THIS BOX</button>
+                  <router-link class="button" @click.native="selectBox(item)"
+                  :to="`/shop/${item.name.toLowerCase().replace(/ +/g, '-')}`" >
+                    SELECT THIS BOX
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -44,6 +47,11 @@ export default {
   name: 'Shop',
   components: {
     ShopCheckout
+  },
+  watch:{
+    '$route' (to, from){
+      this.toggleCheckout = this.$route.params.id ? true : false;
+    }
   },
   data() {
     return {
@@ -73,14 +81,19 @@ export default {
     selectBox(box){
       this.selectedBox = box.name;
       this.setPrice(box.price, box.shipping);
-      this.toggleCheckout = true;
     },
     setPrice(base, shipping){
       this.selectedPrice = { base, shipping }
+    },
+    checkRoute(){
+      if(this.$route.params.id){
+        this.$router.push("/shop");
+      }
     }
   },
   created(){
     this.assignContent();
+    this.checkRoute();
   }
 }
 

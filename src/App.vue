@@ -106,7 +106,7 @@ body.home{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: hidden!important;
 }
 h1,h2,h3,h4,h5,h6{
   margin: 0%;
@@ -171,6 +171,9 @@ section{
   min-height: 100vh;
   @include tablet{
     padding: 32px 0;
+  }
+  @include mobile{
+    margin-top: 8vh;
   }
 }
 .row{
@@ -369,8 +372,9 @@ input, textarea, select{
   border: 1px solid $border;
   font-family: inherit;
   &:focus{
-      border-color: $secondary;
+      border-color: $primary;
   }
+  -webkit-appearance: none;
 }
 textarea{
   resize: none;
@@ -426,6 +430,7 @@ textarea{
 }
 input[type=submit]{
   @extend .button;
+  -webkit-appearance: none;
 }
 .banner {
   width: 100%;

@@ -4,7 +4,7 @@
       <h2>Stories</h2>
       <div class="stories-grid">
         <router-link v-for="item in stories" :to="`/stories/${item.uid}`">
-          <Card :isLink="true" :primary="item.name" :secondary="item.business_name"
+          <Card :primary="item.name" :secondary="item.business_name"
             :description="item.short_description" :image="item.thumbnail_image" />
         </router-link>
       </div>

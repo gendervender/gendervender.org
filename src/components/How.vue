@@ -78,6 +78,7 @@ export default {
     }
     &__block{
       flex-direction: column;
+      margin: 2rem 0;
       &-text, &-image{
         width: 100%;
       }
