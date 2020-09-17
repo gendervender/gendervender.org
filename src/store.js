@@ -8,13 +8,13 @@ function store() {
     state: {},
     mutations: {
       setData(state, payload) {
-        Object.assign(state, payload)
+        Object.assign(state, payload);
       }
     },
     actions: {
       setData({commit}, payload){
         commit('setData', payload)
-      },
+      }
     }
   });
 }

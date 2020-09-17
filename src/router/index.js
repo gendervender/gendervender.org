@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home          from '@/views/Home';
-import Contact       from '@/views/Contact';
-import Stories       from '@/views/Stories';
-import About         from '@/views/About';
-import Team          from '@/views/Team';
-import Products      from '@/views/Products';
-import Shop          from '@/views/Shop';
-import ErrorPage     from '@/views/Error';
-import PrivacyPolicy from '@/views/PrivacyPolicy';
+import Home            from '@/views/Home';
+import Contact         from '@/views/Contact';
+import Stories         from '@/views/Stories';
+import About           from '@/views/About';
+import Team            from '@/views/Team';
+import Products        from '@/views/Products';
+import Shop            from '@/views/Shop';
+import ErrorPage       from '@/views/Error';
+import PrivacyPolicy   from '@/views/PrivacyPolicy';
+import OrderConfirmed  from '@/views/OrderConfirmed';
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,11 @@ const routes = [
     path: '/shop/:id',
     name: 'shop-checkout',
     component: Shop
+  },
+  {
+    path: '/order-confirmed',
+    name: 'order-confirmed',
+    component: OrderConfirmed
   },
   {
     path: '/privacy-policy',

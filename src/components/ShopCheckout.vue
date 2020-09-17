@@ -102,7 +102,8 @@ export default {
           state: "",
           zip: "",
           paymentMethod: "",
-          paymentUsername: ""
+          paymentUsername: "",
+          notes: "",
         },
         formName: "order",
         formInitiated: false,
