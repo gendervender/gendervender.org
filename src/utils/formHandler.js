@@ -36,8 +36,7 @@ export default {
         this.status.msg = "Please verify yourself with reCaptcha";
       }
 
-      // validated && 
-      this.submitForm();
+      validated && this.submitForm();
     },
     async submitForm() {
       this.status.msg = "Submitting your form...";
