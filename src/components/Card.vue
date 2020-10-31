@@ -10,7 +10,7 @@
       <h6 v-if="secondary">{{secondary}}</h6>
       <p v-if="description">{{description}}</p>
       <div class="links" v-if="links">
-        <a v-for="link in links" v-if="link.url" :href="link.url" target="_blank">
+        <a :key="link.name" v-for="link in links" :href="link.url" target="_blank">
           <img :src="getImgUrl(link.name)" :alt="link.name" />
         </a>
       </div>
@@ -159,7 +159,7 @@ export default {
   }
 
   .card-bottom {
-    height: 16vh;
+    height: 20vh;
   }
 }
 
@@ -177,7 +177,7 @@ export default {
   }
 
   .card-bottom {
-    height: 32vw;
+    height: 28vw;
     p{
       font-size: $font-size-xs!important;
     }

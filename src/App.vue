@@ -19,7 +19,7 @@ const DOC_TYPES = {
   aboutPage: "about",
   teamPage: "team",
   contactPage: "contact",
-  shopPage: "shop",
+  shopPage: "shop_v2",
   footer: "footer",
   products: "products",
   stories: "stories",
@@ -55,12 +55,10 @@ export default {
       Object.keys(DOC_TYPES).forEach(item => {
         data[item] = response.results.filter(doc => doc.type === DOC_TYPES[item]);
         if (item === 'stories') {
-          data[item] = data[item].map(i => {
-            return {
-              ...i.data,
-              uid: i.uid
-            }
-          })
+          data[item] = data[item].map(i => ({
+            ...i.data, 
+            uid: i.uid
+          }));
         } else {
           data[item] = data[item].map(i => i.data);
         }
@@ -387,7 +385,7 @@ textarea{
   border: 1px transparent solid;
   outline: 0;
   letter-spacing: 0.05rem;
-  padding: 12px 20px;
+  padding: 10px 20px;
   position: relative;
   background-color: transparent;
   border-radius: 24px;

@@ -5,9 +5,9 @@
           <prismic-rich-text class="text" v-if="page_description" :field="page_description"/>
           <div class="members-container">
             <Card
-              v-for="member in members"
-              v-if="member.status == 'current'"
-              :isLink="true"
+              v-for="member in current"
+              :key="member.name"
+              :isLink="false"
               :primary="member.name"
               :secondary="member.role"
               :description="member.description"
@@ -18,9 +18,9 @@
           <h5>Past Members</h5>
           <div class="members-container">
             <Card
-              v-for="member in members"
-              v-if="member.status == 'past'"
-              :isLink="true"
+              v-for="member in past"
+              :key="member.name"
+              :isLink="false"
               :primary="member.name"
               :secondary="member.role"
               :description="member.description"
@@ -74,13 +74,17 @@ export default {
     return{
       page_title: null,
       page_description: null,
-      members: []
+      members: [],
+      current: [],
+      past: []
     }
   },
   methods: {
     assignContent(){
       const data = this.$store.state.teamPage;
       Object.assign(this, data);
+      this.current = data.members.filter(member => member.status === 'current');
+      this.past = data.members.filter(member => member.status === 'past');
     }
   },
   created(){

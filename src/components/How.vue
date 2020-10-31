@@ -31,10 +31,6 @@ export default {
 
 <style lang="scss">
 .hiw {
-  &__wrapper {
-    width: 90%;
-  }
-
   &__block {
     display: flex;
     flex-direction: row;
