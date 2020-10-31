@@ -80,6 +80,14 @@
         name="zip"
       />
     </div>
+    <div class="field">
+      <label for="message">Additional notes/instructions</label>
+      <textarea
+        class="additional-notes"
+        v-model="form.notes"
+        name="notes"
+      />
+    </div>
   </form>
 </template>
 
@@ -97,7 +105,8 @@ export default {
         address: String,
         city: String,
         state: String,
-        zip: String
+        zip: String,
+        notes: String
     },
     formName: String,
     formInitiated: Boolean,
@@ -112,5 +121,9 @@ export default {
 <style lang="scss">
   #order-form{
     width: 100%;
+  }
+  .additional-notes{
+    height: 6rem;
+    overflow-y: scroll;
   }
 </style>

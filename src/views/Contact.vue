@@ -39,7 +39,7 @@ export default {
 <style lang="scss" scoped>
   #contact {
     min-height: 100vh;
-    padding-bottom: 20vh;
+    padding: 0 0 16vh;
     margin-top: 0;
     text-align: center;
 
@@ -50,7 +50,6 @@ export default {
     .title {
       font-weight: 600;
     }
-
     .body {
       margin: 0px 0px 52px 0px;
     }

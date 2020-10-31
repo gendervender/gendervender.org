@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177551443-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-177551443-1');
+    </script>
+    <!-- END Google Analytics -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -8,17 +18,17 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" type="image/x-icon">
     <base href="/" />
     <meta name="keywords" content="University of Washington, University of Washington Bothell, UW Bothell, Interactive Media Design, IMD, UWB IMD, Gender Vender, Vending Machine"/>
-    <meta name="description" content="Gender Vender is a vending machine pop-up. Our mission is to raise awareness on supporting local businesses run by women in the greater Seattle area, sparking dialogue on gender inequality, and enabling change."/>
+    <meta name="description" content="Gender Vender is an organization that celebrates women-owned businesses in the Greater Seattle Area and sparks dialogue on gender equality. We're currently selling boxes of products and donating the proceeds to support girls and womxn in STEM"/>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gendervender.org/">
     <meta property="og:title" content="Gender Vender">
-    <meta property="og:description" content="Gender Vender is a vending machine pop-up. Our mission is to raise awareness on supporting local businesses run by women in the greater Seattle area, sparking dialogue on gender inequality, and enabling change.">
-    <meta property="og:image" content="https://gendervender.org/metaimage.jpg">
+    <meta property="og:description" content="Gender Vender is an organization that celebrates women-owned businesses in the Greater Seattle Area and sparks dialogue on gender equality. We're currently selling boxes of products and donating the proceeds to support girls and womxn in STEM">
+    <meta property="og:image" content="https://gendervender.org/preview.jpg">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://gendervender.org/">
     <meta property="twitter:title" content="Gender Vender">
-    <meta property="twitter:description" content="Gender Vender is a vending machine pop-up. Our mission is to raise awareness on supporting local businesses run by women in the greater Seattle area, sparking dialogue on gender inequality, and enabling change.">
-    <meta property="twitter:image" content="https://gendervender.org/metaimage.jpg">
+    <meta property="twitter:description" content="Gender Vender is an organization that celebrates women-owned businesses in the Greater Seattle Area and sparks dialogue on gender equality. We're currently selling boxes of products and donating the proceeds to support girls and womxn in STEM">
+    <meta property="twitter:image" content="https://gendervender.org/preview.jpg">
     <script>
       window.prismic = {
         endpoint: `https://${process.env.VUE_APP_PRISMIC_ENDPOINT}.prismic.io/api/v2`
@@ -54,6 +64,7 @@
       <input type="text" name="orderNumber"/>
       <select name="paymentMethod"></select>
       <input type="text" name="paymentUsername"/>
+      <textarea name="notes"></textarea>
       <input type="submit"/>
     </form>
   </body>

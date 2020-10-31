@@ -43,7 +43,7 @@
       margin: 6rem 0 2rem 0;
     }
     .text{
-      margin: 1rem 0 6rem 0;
+      margin: 1rem 0 4rem 0;
       width: 60%;
     }
     @include tablet{
