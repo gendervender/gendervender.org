@@ -405,6 +405,7 @@ textarea{
 }
 .button-secondary{
   color: white;
+  padding-top: 12px;
   border: 1px solid white;
   background: transparent;
   &:hover{

@@ -146,7 +146,7 @@ export default {
     }
 
     &-payment {
-      flex: 4;
+      flex: 1;
       margin-right: 4%;
     }
 
@@ -159,7 +159,8 @@ export default {
     }
 
     &-summary {
-      flex: 1
+      width: 32%;
+      min-width: 344px;
     }
 
     &-card {
@@ -217,6 +218,7 @@ export default {
       }
       &-summary{
         margin-top: 4%;
+        width: 100%;
       }
       &-service{
         button{
