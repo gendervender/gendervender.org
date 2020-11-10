@@ -3,24 +3,23 @@
         <div class="banner" v-if="!toggleCheckout">
           <prismic-image :field="banner" />
         </div>
-        <div class="center container" v-if="!toggleCheckout">
+        <div class="container" v-if="!toggleCheckout">
             <prismic-rich-text :field="shop_header" v-if="shop_header"/>
             <prismic-rich-text :field="shop_content" v-if="shop_content"/>
-            <div class="shop__boxes row">
+            <div class="shop__boxes">
               <div
                 class="shop__boxes-item" 
                 v-for="item in boxes"
                 :key="`box-${item.name}`"
               >
-                <prismic-image class="shop__boxes-item-image" :field="item.image"/>
-                <img class="shop__boxes-item-graphics" :src="boxBg[item.size]"/>
+                <div class="shop__boxes-item-image">
+                  <prismic-image :field="item.image"/>
+                </div>
                 <div class="shop__boxes-item-info">
                   <h3>{{item.name}} <span>({{item.amount}} items)</span></h3>
                   <prismic-rich-text :field="item.description"/>
-                </div>
-                <div class="shop__boxes-item-price center">
                   <h4>${{item.price}}</h4>
-                  <p><strong>${{item.shipping}}</strong> shipping</p>
+                  <span><strong>${{item.shipping}}</strong> shipping</span>
                   <router-link class="button" @click.native="selectBox(item)"
                   :to="`/shop/${item.name.toLowerCase().replace(/ +/g, '-')}`" >
                     SELECT THIS BOX
@@ -41,8 +40,6 @@
 </template>
 <script>
 import ShopCheckout     from '@/components/ShopCheckout';
-import BOX_BG_SMALL     from '@/assets/box-small-bg.png';
-import BOX_BG_LARGE     from '@/assets/box-large-bg.png';
 
 export default {
   name: 'Shop',
@@ -69,10 +66,6 @@ export default {
       payment_services: "",
       shop_content: null,
       shop_header: null,
-      boxBg: {
-        small: BOX_BG_SMALL,
-        large: BOX_BG_LARGE
-      }
     }
   },
   methods: {
@@ -105,59 +98,41 @@ export default {
   padding-top: 0;
   &__boxes {
     &-item {
-      width: 40vw;
-      margin: 0 12px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      margin: 4rem 0;
       border: 1px $border solid;
       border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       box-sizing: border-box;
-      padding-bottom: 2rem;
       background-color: white;
-      &-info, &-price{
-        box-sizing: border-box;
-        padding: 1rem 2rem 0;
-      }
       &-info{
         flex: 1;
         align-items: flex-start;
+        padding: 3rem;
+        box-sizing: border-box;
       }
       h3 {
         font-size: $font-size-m;
       }
-      img{
-        width: 100%;
-      }
       &-image{
-        height: 32vh;
-        object-fit: cover;
-      }
-      &-price {
-        border-top: 1px $border solid;
-        padding-top: 12px;
-        flex-direction: column;
-
-        p {
-          margin: 0
-        }
-
-        .button {
-          margin-top: 12px;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
       }
-    }
-    @include desktop{
-      &-item{
-        width: 32vw;
+      div>span{
+        display: block;
+        margin-bottom: 2rem;
       }
     }
     @include tablet {
-      flex-direction: column;
-
-      &-item {
-        width: 100%;
-        margin: 12px 0;
+      &-item{
+        grid-template-columns: 1fr;
+        &-image{
+          height: 36vh;
+        }
       }
     }
   }

@@ -15,13 +15,14 @@
         </div>
         <div class="footer-block">
             <prismic-rich-text class="text title" v-if="connect_title" :field="connect_title"/>
-            <a 
-                class="text underline"
-                :href="item.connect_link.url"
-                target="_blank"
-                v-for="item in connect_links">
+            <prismic-link
+              :key="item.link_name"
+              class="text underline"
+              :field="item.connect_link"
+              target="_blank"
+              v-for="item in connect_links">
                 {{item.connect_link_name}}
-            </a>
+            </prismic-link>
         </div>
         <span class="text">&copy; 2020 Gender Vender</span>
     </div>
