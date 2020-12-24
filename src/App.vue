@@ -427,6 +427,16 @@ textarea{
     color: white!important;
   }
 }
+
+.button-disabled{
+  cursor: not-allowed;
+  background: $disabled;
+  &:hover{
+    background: $disabled;
+    box-shadow: none;
+  }
+}
+
 input[type=submit]{
   @extend .button;
   -webkit-appearance: none;

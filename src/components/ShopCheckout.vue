@@ -12,9 +12,12 @@
           <div class="shop__checkout-card">
             <h4>Choose a service</h4>
             <div class="shop__checkout-service">
-              <button @click="form.paymentMethod = service"
+              <button
+                @click="form.paymentMethod = service"
                 :class="form.paymentMethod === service ? 'button' : 'button button-secondary button-dark'"
-                v-for="service in payment_services.split(/[ ,]+/)">
+                v-for="service in payment_services.split(/[ ,]+/)"
+                :key="service"
+              >
                 {{service}}
               </button>
             </div>
@@ -22,7 +25,11 @@
             <input class="field field-half" name="paymentUsername" v-model="form.paymentUsername" />
             <h4>How it works</h4>
             <div class="shop__checkout-info" v-if="payment_instructions">
-              <div class="shop__checkout-info-item center" v-for="(item, index) in payment_instructions">
+              <div
+                class="shop__checkout-info-item center"
+                v-for="(item, index) in payment_instructions"
+                :key="'info-checkout'+index"
+              >
                 <img :src="icons[index]" />
                 <prismic-rich-text :field="item.content" />
               </div>

@@ -20,10 +20,17 @@
                   <prismic-rich-text :field="item.description"/>
                   <h4>${{item.price}}</h4>
                   <span><strong>${{item.shipping}}</strong> shipping</span>
-                  <router-link class="button" @click.native="selectBox(item)"
-                  :to="`/shop/${item.name.toLowerCase().replace(/ +/g, '-')}`" >
+                  <router-link
+                    v-if="!item.sold_out"
+                    class="button"
+                    :to="`/shop/${item.name.toLowerCase().replace(/ +/g, '-')}`"
+                    @click.native="selectBox(item)"
+                  >
                     SELECT THIS BOX
                   </router-link>
+                  <button v-else class="button button-disabled" disabled>
+                    SOLD OUT
+                  </button>
                 </div>
               </div>
             </div>
