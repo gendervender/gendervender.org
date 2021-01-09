@@ -24,7 +24,7 @@
                 {{item.connect_link_name}}
             </prismic-link>
         </div>
-        <span class="text">&copy; 2020 Gender Vender</span>
+        <span class="text">&copy; 2021 Gender Vender</span>
     </div>
   </div>
 </template>
